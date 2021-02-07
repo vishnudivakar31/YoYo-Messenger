@@ -26,6 +26,10 @@ class CreateAccountController: UIViewController {
         dobPicker.maximumDate = Calendar.current.date(byAdding: .year, value: -14, to: Date())
     }
     
+    @IBAction func profileImageTapped(_ sender: UITapGestureRecognizer) {
+        print("tapped..")
+    }
+    
     @IBAction func createButtonTapped(_ sender: Any) {
     }
     
