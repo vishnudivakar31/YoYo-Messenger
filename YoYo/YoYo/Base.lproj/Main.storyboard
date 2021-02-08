@@ -289,6 +289,7 @@
                         <outlet property="emailTextField" destination="MBQ-RA-1Nm" id="Ku7-Yv-j4B"/>
                         <outlet property="nameTextField" destination="m1u-s3-Jdl" id="DVC-40-Tad"/>
                         <outlet property="passwordTextField" destination="xAt-zT-NeR" id="mux-S1-eSZ"/>
+                        <outlet property="profileImageView" destination="6UZ-Er-8eS" id="yfD-Bf-Mef"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VdN-ug-J9P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
