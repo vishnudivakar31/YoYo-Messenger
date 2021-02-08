@@ -43,6 +43,22 @@ class CreateAccountController: UIViewController {
     }
     
     @IBAction func createButtonTapped(_ sender: Any) {
+        let name = nameTextField.text ?? ""
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        let confirmPassword = confirmPasswordTextField.text ?? ""
+        let dob = dobPicker.date
+        let profilePicture = profileImageView.image
+        if name.count == 0 || email.count == 0 || password.count == 0 || confirmPassword.count == 0 {
+            presentAlert(message: "All fields are mandatory")
+            return
+        }
+    }
+    
+    private func presentAlert(message: String) {
+        let alert = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
 }
