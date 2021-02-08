@@ -47,12 +47,29 @@ class CreateAccountController: UIViewController {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         let confirmPassword = confirmPasswordTextField.text ?? ""
-        let dob = dobPicker.date
-        let profilePicture = profileImageView.image
+        if(validateFields(name, email, password, confirmPassword)) {
+            print("good to go")
+        }
+    }
+    
+    // MARK:- Private helper methods
+    private func validateFields(_ name: String, _ email: String, _ password: String, _ confirmPassword: String) -> Bool {
         if name.count == 0 || email.count == 0 || password.count == 0 || confirmPassword.count == 0 {
             presentAlert(message: "All fields are mandatory")
-            return
+            return false
+        } else if (password != confirmPassword) {
+            presentAlert(message: "Passwords are not matching")
+            return false
+        } else if (!checkPasswordForComplexity(password)) {
+            presentAlert(message: "Password is not strong enough. Password should have atleast one lowercase, one uppercase, one special symbol, minimum six characters and maximum 20 characters")
+            return false
         }
+        return true
+    }
+    
+    private func checkPasswordForComplexity(_ password: String) -> Bool {
+        let passwordValidationRegex = NSPredicate(format: "SELF MATCHES %@ ", "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$#!%*?&]).{6,20}$")
+        return passwordValidationRegex.evaluate(with: password)
     }
     
     private func presentAlert(message: String) {
