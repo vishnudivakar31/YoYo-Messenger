@@ -16,9 +16,11 @@ class CreateAccountController: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var dobPicker: UIDatePicker!
     @IBOutlet weak var profileImageView: UIImageView!
-    
+
     private let imagePicker = UIImagePickerController()
+    
     private var authenticationService = AuthenticationService()
+    private var storageService = StorageService()
     
     
     override func viewDidLoad() {
@@ -35,6 +37,7 @@ class CreateAccountController: UIViewController {
         profileImageView.layer.cornerRadius = 75.0
         profileImageView.clipsToBounds = true
         authenticationService.delegate = self
+        storageService.delegate = self
     }
     
     @IBAction func profileImageTapped(_ sender: UITapGestureRecognizer) {
@@ -116,6 +119,24 @@ extension CreateAccountController: AuthenticationDelegate {
     }
     
     func createUserAccountSuccess(user: User) {
-        print(user)
+        let userID: String = user.uid
+        let profilePicData: Data? = (profileImageView.image?.jpegData(compressionQuality: 1))
+        if profilePicData != nil {
+            storageService.uploadImageToStorage(data: profilePicData!, fileName: "profile_pic", userID: userID)
+        }
     }
+}
+
+// MARK:- Storage Delegate Methods
+extension CreateAccountController: StorageDelegate {
+    func uploadSuccessFull(url: String) {
+        // TODO:- Implement firestore service methods
+        print(url)
+    }
+    
+    func uploadFailure(msg: String) {
+        presentAlert(message: msg)
+    }
+    
+    
 }
