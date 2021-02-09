@@ -19,6 +19,8 @@
 		8BD608E225D1F96A005A7DE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BD608E125D1F96A005A7DE7 /* GoogleService-Info.plist */; };
 		8BD6090F25D1FBA7005A7DE7 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD6090E25D1FBA7005A7DE7 /* AuthenticationService.swift */; };
 		8BD6095E25D2141A005A7DE7 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD6095D25D2141A005A7DE7 /* StorageService.swift */; };
+		8BD6096125D222D5005A7DE7 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD6096025D222D5005A7DE7 /* DatabaseService.swift */; };
+		8BD6097B25D2D493005A7DE7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD6097A25D2D493005A7DE7 /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		8BD608E125D1F96A005A7DE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8BD6090E25D1FBA7005A7DE7 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		8BD6095D25D2141A005A7DE7 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		8BD6096025D222D5005A7DE7 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		8BD6097A25D2D493005A7DE7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F9B98AC2D9871B71E87484C3 /* Pods-YoYo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YoYo.debug.xcconfig"; path = "Target Support Files/Pods-YoYo/Pods-YoYo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +85,7 @@
 		8BD608C225D05801005A7DE7 /* YoYo */ = {
 			isa = PBXGroup;
 			children = (
+				8BD6097925D2D46A005A7DE7 /* Models */,
 				8BD6090D25D1FB7F005A7DE7 /* Services */,
 				8BD608DB25D0585F005A7DE7 /* Controllers */,
 				8BD608C325D05801005A7DE7 /* AppDelegate.swift */,
@@ -109,8 +114,17 @@
 			children = (
 				8BD6090E25D1FBA7005A7DE7 /* AuthenticationService.swift */,
 				8BD6095D25D2141A005A7DE7 /* StorageService.swift */,
+				8BD6096025D222D5005A7DE7 /* DatabaseService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		8BD6097925D2D46A005A7DE7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8BD6097A25D2D493005A7DE7 /* UserModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B30B42063CBF56FB7E45BCFB /* Pods */ = {
@@ -243,6 +257,8 @@
 				8BD6090F25D1FBA7005A7DE7 /* AuthenticationService.swift in Sources */,
 				8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */,
 				8BD608DE25D07174005A7DE7 /* CreateAccountController.swift in Sources */,
+				8BD6096125D222D5005A7DE7 /* DatabaseService.swift in Sources */,
+				8BD6097B25D2D493005A7DE7 /* UserModel.swift in Sources */,
 				8BD6095E25D2141A005A7DE7 /* StorageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -290,6 +290,7 @@
                         <outlet property="nameTextField" destination="m1u-s3-Jdl" id="DVC-40-Tad"/>
                         <outlet property="passwordTextField" destination="xAt-zT-NeR" id="mux-S1-eSZ"/>
                         <outlet property="profileImageView" destination="6UZ-Er-8eS" id="yfD-Bf-Mef"/>
+                        <segue destination="RQK-lo-wVw" kind="presentation" identifier="goToLoginFromSignUp" modalPresentationStyle="fullScreen" id="nAL-b7-Jk9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VdN-ug-J9P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -302,6 +303,9 @@
             <point key="canvasLocation" x="598.55072463768124" y="830.35714285714278"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="nAL-b7-Jk9"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="account_background" width="1920" height="1080"/>
         <image name="avatar" width="512" height="512"/>

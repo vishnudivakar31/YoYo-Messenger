@@ -55,6 +55,10 @@ class AuthenticationService {
         }
     }
     
+    public func getUserID() -> String? {
+        return Auth.auth().currentUser?.uid
+    }
+    
     private func hashString(withString: String) -> String? {
         if let validStringData = withString.data(using: String.Encoding.utf8) {
             var digest = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))

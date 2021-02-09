@@ -21,6 +21,7 @@ class CreateAccountController: UIViewController {
     
     private var authenticationService = AuthenticationService()
     private var storageService = StorageService()
+    private var databaseService = DatabaseService()
     
     
     override func viewDidLoad() {
@@ -38,6 +39,7 @@ class CreateAccountController: UIViewController {
         profileImageView.clipsToBounds = true
         authenticationService.delegate = self
         storageService.delegate = self
+        databaseService.userModelDelegate = self
     }
     
     @IBAction func profileImageTapped(_ sender: UITapGestureRecognizer) {
@@ -130,11 +132,34 @@ extension CreateAccountController: AuthenticationDelegate {
 // MARK:- Storage Delegate Methods
 extension CreateAccountController: StorageDelegate {
     func uploadSuccessFull(url: String) {
-        // TODO:- Implement firestore service methods
-        print(url)
+        if let name = nameTextField.text, let userID = authenticationService.getUserID() {
+            let userModel = UserModel(name: name, dob: dobPicker.date, profilePictureURL: url, userID: userID)
+            databaseService.saveUserModel(user: userModel)
+        }
     }
     
     func uploadFailure(msg: String) {
+        presentAlert(message: msg)
+    }
+    
+}
+
+// MARK:- UserModel Delegate Methods
+extension CreateAccountController: UserModelDelegate {
+    func saveUserModelSuccessful(user: UserModel, documentID: String) {
+        if documentID.count > 0 {
+            let alert = UIAlertController(title: "Success", message: "Welcome to YoYo. Login to proceed.", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Ok", style: .default) { (alertAction) in
+                self.performSegue(withIdentifier: "goToLoginFromSignUp", sender: self)
+            }
+            alert.addAction(alertAction)
+            present(alert, animated: true, completion: nil)
+        } else {
+            presentAlert(message: "Signup unsuccessful")
+        }
+    }
+    
+    func saveUserModelFailed(msg: String) {
         presentAlert(message: msg)
     }
     
