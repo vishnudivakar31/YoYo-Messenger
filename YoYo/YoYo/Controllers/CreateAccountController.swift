@@ -16,7 +16,8 @@ class CreateAccountController: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var dobPicker: UIDatePicker!
     @IBOutlet weak var profileImageView: UIImageView!
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     private let imagePicker = UIImagePickerController()
     
     private var authenticationService = AuthenticationService()
@@ -37,6 +38,7 @@ class CreateAccountController: UIViewController {
         profileImageView.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
         profileImageView.layer.cornerRadius = 75.0
         profileImageView.clipsToBounds = true
+        activityIndicator.isHidden = true
         authenticationService.delegate = self
         storageService.delegate = self
         databaseService.userModelDelegate = self
@@ -54,6 +56,7 @@ class CreateAccountController: UIViewController {
         let password = passwordTextField.text ?? ""
         let confirmPassword = confirmPasswordTextField.text ?? ""
         if(validateFields(name, email, password, confirmPassword)) {
+            activityIndicator.isHidden = false
             authenticationService.createUserAccount(email: email, password: password)
         }
     }
@@ -150,6 +153,7 @@ extension CreateAccountController: UserModelDelegate {
         if documentID.count > 0 {
             let alert = UIAlertController(title: "Success", message: "Welcome to YoYo. Login to proceed.", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "Ok", style: .default) { (alertAction) in
+                self.activityIndicator.isHidden = true
                 self.performSegue(withIdentifier: "goToLoginFromSignUp", sender: self)
             }
             alert.addAction(alertAction)

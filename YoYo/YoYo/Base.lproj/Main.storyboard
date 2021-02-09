@@ -121,7 +121,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fMR-N4-lwm" userLabel="Main Stack View">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="263"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="293"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9U-ew-q7e">
                                         <rect key="frame" x="96.5" y="52" width="221" height="35"/>
@@ -140,11 +140,15 @@
                                             <outletCollection property="gestureRecognizers" destination="P9Y-02-cFa" appends="YES" id="0cT-kk-awK"/>
                                         </connections>
                                     </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="eZO-Ix-v8B">
+                                        <rect key="frame" x="197" y="257" width="20" height="20"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="16" right="8"/>
                             </stackView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YcG-zp-kRj">
-                                <rect key="frame" x="0.0" y="263" width="414" height="633"/>
+                                <rect key="frame" x="0.0" y="293" width="414" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJD-aS-ycH" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="850"/>
@@ -284,6 +288,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="eZO-Ix-v8B" id="J50-cs-d4H"/>
                         <outlet property="confirmPasswordTextField" destination="Ubc-K8-sqx" id="AFA-Vl-psl"/>
                         <outlet property="dobPicker" destination="CUi-nN-KoA" id="n2f-2i-HZ6"/>
                         <outlet property="emailTextField" destination="MBQ-RA-1Nm" id="Ku7-Yv-j4B"/>
