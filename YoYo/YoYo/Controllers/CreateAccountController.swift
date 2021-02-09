@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CreateAccountController: UIViewController {
     
@@ -17,7 +18,7 @@ class CreateAccountController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     
     private let imagePicker = UIImagePickerController()
-    
+    private var authenticationService = AuthenticationService()
     
     
     override func viewDidLoad() {
@@ -33,7 +34,7 @@ class CreateAccountController: UIViewController {
         profileImageView.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
         profileImageView.layer.cornerRadius = 75.0
         profileImageView.clipsToBounds = true
-        
+        authenticationService.delegate = self
     }
     
     @IBAction func profileImageTapped(_ sender: UITapGestureRecognizer) {
@@ -48,7 +49,7 @@ class CreateAccountController: UIViewController {
         let password = passwordTextField.text ?? ""
         let confirmPassword = confirmPasswordTextField.text ?? ""
         if(validateFields(name, email, password, confirmPassword)) {
-            print("good to go")
+            authenticationService.createUserAccount(email: email, password: password)
         }
     }
     
@@ -97,5 +98,24 @@ extension CreateAccountController: UIImagePickerControllerDelegate, UINavigation
             profileImageView.image = pickedImage
         }
         dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK:- Authentication Delegate Methods
+extension CreateAccountController: AuthenticationDelegate {
+    func signInToUserAccountFailure(msg: String) {
+        /// NOT REQUIRED IN THIS FILE
+    }
+    
+    func signInToUserAccountSuccess(user: User) {
+        /// NOT REQUIRED IN THIS FILE
+    }
+    
+    func createUserAccountFailure(msg: String) {
+        presentAlert(message: msg)
+    }
+    
+    func createUserAccountSuccess(user: User) {
+        print(user)
     }
 }

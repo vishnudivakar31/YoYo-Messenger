@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B8C0532B66C6495FB06B0E8 /* Pods_YoYo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EB0D5BC66A91EF62CB200F2 /* Pods_YoYo.framework */; };
 		8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C325D05801005A7DE7 /* AppDelegate.swift */; };
 		8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C525D05801005A7DE7 /* SceneDelegate.swift */; };
 		8BD608C825D05801005A7DE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C725D05801005A7DE7 /* ViewController.swift */; };
@@ -15,9 +16,13 @@
 		8BD608D025D05803005A7DE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BD608CF25D05803005A7DE7 /* Assets.xcassets */; };
 		8BD608D325D05803005A7DE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BD608D125D05803005A7DE7 /* LaunchScreen.storyboard */; };
 		8BD608DE25D07174005A7DE7 /* CreateAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608DD25D07174005A7DE7 /* CreateAccountController.swift */; };
+		8BD608E225D1F96A005A7DE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BD608E125D1F96A005A7DE7 /* GoogleService-Info.plist */; };
+		8BD6090F25D1FBA7005A7DE7 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD6090E25D1FBA7005A7DE7 /* AuthenticationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D9FED268F3563A3B03B734A /* Pods-YoYo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YoYo.release.xcconfig"; path = "Target Support Files/Pods-YoYo/Pods-YoYo.release.xcconfig"; sourceTree = "<group>"; };
+		6EB0D5BC66A91EF62CB200F2 /* Pods_YoYo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YoYo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD608C025D05801005A7DE7 /* YoYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD608C325D05801005A7DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD608C525D05801005A7DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +33,9 @@
 		8BD608D225D05803005A7DE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BD608D425D05803005A7DE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BD608DD25D07174005A7DE7 /* CreateAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountController.swift; sourceTree = "<group>"; };
+		8BD608E125D1F96A005A7DE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8BD6090E25D1FBA7005A7DE7 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		F9B98AC2D9871B71E87484C3 /* Pods-YoYo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YoYo.debug.xcconfig"; path = "Target Support Files/Pods-YoYo/Pods-YoYo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B8C0532B66C6495FB06B0E8 /* Pods_YoYo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F6691A4025B62262917826B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6EB0D5BC66A91EF62CB200F2 /* Pods_YoYo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8BD608B725D05801005A7DE7 = {
 			isa = PBXGroup;
 			children = (
 				8BD608C225D05801005A7DE7 /* YoYo */,
 				8BD608C125D05801005A7DE7 /* Products */,
+				B30B42063CBF56FB7E45BCFB /* Pods */,
+				3F6691A4025B62262917826B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +79,7 @@
 		8BD608C225D05801005A7DE7 /* YoYo */ = {
 			isa = PBXGroup;
 			children = (
+				8BD6090D25D1FB7F005A7DE7 /* Services */,
 				8BD608DB25D0585F005A7DE7 /* Controllers */,
 				8BD608C325D05801005A7DE7 /* AppDelegate.swift */,
 				8BD608C525D05801005A7DE7 /* SceneDelegate.swift */,
@@ -67,6 +87,7 @@
 				8BD608CF25D05803005A7DE7 /* Assets.xcassets */,
 				8BD608D125D05803005A7DE7 /* LaunchScreen.storyboard */,
 				8BD608D425D05803005A7DE7 /* Info.plist */,
+				8BD608E125D1F96A005A7DE7 /* GoogleService-Info.plist */,
 				8BD608CC25D05801005A7DE7 /* YoYo.xcdatamodeld */,
 			);
 			path = YoYo;
@@ -81,6 +102,23 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		8BD6090D25D1FB7F005A7DE7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8BD6090E25D1FBA7005A7DE7 /* AuthenticationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B30B42063CBF56FB7E45BCFB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F9B98AC2D9871B71E87484C3 /* Pods-YoYo.debug.xcconfig */,
+				5D9FED268F3563A3B03B734A /* Pods-YoYo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -88,9 +126,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BD608D725D05803005A7DE7 /* Build configuration list for PBXNativeTarget "YoYo" */;
 			buildPhases = (
+				F06E510BE922B7467C37B753 /* [CP] Check Pods Manifest.lock */,
 				8BD608BC25D05801005A7DE7 /* Sources */,
 				8BD608BD25D05801005A7DE7 /* Frameworks */,
 				8BD608BE25D05801005A7DE7 /* Resources */,
+				EF7D025F53018DC4A018A1BF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -139,12 +179,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BD608D325D05803005A7DE7 /* LaunchScreen.storyboard in Resources */,
+				8BD608E225D1F96A005A7DE7 /* GoogleService-Info.plist in Resources */,
 				8BD608D025D05803005A7DE7 /* Assets.xcassets in Resources */,
 				8BD608CB25D05801005A7DE7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EF7D025F53018DC4A018A1BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YoYo/Pods-YoYo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YoYo/Pods-YoYo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YoYo/Pods-YoYo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F06E510BE922B7467C37B753 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YoYo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8BD608BC25D05801005A7DE7 /* Sources */ = {
@@ -154,6 +237,7 @@
 				8BD608C825D05801005A7DE7 /* ViewController.swift in Sources */,
 				8BD608CE25D05801005A7DE7 /* YoYo.xcdatamodeld in Sources */,
 				8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */,
+				8BD6090F25D1FBA7005A7DE7 /* AuthenticationService.swift in Sources */,
 				8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */,
 				8BD608DE25D07174005A7DE7 /* CreateAccountController.swift in Sources */,
 			);
@@ -299,6 +383,7 @@
 		};
 		8BD608D825D05803005A7DE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9B98AC2D9871B71E87484C3 /* Pods-YoYo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -318,6 +403,7 @@
 		};
 		8BD608D925D05803005A7DE7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D9FED268F3563A3B03B734A /* Pods-YoYo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
