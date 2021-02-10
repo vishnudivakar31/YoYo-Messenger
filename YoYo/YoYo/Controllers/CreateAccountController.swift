@@ -39,7 +39,7 @@ class CreateAccountController: UIViewController {
         profileImageView.layer.cornerRadius = 75.0
         profileImageView.clipsToBounds = true
         activityIndicator.isHidden = true
-        authenticationService.delegate = self
+        authenticationService.userAccountCreationDelegate = self
         storageService.delegate = self
         databaseService.userModelDelegate = self
     }
@@ -109,16 +109,8 @@ extension CreateAccountController: UIImagePickerControllerDelegate, UINavigation
     }
 }
 
-// MARK:- Authentication Delegate Methods
-extension CreateAccountController: AuthenticationDelegate {
-    func signInToUserAccountFailure(msg: String) {
-        /// NOT REQUIRED IN THIS FILE
-    }
-    
-    func signInToUserAccountSuccess(user: User) {
-        /// NOT REQUIRED IN THIS FILE
-    }
-    
+// MARK:- UserAccountCreation Delegate Methods
+extension CreateAccountController: UserAccountCreationDelegate {
     func createUserAccountFailure(msg: String) {
         presentAlert(message: msg)
     }
