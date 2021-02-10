@@ -238,6 +238,7 @@
                     <navigationItem key="navigationItem" id="fwO-42-P0b"/>
                     <connections>
                         <outlet property="activityIndicator" destination="can-Vv-vMk" id="oTm-8Z-KIb"/>
+                        <outlet property="baseView" destination="FAZ-fA-NcR" id="5IV-dc-uDm"/>
                         <outlet property="emailTextField" destination="FGd-MP-OUN" id="kh0-Ta-LiC"/>
                         <outlet property="loginStackView" destination="Ag4-mv-Odd" id="kOC-4W-Cfg"/>
                         <outlet property="passwordTextField" destination="vIf-xI-sbf" id="dU9-fF-wOj"/>
