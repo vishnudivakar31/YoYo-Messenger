@@ -141,7 +141,7 @@
                                         </constraints>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmn-wD-GGe">
                                         <rect key="frame" x="15" y="134.5" width="384" height="20.5"/>
@@ -158,7 +158,7 @@
                                         </constraints>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMT-jq-bzn">
                                         <rect key="frame" x="15" y="209" width="384" height="47"/>
@@ -170,6 +170,9 @@
                                         <state key="normal" title="Login">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginButtonTapped:" destination="RQK-lo-wVw" eventType="touchUpInside" id="6jY-uW-Gc9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rk6-AQ-ZIK">
                                         <rect key="frame" x="15" y="266" width="384" height="30"/>
@@ -179,6 +182,9 @@
                                         <state key="normal" title="Forgot Password?">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="forgotPasswordButtonTapped:" destination="RQK-lo-wVw" eventType="touchUpInside" id="iaA-27-wvY"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ro5-Pk-g34">
                                         <rect key="frame" x="15" y="306" width="384" height="46"/>
@@ -231,7 +237,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="fwO-42-P0b"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="can-Vv-vMk" id="oTm-8Z-KIb"/>
+                        <outlet property="emailTextField" destination="FGd-MP-OUN" id="kh0-Ta-LiC"/>
                         <outlet property="loginStackView" destination="Ag4-mv-Odd" id="kOC-4W-Cfg"/>
+                        <outlet property="passwordTextField" destination="vIf-xI-sbf" id="dU9-fF-wOj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CfL-VH-wR5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

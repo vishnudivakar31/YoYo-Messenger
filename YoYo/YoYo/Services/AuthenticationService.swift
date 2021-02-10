@@ -11,7 +11,9 @@ import CommonCrypto
 
 public protocol UserLoginDelegate {
     func signInToUserAccountFailure(msg: String)
-    func signInToUserAccountSuccess(user: User)
+    func signInToUserAccountSuccess(user: User, isVerified: Bool)
+    func resendEmailVerificationSuccess()
+    func resendEmailVerificationFailed(msg: String)
 }
 
 public protocol UserAccountCreationDelegate {
@@ -53,8 +55,18 @@ class AuthenticationService {
                     return
                 }
                 if error == nil {
-                    self.userLoginDelegate?.signInToUserAccountSuccess(user: user)
+                    self.userLoginDelegate?.signInToUserAccountSuccess(user: user, isVerified: user.isEmailVerified)
                 }
+            }
+        }
+    }
+    
+    public func reSendVerificationEmail() {
+        Auth.auth().currentUser?.sendEmailVerification { (error) in
+            if error != nil {
+                self.userLoginDelegate?.resendEmailVerificationFailed(msg: error?.localizedDescription ?? "")
+            } else {
+                self.userLoginDelegate?.resendEmailVerificationSuccess()
             }
         }
     }
