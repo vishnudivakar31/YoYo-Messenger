@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         authenticationService.userLoginDelegate = self
+        authenticationService.passwordResetDelegate = self
         addKeyboardObserverMethods()
     }
     
@@ -44,6 +45,22 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func forgotPasswordButtonTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Password Reset Request", message: "Enter your email address", preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.placeholder = "email address"
+            textField.keyboardType = .emailAddress
+        }
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
+            guard let textField = alertController.textFields?.first else {return}
+            let email = textField.text ?? ""
+            if email.count > 0 {
+                self.authenticationService.forgotPassword(email: email)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     private func addKeyboardObserverMethods() {
@@ -105,6 +122,15 @@ extension LoginViewController: UserLoginDelegate {
         presentAlert(title: "Login Successful", message: "You have not verified your email but resending verification email failed. Reason: (\(msg). Please try later")
         activityIndicator.isHidden = true
     }
+}
+
+// MARK:- Password Reset Delegate Methods
+extension LoginViewController: PasswordResetDelegate {
+    func passwordResetSuccess() {
+        presentAlert(title: "Password Reset Initiated", message: "You will be getting a password reset email. Please follow the email")
+    }
     
-    
+    func passwordResetFailed(msg: String) {
+        presentAlert(title: "Password Reset Failed", message: "\(msg)")
+    }
 }

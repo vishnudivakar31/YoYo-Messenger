@@ -21,9 +21,15 @@ public protocol UserAccountCreationDelegate {
     func createUserAccountSuccess(user: User)
 }
 
+public protocol PasswordResetDelegate {
+    func passwordResetSuccess()
+    func passwordResetFailed(msg: String)
+}
+
 class AuthenticationService {
     var userAccountCreationDelegate: UserAccountCreationDelegate?
     var userLoginDelegate: UserLoginDelegate?
+    var passwordResetDelegate: PasswordResetDelegate?
     
     public func createUserAccount(email: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
@@ -61,6 +67,16 @@ class AuthenticationService {
                 self.userLoginDelegate?.resendEmailVerificationFailed(msg: error?.localizedDescription ?? "")
             } else {
                 self.userLoginDelegate?.resendEmailVerificationSuccess()
+            }
+        }
+    }
+    
+    public func forgotPassword(email: String) {
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            if error != nil {
+                self.passwordResetDelegate?.passwordResetFailed(msg: error?.localizedDescription ?? "")
+            } else {
+                self.passwordResetDelegate?.passwordResetSuccess()
             }
         }
     }
