@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import CoreData
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var loginStackView: UIStackView!
@@ -14,6 +15,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var baseView: UIView!
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var credential: Credential?
     
     private let authenticationService: AuthenticationService = AuthenticationService()
     
@@ -27,6 +30,7 @@ class LoginViewController: UIViewController {
         authenticationService.userLoginDelegate = self
         authenticationService.passwordResetDelegate = self
         addKeyboardObserverMethods()
+        fetchCredentials()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,6 +65,17 @@ class LoginViewController: UIViewController {
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    private func fetchCredentials() {
+        do {
+            let resultSet:[Credential] = try context.fetch(Credential.fetchRequest())
+            if resultSet.count > 0 {
+                self.credential = resultSet.first
+            }
+        } catch {
+            presentAlert(title: "Auto Login Failed", message: "Proceed with login")
+        }
     }
     
     private func addKeyboardObserverMethods() {
@@ -108,6 +123,18 @@ extension LoginViewController: UserLoginDelegate {
             self.authenticationService.reSendVerificationEmail()
         } else {
             presentAlert(title: "Login Successful", message: "You did it.")
+            fetchCredentials()
+            if credential == nil {
+                let newCredential = Credential(context: self.context)
+                newCredential.email = emailTextField.text ?? ""
+                newCredential.password = passwordTextField.text ?? ""
+                do {
+                    try self.context.save()
+                    fetchCredentials()
+                } catch {
+                    
+                }
+            }
             /// TODO: Implement further login
         }
         activityIndicator.isHidden = true
