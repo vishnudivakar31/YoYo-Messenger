@@ -242,11 +242,62 @@
                         <outlet property="emailTextField" destination="FGd-MP-OUN" id="kh0-Ta-LiC"/>
                         <outlet property="loginStackView" destination="Ag4-mv-Odd" id="kOC-4W-Cfg"/>
                         <outlet property="passwordTextField" destination="vIf-xI-sbf" id="dU9-fF-wOj"/>
+                        <segue destination="GLe-gY-r6E" kind="presentation" identifier="goToHomeScreen" modalPresentationStyle="fullScreen" id="Oj4-1u-aAR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CfL-VH-wR5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="637.68115942028987" y="562.5"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="sRi-NM-da6">
+            <objects>
+                <viewController id="SvS-AS-Z7h" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nUf-GV-4Ql">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="eVD-Kw-Mtk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="TSO-h6-x4X"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hec-0b-ZR9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2346" y="881"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="WJ7-wL-ydk">
+            <objects>
+                <viewController id="ulh-fj-Vg7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h4D-Yr-pMm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Z96-xT-LTs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="tX7-cy-gje"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cLh-Jw-n4q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2346" y="273"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="kmT-xw-PfN">
+            <objects>
+                <tabBarController id="GLe-gY-r6E" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FBe-br-ghj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ulh-fj-Vg7" kind="relationship" relationship="viewControllers" id="rea-1l-lZU"/>
+                        <segue destination="SvS-AS-Z7h" kind="relationship" relationship="viewControllers" id="Dtj-CG-gfU"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AA6-3y-r5m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1456" y="578"/>
         </scene>
         <!--Create Account Controller-->
         <scene sceneID="1PI-kv-9LH">

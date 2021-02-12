@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import CoreData
+import LocalAuthentication
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var loginStackView: UIStackView!
@@ -19,6 +20,7 @@ class LoginViewController: UIViewController {
     var credential: Credential?
     
     private let authenticationService: AuthenticationService = AuthenticationService()
+    private let databaseService: DatabaseService = DatabaseService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,7 @@ class LoginViewController: UIViewController {
         authenticationService.userLoginDelegate = self
         authenticationService.passwordResetDelegate = self
         addKeyboardObserverMethods()
-        fetchCredentials()
+        initiateAuthentication()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,6 +80,36 @@ class LoginViewController: UIViewController {
         }
     }
     
+    private func initiateAuthentication() {
+        if self.credential == nil {
+            self.fetchCredentials()
+        }
+        if self.credential != nil {
+            let laContext = LAContext()
+            var error:NSError? = nil
+            if laContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                laContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "App requires to authenticate you.") { (success, error) in
+                    DispatchQueue.main.async {
+                        guard success, error == nil else {
+                            self.presentAlert(title: "Face authentication failed", message: error?.localizedDescription ?? "")
+                            return
+                        }
+                        self.authenticationService.signInToUserAccount(email: self.credential?.email ?? "", password: self.credential?.password ?? "")
+                    }
+                }
+            }
+        }
+    }
+    
+    private func createGlobalStateAndPerformSegue() {
+        self.databaseService.fetchUserModel(userID: authenticationService.getUserID() ?? "") { (userModel) in
+            if userModel != nil {
+                GlobalState.shared.userModel = userModel
+                self.performSegue(withIdentifier: "goToHomeScreen", sender: nil)
+            }
+        }
+    }
+    
     private func addKeyboardObserverMethods() {
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -122,7 +154,6 @@ extension LoginViewController: UserLoginDelegate {
         if(!isVerified) {
             self.authenticationService.reSendVerificationEmail()
         } else {
-            presentAlert(title: "Login Successful", message: "You did it.")
             fetchCredentials()
             if credential == nil {
                 let newCredential = Credential(context: self.context)
@@ -132,10 +163,10 @@ extension LoginViewController: UserLoginDelegate {
                     try self.context.save()
                     fetchCredentials()
                 } catch {
-                    
+                    print(error.localizedDescription)
                 }
             }
-            /// TODO: Implement further login
+            self.createGlobalStateAndPerformSegue()
         }
         activityIndicator.isHidden = true
     }
