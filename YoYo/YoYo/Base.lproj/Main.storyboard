@@ -249,7 +249,89 @@
             </objects>
             <point key="canvasLocation" x="637.68115942028987" y="562.5"/>
         </scene>
-        <!--Item 2-->
+        <!--Requests-->
+        <scene sceneID="cCh-ki-MTD">
+            <objects>
+                <viewController id="jYU-8q-Nsp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VJC-5X-xo0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="127" translatesAutoresizingMaskIntoConstraints="NO" id="cMk-cD-Gqo">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Requests" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKW-G0-xfq">
+                                        <rect key="frame" x="8" y="52" width="107" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Ko6-Gl-uww">
+                                        <rect key="frame" x="242" y="52" width="164" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Request" image="plus" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="13" right="8"/>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mgy-FN-jkq">
+                                <rect key="frame" x="0.0" y="95" width="414" height="718"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Ce3-WB-EVC">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ce3-WB-EVC" id="qow-ha-BWz">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lbL-sb-5ly"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Mgy-FN-jkq" firstAttribute="top" secondItem="cMk-cD-Gqo" secondAttribute="bottom" id="P6j-Ma-w8z"/>
+                            <constraint firstAttribute="trailing" secondItem="cMk-cD-Gqo" secondAttribute="trailing" id="Rra-h9-hfB"/>
+                            <constraint firstItem="lbL-sb-5ly" firstAttribute="bottom" secondItem="Mgy-FN-jkq" secondAttribute="bottom" id="YoL-LF-z1l"/>
+                            <constraint firstItem="Mgy-FN-jkq" firstAttribute="leading" secondItem="lbL-sb-5ly" secondAttribute="leading" id="d6u-nd-yLv"/>
+                            <constraint firstItem="cMk-cD-Gqo" firstAttribute="leading" secondItem="VJC-5X-xo0" secondAttribute="leading" id="qPw-kC-eoz"/>
+                            <constraint firstItem="cMk-cD-Gqo" firstAttribute="top" secondItem="VJC-5X-xo0" secondAttribute="top" id="r5M-Cu-z2z"/>
+                            <constraint firstItem="lbL-sb-5ly" firstAttribute="trailing" secondItem="Mgy-FN-jkq" secondAttribute="trailing" id="zLM-26-Lha"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Requests" image="rectangle.connected.to.line.below" catalog="system" id="Fvg-66-PNO">
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WeG-7r-SBl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1507" y="1527"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="YCT-5a-4eZ">
+            <objects>
+                <viewController id="yWW-uE-dl0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PS4-eu-R5y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="O0Z-JY-rNH"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="6pw-TR-cf1">
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zuj-jB-7pL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2345" y="1527"/>
+        </scene>
+        <!--Stories-->
         <scene sceneID="sRi-NM-da6">
             <objects>
                 <viewController id="SvS-AS-Z7h" sceneMemberID="viewController">
@@ -257,25 +339,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="eVD-Kw-Mtk"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="TSO-h6-x4X"/>
+                    <tabBarItem key="tabBarItem" title="Stories" image="tv.circle" catalog="system" id="TSO-h6-x4X">
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hec-0b-ZR9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2346" y="881"/>
         </scene>
-        <!--Item 1-->
+        <!--Chats-->
         <scene sceneID="WJ7-wL-ydk">
             <objects>
                 <viewController id="ulh-fj-Vg7" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h4D-Yr-pMm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="127" translatesAutoresizingMaskIntoConstraints="NO" id="x6H-P6-a5j">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2f9-ze-qcc">
+                                        <rect key="frame" x="8" y="52" width="67.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0W-0i-5NT">
+                                        <rect key="frame" x="202.5" y="52" width="203.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Compose" image="square.and.pencil" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="13" right="8"/>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Z96-xT-LTs"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="x6H-P6-a5j" firstAttribute="top" secondItem="h4D-Yr-pMm" secondAttribute="top" id="SKN-ql-s4D"/>
+                            <constraint firstAttribute="trailing" secondItem="x6H-P6-a5j" secondAttribute="trailing" id="di1-wk-mkT"/>
+                            <constraint firstItem="x6H-P6-a5j" firstAttribute="leading" secondItem="h4D-Yr-pMm" secondAttribute="leading" id="wgE-L6-aio"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="tX7-cy-gje"/>
+                    <tabBarItem key="tabBarItem" title="Chats" image="message.fill" catalog="system" id="tX7-cy-gje">
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLh-Jw-n4q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -289,10 +403,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" systemColor="systemIndigoColor"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="ulh-fj-Vg7" kind="relationship" relationship="viewControllers" id="rea-1l-lZU"/>
                         <segue destination="SvS-AS-Z7h" kind="relationship" relationship="viewControllers" id="Dtj-CG-gfU"/>
+                        <segue destination="yWW-uE-dl0" kind="relationship" relationship="viewControllers" id="jXO-cx-0IX"/>
+                        <segue destination="jYU-8q-Nsp" kind="relationship" relationship="viewControllers" id="LvQ-BQ-rhj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AA6-3y-r5m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -507,8 +626,14 @@
         <image name="account_background" width="1920" height="1080"/>
         <image name="avatar" width="512" height="512"/>
         <image name="background" width="1920" height="1080"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="login_background" width="3840" height="2160"/>
         <image name="logo" width="170.5" height="170.5"/>
+        <image name="message.fill" catalog="system" width="128" height="113"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="rectangle.connected.to.line.below" catalog="system" width="121" height="128"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
+        <image name="tv.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
