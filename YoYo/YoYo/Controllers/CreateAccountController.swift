@@ -127,8 +127,8 @@ extension CreateAccountController: UserAccountCreationDelegate {
 // MARK:- Storage Delegate Methods
 extension CreateAccountController: StorageDelegate {
     func uploadSuccessFull(url: String) {
-        if let name = nameTextField.text, let userID = authenticationService.getUserID() {
-            let userModel = UserModel(name: name, dob: dobPicker.date, profilePictureURL: url, userID: userID)
+        if let name = nameTextField.text, let userID = authenticationService.getUserID(), let email = emailTextField.text {
+            let userModel = UserModel(name: name, dob: dobPicker.date, profilePictureURL: url, userID: userID, userEmail: email)
             databaseService.saveUserModel(user: userModel)
         }
     }

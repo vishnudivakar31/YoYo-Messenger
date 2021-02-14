@@ -14,4 +14,5 @@ struct UserModel: Codable, Identifiable {
     var dob: Date
     var profilePictureURL: String
     var userID: String
+    var userEmail: String
 }
