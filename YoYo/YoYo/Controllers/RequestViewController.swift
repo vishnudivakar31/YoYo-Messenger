@@ -10,14 +10,14 @@ import UIKit
 class RequestViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+
+    private let requestService = RequestServices()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
-        
     }
-    @IBAction func addRequestTapped(_ sender: Any) {
-    }
+    
 }
 
 extension RequestViewController: UITableViewDelegate {

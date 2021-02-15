@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -274,7 +275,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="addRequestTapped:" destination="jYU-8q-Nsp" eventType="touchUpInside" id="Yuy-1P-NAh"/>
+                                            <segue destination="oaE-ZA-D45" kind="show" id="bRS-co-OLx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -319,13 +320,108 @@
                     <tabBarItem key="tabBarItem" title="Requests" image="rectangle.connected.to.line.below" catalog="system" id="Fvg-66-PNO">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" id="XYp-5Z-rWh"/>
                     <connections>
                         <outlet property="tableView" destination="Mgy-FN-jkq" id="3QA-Mn-76e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WeG-7r-SBl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1507" y="1527"/>
+            <point key="canvasLocation" x="732" y="1527"/>
+        </scene>
+        <!--Send Request Controller-->
+        <scene sceneID="4Fc-Ht-Idc">
+            <objects>
+                <viewController id="oaE-ZA-D45" customClass="SendRequestController" customModule="YoYo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ddG-T9-j5J">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vyA-wn-tDt">
+                                <rect key="frame" x="0.0" y="74" width="414" height="256"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1r-T8-DLz">
+                                        <rect key="frame" x="8" y="8" width="398" height="28.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nWV-IZ-tKs" userLabel="Email TextField">
+                                        <rect key="frame" x="8" y="46.5" width="398" height="48"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="email"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYN-1A-chv">
+                                        <rect key="frame" x="8" y="104.5" width="398" height="28.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Red-lL-vlI" userLabel="Message TextField">
+                                        <rect key="frame" x="8" y="143" width="398" height="47.5"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofd-Bu-NPH">
+                                        <rect key="frame" x="8" y="200.5" width="398" height="47.5"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <state key="normal" title="Send Request">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendButtonTapped:" destination="oaE-ZA-D45" eventType="touchUpInside" id="9wA-x5-btA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gT-EY-kBJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="74"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send friend request" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X77-5u-U6U">
+                                        <rect key="frame" x="8" y="15" width="378" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="FeR-Hr-z9O">
+                                        <rect key="frame" x="386" y="15" width="20" height="44"/>
+                                        <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.4549019608" green="0.72549019609999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <edgeInsets key="layoutMargins" top="15" left="8" bottom="15" right="8"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="964-VX-VYv"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="964-VX-VYv" firstAttribute="trailing" secondItem="vyA-wn-tDt" secondAttribute="trailing" id="3Sy-qu-bws"/>
+                            <constraint firstItem="6gT-EY-kBJ" firstAttribute="leading" secondItem="964-VX-VYv" secondAttribute="leading" id="EXo-O0-wvJ"/>
+                            <constraint firstItem="6gT-EY-kBJ" firstAttribute="top" secondItem="964-VX-VYv" secondAttribute="top" id="H79-RM-5Jg"/>
+                            <constraint firstItem="vyA-wn-tDt" firstAttribute="leading" secondItem="964-VX-VYv" secondAttribute="leading" id="bYS-gL-toA"/>
+                            <constraint firstItem="vyA-wn-tDt" firstAttribute="top" secondItem="ddG-T9-j5J" secondAttribute="top" constant="74" id="mWw-8z-8Kn"/>
+                            <constraint firstItem="964-VX-VYv" firstAttribute="trailing" secondItem="6gT-EY-kBJ" secondAttribute="trailing" id="qaW-GH-B0u"/>
+                            <constraint firstItem="vyA-wn-tDt" firstAttribute="top" secondItem="6gT-EY-kBJ" secondAttribute="bottom" id="sFY-ms-uDS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Z4g-h5-UVe"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="FeR-Hr-z9O" id="FCS-yy-MEG"/>
+                        <outlet property="emailTextField" destination="nWV-IZ-tKs" id="IQ0-1K-PgZ"/>
+                        <outlet property="messageTextField" destination="Red-lL-vlI" id="Jrh-JC-Gcu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hUA-th-l5D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1495.6521739130435" y="1526.7857142857142"/>
         </scene>
         <!--Settings-->
         <scene sceneID="YCT-5a-4eZ">
@@ -649,6 +745,9 @@
         <image name="rectangle.connected.to.line.below" catalog="system" width="121" height="128"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="tv.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

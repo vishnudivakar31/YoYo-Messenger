@@ -338,6 +338,7 @@ PODS:
   - nanopb/decode (2.30907.0)
   - nanopb/encode (2.30907.0)
   - PromisesObjC (1.2.12)
+  - SemiModalViewController (1.0.1)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -345,6 +346,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - FirebaseFirestoreSwift (~> 7.0-beta)
+  - SemiModalViewController
 
 SPEC REPOS:
   trunk:
@@ -368,6 +370,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - SemiModalViewController
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -390,7 +393,8 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  SemiModalViewController: 13fe8b991b501c7cd6a9ec7c782ed7a5c72c12e6
 
-PODFILE CHECKSUM: 123c878ca1e810d944a0a5c77e8a23f559b59d75
+PODFILE CHECKSUM: 3daeb976266cdf8af15727b91e1699da2f859e97
 
 COCOAPODS: 1.10.1
