@@ -11,5 +11,5 @@ target 'YoYo' do
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
-  pod 'SemiModalViewController'
+  pod 'SDWebImage', '~> 5.10'
 end

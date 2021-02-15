@@ -10,6 +10,9 @@
 		3B8C0532B66C6495FB06B0E8 /* Pods_YoYo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EB0D5BC66A91EF62CB200F2 /* Pods_YoYo.framework */; };
 		8B7A7F3925D6ED3D005E4DE9 /* GlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7F3825D6ED3D005E4DE9 /* GlobalState.swift */; };
 		8B7A7F3D25D95F15005E4DE9 /* HomeTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7F3C25D95F15005E4DE9 /* HomeTabController.swift */; };
+		8B7A7F7525DAC7F5005E4DE9 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7F7325DAC7F5005E4DE9 /* SearchResult.swift */; };
+		8B7A7F7625DAC7F5005E4DE9 /* SearchResult.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A7F7425DAC7F5005E4DE9 /* SearchResult.xib */; };
+		8B7A7F7A25DACB51005E4DE9 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7F7925DACB51005E4DE9 /* AddFriendViewController.swift */; };
 		8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C325D05801005A7DE7 /* AppDelegate.swift */; };
 		8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C525D05801005A7DE7 /* SceneDelegate.swift */; };
 		8BD608C825D05801005A7DE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C725D05801005A7DE7 /* ViewController.swift */; };
@@ -31,6 +34,9 @@
 		6EB0D5BC66A91EF62CB200F2 /* Pods_YoYo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YoYo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7A7F3825D6ED3D005E4DE9 /* GlobalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalState.swift; sourceTree = "<group>"; };
 		8B7A7F3C25D95F15005E4DE9 /* HomeTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabController.swift; sourceTree = "<group>"; };
+		8B7A7F7325DAC7F5005E4DE9 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		8B7A7F7425DAC7F5005E4DE9 /* SearchResult.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResult.xib; sourceTree = "<group>"; };
+		8B7A7F7925DACB51005E4DE9 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		8BD608C025D05801005A7DE7 /* YoYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD608C325D05801005A7DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD608C525D05801005A7DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +84,15 @@
 			path = State;
 			sourceTree = "<group>";
 		};
+		8B7A7F7225DAC7DE005E4DE9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8B7A7F7325DAC7F5005E4DE9 /* SearchResult.swift */,
+				8B7A7F7425DAC7F5005E4DE9 /* SearchResult.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8BD608B725D05801005A7DE7 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +114,7 @@
 		8BD608C225D05801005A7DE7 /* YoYo */ = {
 			isa = PBXGroup;
 			children = (
+				8B7A7F7225DAC7DE005E4DE9 /* View */,
 				8B7A7F3725D6ED28005E4DE9 /* State */,
 				8BD6097925D2D46A005A7DE7 /* Models */,
 				8BD6090D25D1FB7F005A7DE7 /* Services */,
@@ -122,6 +138,7 @@
 				8BD608DD25D07174005A7DE7 /* CreateAccountController.swift */,
 				8BD609AB25D42C33005A7DE7 /* LoginViewController.swift */,
 				8B7A7F3C25D95F15005E4DE9 /* HomeTabController.swift */,
+				8B7A7F7925DACB51005E4DE9 /* AddFriendViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -215,6 +232,7 @@
 				8BD608D325D05803005A7DE7 /* LaunchScreen.storyboard in Resources */,
 				8BD608E225D1F96A005A7DE7 /* GoogleService-Info.plist in Resources */,
 				8BD608D025D05803005A7DE7 /* Assets.xcassets in Resources */,
+				8B7A7F7625DAC7F5005E4DE9 /* SearchResult.xib in Resources */,
 				8BD608CB25D05801005A7DE7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +293,8 @@
 				8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */,
 				8BD608DE25D07174005A7DE7 /* CreateAccountController.swift in Sources */,
 				8BD6096125D222D5005A7DE7 /* DatabaseService.swift in Sources */,
+				8B7A7F7525DAC7F5005E4DE9 /* SearchResult.swift in Sources */,
+				8B7A7F7A25DACB51005E4DE9 /* AddFriendViewController.swift in Sources */,
 				8B7A7F3925D6ED3D005E4DE9 /* GlobalState.swift in Sources */,
 				8BD6097B25D2D493005A7DE7 /* UserModel.swift in Sources */,
 				8BD609AC25D42C33005A7DE7 /* LoginViewController.swift in Sources */,

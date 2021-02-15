@@ -269,7 +269,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9n-Xk-WyE">
                                         <rect key="frame" x="203.5" y="52" width="202.5" height="24"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Search" image="magnifyingglass" catalog="system">
+                                        <state key="normal" title="Add Friends" image="plus" catalog="system">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -298,10 +298,10 @@
             </objects>
             <point key="canvasLocation" x="732" y="1527"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Friend View Controller-->
         <scene sceneID="DUQ-DK-vtB">
             <objects>
-                <viewController id="RM2-0p-DOC" sceneMemberID="viewController">
+                <viewController id="RM2-0p-DOC" customClass="AddFriendViewController" customModule="YoYo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="odz-E0-w3X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -324,10 +324,11 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <searchBar key="tableFooterView" contentMode="redraw" placeholder="Search by name or email" id="CAm-vL-ofd">
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search by name or email" id="CAm-vL-ofd">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                             </tableView>
@@ -345,6 +346,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Zvj-CO-AHR"/>
+                    <connections>
+                        <outlet property="searchBar" destination="CAm-vL-ofd" id="UAi-WK-MPk"/>
+                        <outlet property="tableView" destination="Gfb-QW-gGn" id="q1B-hS-sNm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QKR-S0-QO8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -667,9 +672,9 @@
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="login_background" width="3840" height="2160"/>
         <image name="logo" width="170.5" height="170.5"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="person" catalog="system" width="128" height="117"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="tv.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
