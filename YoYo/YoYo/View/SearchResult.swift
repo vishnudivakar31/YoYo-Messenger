@@ -15,7 +15,11 @@ class SearchResult: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        profileImage.layer.borderWidth = 1.0
+        profileImage.layer.masksToBounds = false
+        profileImage.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        profileImage.layer.cornerRadius = profileImage.layer.bounds.height / 2
+        profileImage.clipsToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

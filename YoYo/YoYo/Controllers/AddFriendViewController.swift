@@ -14,6 +14,7 @@ class AddFriendViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    private let searchService = SearchService()
     private var profiles: [UserModel] = []
     
     override func viewDidLoad() {
@@ -22,8 +23,10 @@ class AddFriendViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: "SearchResult")
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.rowHeight = 140
         searchBar.delegate = self
-        searchBar.tintColor = .black
+        searchService.delegate = self
         if let textField = searchBar.value(forKey: "searchField") as? UITextField {
             textField.textColor = .black
         }
@@ -50,7 +53,23 @@ extension AddFriendViewController: UITableViewDelegate, UITableViewDataSource {
 extension AddFriendViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        let searchText = searchBar.text
-        print(searchText ?? "")
+        let searchText = searchBar.text ?? ""
+        if searchText.count > 0 {
+            searchService.searchUserProfiles(searchString: searchText)
+        }
+    }
+}
+
+// MARK:- SearchService Delegate Methods
+extension AddFriendViewController: SearchDelegate {
+    func searchCompleted(profiles: [UserModel]?, error: Error?) {
+        if error != nil {
+            print(error?.localizedDescription ?? "")
+        } else {
+            if let profiles = profiles {
+                self.profiles = profiles
+                self.tableView.reloadData()
+            }
+        }
     }
 }
