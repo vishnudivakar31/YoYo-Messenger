@@ -49,14 +49,5 @@ class DatabaseService {
             }
         }
     }
-    
-    public func saveRequest(request: Request, completionHandler: @escaping (_ documentID: String?) -> ()) {
-        do {
-            let result = try db.collection(REQUEST_COLLECTION).addDocument(from: request)
-            completionHandler(result.documentID)
-        } catch {
-            completionHandler(nil)
-        }
-    }
         
 }
