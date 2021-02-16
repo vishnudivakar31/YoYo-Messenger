@@ -13,6 +13,11 @@ class SearchResult: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
+    private let friendService = FriendService()
+    private let authenticationService = AuthenticationService()
+    
+    var uid: String?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         profileImage.layer.borderWidth = 1.0
@@ -28,7 +33,13 @@ class SearchResult: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func addButtonTapped(_ sender: Any) {
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+        friendService.sendFriendRequest(myUID: authenticationService.getUserID()!, friendUID: uid!) { (success) in
+            if success {
+                sender.isEnabled = false
+                sender.backgroundColor = .darkGray
+            }
+        }
     }
     
 }

@@ -45,6 +45,7 @@ extension AddFriendViewController: UITableViewDelegate, UITableViewDataSource {
         cell.nameLabel.text = profile.name
         cell.emailLabel.text = profile.userEmail
         cell.profileImage.sd_setImage(with: URL(string: profile.profilePictureURL), completed: nil)
+        cell.uid = profile.userID
         return cell
     }
 }

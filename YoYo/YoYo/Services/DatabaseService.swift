@@ -16,6 +16,7 @@ protocol UserModelDelegate {
 class DatabaseService {
     private let db = Firestore.firestore()
     private let USER_COLLECTION = "users"
+    private let FRIENDS_COLLECTION = "friends"
     var userModelDelegate: UserModelDelegate?
     
     public func saveUserModel(user: UserModel) {
@@ -57,6 +58,52 @@ class DatabaseService {
                 var profiles: [UserModel] = snapshot.documents.compactMap { return try? $0.data(as: UserModel.self) }
                 profiles = profiles.filter { $0.name.lowercased().contains(withSearchString.lowercased()) || $0.userEmail.contains(withSearchString.lowercased())}
                 completionHandler(profiles, nil)
+            }
+        }
+    }
+    
+    public func fetchFriendsList(uid: String, completionHandler: @escaping (_ friendsList: FriendsList?, _ error: Error?) -> ()) {
+        db.collection(FRIENDS_COLLECTION).whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
+            if error != nil {
+                completionHandler(nil, error)
+            } else if let snapshot = snapshot, !snapshot.isEmpty {
+                let friendsLists: [FriendsList] = snapshot.documents.compactMap { return try? $0.data(as: FriendsList.self) }
+                if friendsLists.count > 0 {
+                    completionHandler(friendsLists.first, nil)
+                } else {
+                    completionHandler(nil, nil)
+                }
+            } else {
+                completionHandler(nil, nil)
+            }
+        }
+    }
+    
+    public func updateFriendsList(friendsList: FriendsList, completionHandler: @escaping (_ success: Bool) -> ()) {
+        db.collection(FRIENDS_COLLECTION).whereField("uid", isEqualTo: friendsList.uid).limit(to: 1).getDocuments { (snapshot, error) in
+            if error != nil {
+                completionHandler(false)
+            } else if let snapshot = snapshot {
+                if snapshot.documents.isEmpty {
+                    do {
+                        let _ = try self.db.collection(self.FRIENDS_COLLECTION).addDocument(from: friendsList)
+                        completionHandler(true)
+                    } catch {
+                        completionHandler(false)
+                    }
+                } else {
+                    //snapshot.documents.first?.reference.updateData(["friends" : friendsList.friends])
+                    if let documentID = friendsList.id {
+                        do {
+                            try self.db.collection(self.FRIENDS_COLLECTION).document(documentID).setData(from: friendsList)
+                            completionHandler(true)
+                        } catch {
+                            completionHandler(false)
+                        }
+                    } else {
+                        completionHandler(false)
+                    }
+                }
             }
         }
     }

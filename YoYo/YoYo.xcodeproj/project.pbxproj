@@ -14,6 +14,9 @@
 		8B7A7F7625DAC7F5005E4DE9 /* SearchResult.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A7F7425DAC7F5005E4DE9 /* SearchResult.xib */; };
 		8B7A7F7A25DACB51005E4DE9 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7F7925DACB51005E4DE9 /* AddFriendViewController.swift */; };
 		8B7A7F9525DAD476005E4DE9 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7F9425DAD476005E4DE9 /* SearchService.swift */; };
+		8B7A7F9825DB32B5005E4DE9 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7F9725DB32B5005E4DE9 /* Friend.swift */; };
+		8B7A7F9B25DB3323005E4DE9 /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7F9A25DB3323005E4DE9 /* FriendsList.swift */; };
+		8B7A7F9E25DB3524005E4DE9 /* FriendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7F9D25DB3524005E4DE9 /* FriendService.swift */; };
 		8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C325D05801005A7DE7 /* AppDelegate.swift */; };
 		8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C525D05801005A7DE7 /* SceneDelegate.swift */; };
 		8BD608C825D05801005A7DE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C725D05801005A7DE7 /* ViewController.swift */; };
@@ -39,6 +42,9 @@
 		8B7A7F7425DAC7F5005E4DE9 /* SearchResult.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResult.xib; sourceTree = "<group>"; };
 		8B7A7F7925DACB51005E4DE9 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		8B7A7F9425DAD476005E4DE9 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		8B7A7F9725DB32B5005E4DE9 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		8B7A7F9A25DB3323005E4DE9 /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
+		8B7A7F9D25DB3524005E4DE9 /* FriendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendService.swift; sourceTree = "<group>"; };
 		8BD608C025D05801005A7DE7 /* YoYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD608C325D05801005A7DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD608C525D05801005A7DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 				8BD6095D25D2141A005A7DE7 /* StorageService.swift */,
 				8BD6096025D222D5005A7DE7 /* DatabaseService.swift */,
 				8B7A7F9425DAD476005E4DE9 /* SearchService.swift */,
+				8B7A7F9D25DB3524005E4DE9 /* FriendService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -160,6 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				8BD6097A25D2D493005A7DE7 /* UserModel.swift */,
+				8B7A7F9725DB32B5005E4DE9 /* Friend.swift */,
+				8B7A7F9A25DB3323005E4DE9 /* FriendsList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -291,8 +300,10 @@
 			files = (
 				8BD608C825D05801005A7DE7 /* ViewController.swift in Sources */,
 				8BD608CE25D05801005A7DE7 /* YoYo.xcdatamodeld in Sources */,
+				8B7A7F9B25DB3323005E4DE9 /* FriendsList.swift in Sources */,
 				8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */,
 				8BD6090F25D1FBA7005A7DE7 /* AuthenticationService.swift in Sources */,
+				8B7A7F9E25DB3524005E4DE9 /* FriendService.swift in Sources */,
 				8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */,
 				8BD608DE25D07174005A7DE7 /* CreateAccountController.swift in Sources */,
 				8BD6096125D222D5005A7DE7 /* DatabaseService.swift in Sources */,
@@ -304,6 +315,7 @@
 				8B7A7F9525DAD476005E4DE9 /* SearchService.swift in Sources */,
 				8B7A7F3D25D95F15005E4DE9 /* HomeTabController.swift in Sources */,
 				8BD6095E25D2141A005A7DE7 /* StorageService.swift in Sources */,
+				8B7A7F9825DB32B5005E4DE9 /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
