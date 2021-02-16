@@ -57,7 +57,7 @@
                                         <rect key="frame" x="10" y="90.5" width="325" height="38.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaP-wA-xrt">
-                                                <rect key="frame" x="0.0" y="0.0" width="74" height="38.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="57" height="38.5"/>
                                                 <color key="backgroundColor" name="AccentColor"/>
                                                 <state key="normal" title="Accept">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -67,7 +67,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bb-ZW-7Dd">
-                                                <rect key="frame" x="84" y="0.0" width="73.5" height="38.5"/>
+                                                <rect key="frame" x="67" y="0.0" width="57" height="38.5"/>
                                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,7 +77,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odX-jk-GTl">
-                                                <rect key="frame" x="167.5" y="0.0" width="74" height="38.5"/>
+                                                <rect key="frame" x="134" y="0.0" width="57" height="38.5"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <state key="normal" title="Unfriend">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -87,13 +87,22 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vb7-J7-x7B">
-                                                <rect key="frame" x="251.5" y="0.0" width="73.5" height="38.5"/>
+                                                <rect key="frame" x="201" y="0.0" width="57" height="38.5"/>
                                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Block">
                                                     <color key="titleColor" systemColor="systemRedColor"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="blockButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wJH-zt-Eid"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LjP-u0-kPs">
+                                                <rect key="frame" x="268" y="0.0" width="57" height="38.5"/>
+                                                <state key="normal" title="Unblock">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="unblockButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IER-xj-LpV"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -141,6 +150,7 @@
                 <outlet property="nameTextLabel" destination="AFb-jw-jL2" id="5SC-2o-vCL"/>
                 <outlet property="profileImageView" destination="wIp-bD-U68" id="v6d-gp-8cv"/>
                 <outlet property="sinceLabel" destination="kQS-JC-u3c" id="hxb-bd-xYh"/>
+                <outlet property="unblockButton" destination="LjP-u0-kPs" id="aUU-JL-gTK"/>
                 <outlet property="unfriendButton" destination="odX-jk-GTl" id="33N-Kw-UMP"/>
             </connections>
             <point key="canvasLocation" x="116.66666666666667" y="140.95982142857142"/>

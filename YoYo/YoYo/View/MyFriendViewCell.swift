@@ -17,6 +17,7 @@ class MyFriendViewCell: UITableViewCell {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var unfriendButton: UIButton!
     @IBOutlet weak var blockButton: UIButton!
+    @IBOutlet weak var unblockButton: UIButton!
     
     var uid: String?
     
@@ -39,6 +40,9 @@ class MyFriendViewCell: UITableViewCell {
     }
     
     @IBAction func blockButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func unblockButtonTapped(_ sender: Any) {
     }
     
 }

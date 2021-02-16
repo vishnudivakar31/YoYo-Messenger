@@ -66,14 +66,22 @@ extension FriendsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.blockButton.isHidden = false
         cell.cancelButton.isHidden = false
         cell.unfriendButton.isHidden = false
+        cell.unblockButton.isHidden = false
         
         if friend.status == FRIEND_STATUS.REQUESTED {
             cell.blockButton.isHidden = true
             cell.unfriendButton.isHidden = true
+            cell.unblockButton.isHidden = true
         } else if friend.status == FRIEND_STATUS.REQUEST_SEND {
             cell.blockButton.isHidden = true
             cell.acceptButton.isHidden = true
             cell.unfriendButton.isHidden = true
+            cell.unblockButton.isHidden = true
+        } else if friend.status == FRIEND_STATUS.UNBLOCK {
+            cell.blockButton.isHidden = true
+            cell.acceptButton.isHidden = true
+            cell.unfriendButton.isHidden = true
+            cell.cancelButton.isHidden = true
         } else {
             cell.acceptButton.isHidden = true
             cell.cancelButton.isHidden = true

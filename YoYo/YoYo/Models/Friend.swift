@@ -12,6 +12,7 @@ enum FRIEND_STATUS: String, Codable {
     case REQUESTED = "REQUESTED"
     case ACCPETED = "ACCPETED"
     case BLOCKED = "BLOCKED"
+    case UNBLOCK = "UNBLOCK"
 }
 
 struct Friend: Codable {
