@@ -46,6 +46,8 @@ extension AddFriendViewController: UITableViewDelegate, UITableViewDataSource {
         cell.emailLabel.text = profile.userEmail
         cell.profileImage.sd_setImage(with: URL(string: profile.profilePictureURL), completed: nil)
         cell.uid = profile.userID
+        cell.button.isEnabled = true
+        cell.button.backgroundColor = .systemBlue
         return cell
     }
 }
@@ -69,6 +71,12 @@ extension AddFriendViewController: SearchDelegate {
         } else {
             if let profiles = profiles {
                 self.profiles = profiles
+                if profiles.count == 0 {
+                    let uiAlertController = UIAlertController(title: "Search Result", message: "There are no matching results", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                    uiAlertController.addAction(okAction)
+                    present(uiAlertController, animated: true, completion: nil)
+                }
                 self.tableView.reloadData()
             }
         }

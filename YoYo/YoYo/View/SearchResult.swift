@@ -12,6 +12,7 @@ class SearchResult: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var button: UIButton!
     
     private let friendService = FriendService()
     private let authenticationService = AuthenticationService()
