@@ -17,6 +17,10 @@
 		8B7A7F9825DB32B5005E4DE9 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7F9725DB32B5005E4DE9 /* Friend.swift */; };
 		8B7A7F9B25DB3323005E4DE9 /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7F9A25DB3323005E4DE9 /* FriendsList.swift */; };
 		8B7A7F9E25DB3524005E4DE9 /* FriendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7F9D25DB3524005E4DE9 /* FriendService.swift */; };
+		8B7A7FA125DC1ED3005E4DE9 /* MyFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7FA025DC1ED3005E4DE9 /* MyFriend.swift */; };
+		8B7A7FA625DC2275005E4DE9 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7FA525DC2275005E4DE9 /* FriendsViewController.swift */; };
+		8B7A7FAA25DC24A0005E4DE9 /* MyFriendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7FA825DC24A0005E4DE9 /* MyFriendViewCell.swift */; };
+		8B7A7FAB25DC24A0005E4DE9 /* MyFriendViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A7FA925DC24A0005E4DE9 /* MyFriendViewCell.xib */; };
 		8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C325D05801005A7DE7 /* AppDelegate.swift */; };
 		8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C525D05801005A7DE7 /* SceneDelegate.swift */; };
 		8BD608C825D05801005A7DE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C725D05801005A7DE7 /* ViewController.swift */; };
@@ -45,6 +49,10 @@
 		8B7A7F9725DB32B5005E4DE9 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		8B7A7F9A25DB3323005E4DE9 /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
 		8B7A7F9D25DB3524005E4DE9 /* FriendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendService.swift; sourceTree = "<group>"; };
+		8B7A7FA025DC1ED3005E4DE9 /* MyFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriend.swift; sourceTree = "<group>"; };
+		8B7A7FA525DC2275005E4DE9 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		8B7A7FA825DC24A0005E4DE9 /* MyFriendViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendViewCell.swift; sourceTree = "<group>"; };
+		8B7A7FA925DC24A0005E4DE9 /* MyFriendViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFriendViewCell.xib; sourceTree = "<group>"; };
 		8BD608C025D05801005A7DE7 /* YoYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD608C325D05801005A7DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD608C525D05801005A7DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +105,8 @@
 			children = (
 				8B7A7F7325DAC7F5005E4DE9 /* SearchResult.swift */,
 				8B7A7F7425DAC7F5005E4DE9 /* SearchResult.xib */,
+				8B7A7FA825DC24A0005E4DE9 /* MyFriendViewCell.swift */,
+				8B7A7FA925DC24A0005E4DE9 /* MyFriendViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -147,6 +157,7 @@
 				8BD609AB25D42C33005A7DE7 /* LoginViewController.swift */,
 				8B7A7F3C25D95F15005E4DE9 /* HomeTabController.swift */,
 				8B7A7F7925DACB51005E4DE9 /* AddFriendViewController.swift */,
+				8B7A7FA525DC2275005E4DE9 /* FriendsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -169,6 +180,7 @@
 				8BD6097A25D2D493005A7DE7 /* UserModel.swift */,
 				8B7A7F9725DB32B5005E4DE9 /* Friend.swift */,
 				8B7A7F9A25DB3323005E4DE9 /* FriendsList.swift */,
+				8B7A7FA025DC1ED3005E4DE9 /* MyFriend.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,6 +257,7 @@
 				8BD608E225D1F96A005A7DE7 /* GoogleService-Info.plist in Resources */,
 				8BD608D025D05803005A7DE7 /* Assets.xcassets in Resources */,
 				8B7A7F7625DAC7F5005E4DE9 /* SearchResult.xib in Resources */,
+				8B7A7FAB25DC24A0005E4DE9 /* MyFriendViewCell.xib in Resources */,
 				8BD608CB25D05801005A7DE7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +318,7 @@
 				8BD6090F25D1FBA7005A7DE7 /* AuthenticationService.swift in Sources */,
 				8B7A7F9E25DB3524005E4DE9 /* FriendService.swift in Sources */,
 				8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */,
+				8B7A7FAA25DC24A0005E4DE9 /* MyFriendViewCell.swift in Sources */,
 				8BD608DE25D07174005A7DE7 /* CreateAccountController.swift in Sources */,
 				8BD6096125D222D5005A7DE7 /* DatabaseService.swift in Sources */,
 				8B7A7F7525DAC7F5005E4DE9 /* SearchResult.swift in Sources */,
@@ -314,7 +328,9 @@
 				8BD609AC25D42C33005A7DE7 /* LoginViewController.swift in Sources */,
 				8B7A7F9525DAD476005E4DE9 /* SearchService.swift in Sources */,
 				8B7A7F3D25D95F15005E4DE9 /* HomeTabController.swift in Sources */,
+				8B7A7FA625DC2275005E4DE9 /* FriendsViewController.swift in Sources */,
 				8BD6095E25D2141A005A7DE7 /* StorageService.swift in Sources */,
+				8B7A7FA125DC1ED3005E4DE9 /* MyFriend.swift in Sources */,
 				8B7A7F9825DB32B5005E4DE9 /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

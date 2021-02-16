@@ -7,9 +7,17 @@
 
 import Foundation
 
+protocol FetchFriendDelegate {
+    func fetchSuccess(myFriends: [MyFriend])
+    func fetchError(msg: String)
+}
+
 class FriendService {
     
     private let databaseService = DatabaseService()
+    private let authenticationService = AuthenticationService()
+    
+    var fetchFriendDelegate: FetchFriendDelegate?
     
     func sendFriendRequest(myUID: String, friendUID: String, completionHandler: @escaping (_ success: Bool) -> ()) {
         databaseService.fetchFriendsList(uid: myUID) { (friendsList, error) in
@@ -53,6 +61,41 @@ class FriendService {
                 self.databaseService.updateFriendsList(friendsList: friendsList) { (success) in
                     completionHandler(success)
                 }
+            }
+        }
+    }
+    
+    func fetchFriendsList() {
+        let uid = authenticationService.getUserID()!
+        databaseService.fetchFriendsList(uid: uid) { (friendsList, error) in
+            if error != nil {
+                self.fetchFriendDelegate?.fetchError(msg: error!.localizedDescription)
+            } else if let friendsList = friendsList {
+                let friends = friendsList.friends
+                let uids: [String] = friends.map { (friend) -> String in
+                    return friend.uid
+                }
+                if uids.count > 0 {
+                    self.databaseService.fetchUserModels(withUIDs: uids) { (userModels, error) in
+                        if error != nil {
+                            self.fetchFriendDelegate?.fetchError(msg: error!.localizedDescription)
+                        } else if let userModels = userModels {
+                            var myFriends: [MyFriend] = []
+                            for friend in friends {
+                                let userModel = userModels.filter { $0.userID == friend.uid }
+                                let myFriend = MyFriend(friend: friend, userModel: userModel.first!)
+                                myFriends.append(myFriend)
+                            }
+                            self.fetchFriendDelegate?.fetchSuccess(myFriends: myFriends)
+                        } else {
+                            self.fetchFriendDelegate?.fetchError(msg: "unable to fetch friends list. try again later")
+                        }
+                    }
+                } else {
+                    self.fetchFriendDelegate?.fetchError(msg: "unable to fetch friends list. try again later")
+                }
+            } else {
+                self.fetchFriendDelegate?.fetchError(msg: "unable to fetch friends list. try again later")
             }
         }
     }
