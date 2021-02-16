@@ -71,7 +71,7 @@ class FriendService {
             if error != nil {
                 self.fetchFriendDelegate?.fetchError(msg: error!.localizedDescription)
             } else if let friendsList = friendsList {
-                let friends = friendsList.friends
+                let friends = friendsList.friends.filter { $0.status != FRIEND_STATUS.BLOCKED }
                 let uids: [String] = friends.map { (friend) -> String in
                     return friend.uid
                 }
@@ -86,6 +86,7 @@ class FriendService {
                                 let myFriend = MyFriend(friend: friend, userModel: userModel.first!)
                                 myFriends.append(myFriend)
                             }
+                            myFriends.sort { $0.friend.date > $1.friend.date }
                             self.fetchFriendDelegate?.fetchSuccess(myFriends: myFriends)
                         } else {
                             self.fetchFriendDelegate?.fetchError(msg: "unable to fetch friends list. try again later")

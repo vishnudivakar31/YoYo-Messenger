@@ -313,6 +313,10 @@
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="XYp-5Z-rWh"/>
+                    <connections>
+                        <outlet property="searchBar" destination="5xv-xm-oMg" id="Zj0-Ra-Iwb"/>
+                        <outlet property="tableView" destination="2JV-5G-D11" id="LeZ-rc-any"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WeG-7r-SBl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
