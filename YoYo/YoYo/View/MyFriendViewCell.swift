@@ -21,6 +21,8 @@ class MyFriendViewCell: UITableViewCell {
     
     var uid: String?
     
+    private let friendService = FriendService()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         profileImageView.layer.borderWidth = 1.0
@@ -31,18 +33,23 @@ class MyFriendViewCell: UITableViewCell {
     }
     
     @IBAction func actionButtonTapped(_ sender: Any) {
+        friendService.performActionForFriend(friendUID: uid!, action: FRIEND_ACTION.ACCEPT)
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
+        friendService.performActionForFriend(friendUID: uid!, action: FRIEND_ACTION.CANCEL)
     }
     
     @IBAction func unfriendButtontapped(_ sender: Any) {
+        friendService.performActionForFriend(friendUID: uid!, action: FRIEND_ACTION.UNFRIEND)
     }
     
     @IBAction func blockButtonTapped(_ sender: Any) {
+        friendService.performActionForFriend(friendUID: uid!, action: FRIEND_ACTION.BLOCK)
     }
     
     @IBAction func unblockButtonTapped(_ sender: Any) {
+        friendService.performActionForFriend(friendUID: uid!, action: FRIEND_ACTION.UNBLOCK)
     }
     
 }

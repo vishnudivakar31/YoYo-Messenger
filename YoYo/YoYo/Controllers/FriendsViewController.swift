@@ -50,6 +50,12 @@ class FriendsViewController: UIViewController {
 
 // MARK:- FriendService Delegate methods
 extension FriendsViewController: FetchFriendDelegate {
+    func actionPerformed(status: Bool) {
+        if !status {
+            presentAlert(title: "Alert", msg: "Unable to perform the action right now. Try again later.")
+        }
+    }
+    
     func detectFriendsChange(status: Bool) {
         if status {
             friendService.fetchFriendsList()
@@ -112,6 +118,7 @@ extension FriendsViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.acceptButton.isHidden = true
             cell.cancelButton.isHidden = true
+            cell.unblockButton.isHidden = true
         }
         return cell
     }

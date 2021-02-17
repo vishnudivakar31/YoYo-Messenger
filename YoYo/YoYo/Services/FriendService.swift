@@ -12,6 +12,15 @@ protocol FetchFriendDelegate {
     func fetchSuccess(myFriends: [MyFriend])
     func fetchError(msg: String)
     func detectFriendsChange(status: Bool)
+    func actionPerformed(status: Bool)
+}
+
+enum FRIEND_ACTION: String, Codable {
+    case ACCEPT = "ACCEPT"
+    case CANCEL = "CANCEL"
+    case UNFRIEND = "UNFRIEND"
+    case BLOCK = "BLOCK"
+    case UNBLOCK = "UNBLOCK"
 }
 
 class FriendService {
@@ -44,6 +53,77 @@ class FriendService {
                 }
             }
         }
+    }
+    
+    func performActionForFriend(friendUID: String, action: FRIEND_ACTION) {
+        let myUID = authenticationService.getUserID()!
+        databaseService.fetchFriendsList(uid: myUID) { (friendsList, error) in
+            if error != nil {
+                self.fetchFriendDelegate?.actionPerformed(status: false)
+            } else if var friendsList = friendsList {
+                let friends = friendsList.friends
+                if action == .BLOCK {
+                    let modifiedFriends = self.performAction(friends: friends, friendUID: friendUID, action: action, blockedByMe: true)
+                    friendsList.friends = modifiedFriends
+                } else {
+                    let modifiedFriends = self.performAction(friends: friends, friendUID: friendUID, action: action, blockedByMe: false)
+                    friendsList.friends = modifiedFriends
+                }
+                self.databaseService.updateFriendsList(friendsList: friendsList) { (success) in
+                    self.performActionWithFriend(myUID: friendUID, friendUID: myUID, action: action) { (success1) in
+                        if success && success1 {
+                            self.fetchFriendDelegate?.actionPerformed(status: true)
+                        } else {
+                            self.fetchFriendDelegate?.actionPerformed(status: false)
+                        }
+                    }
+                }
+            } else {
+                self.fetchFriendDelegate?.actionPerformed(status: false)
+            }
+        }
+    }
+    
+    private func performActionWithFriend(myUID: String, friendUID: String, action: FRIEND_ACTION, completionHandler: @escaping (_ success: Bool) -> ()) {
+        databaseService.fetchFriendsList(uid: myUID) { (friendsList, error) in
+            if error != nil {
+                completionHandler(false)
+            } else if var friendsList = friendsList {
+                let friends = friendsList.friends
+                let modifiedFriends = self.performAction(friends: friends, friendUID: friendUID, action: action, blockedByMe: false)
+                friendsList.friends = modifiedFriends
+                self.databaseService.updateFriendsList(friendsList: friendsList) { (success) in
+                    completionHandler(success)
+                }
+            }
+        }
+    }
+    
+    private func performAction(friends: [Friend], friendUID: String, action: FRIEND_ACTION, blockedByMe: Bool) -> [Friend] {
+        var newFriends = friends
+        if action == .ACCEPT || action == .BLOCK || action == .UNBLOCK {
+            for index in 0..<newFriends.count {
+                if(newFriends[index].uid == friendUID) {
+                    if action == FRIEND_ACTION.ACCEPT || action == FRIEND_ACTION.UNBLOCK {
+                        newFriends[index].status = .ACCPETED
+                    } else if action == FRIEND_ACTION.BLOCK && blockedByMe {
+                        newFriends[index].status = .UNBLOCK
+                    } else {
+                        newFriends[index].status = .BLOCKED
+                    }
+                }
+            }
+        } else if action == .CANCEL || action == .UNFRIEND {
+            var removingIndex = 0
+            for index in 0..<newFriends.count {
+                if(newFriends[index].uid == friendUID) {
+                    removingIndex = index
+                    break
+                }
+            }
+            newFriends.remove(at: removingIndex)
+        }
+        return newFriends
     }
     
     private func createFriendRequestForFriend(myUID: String, friendUID: String, completionHandler: @escaping (_ success: Bool) -> ()) {
