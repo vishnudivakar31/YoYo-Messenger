@@ -13,6 +13,7 @@ class SearchResult: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var sendButton: UIButton!
     
     private let friendService = FriendService()
     private let authenticationService = AuthenticationService()
@@ -26,6 +27,7 @@ class SearchResult: UITableViewCell {
         profileImage.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         profileImage.layer.cornerRadius = profileImage.layer.bounds.height / 2
         profileImage.clipsToBounds = true
+        sendButton.layer.cornerRadius = 5.0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -101,6 +101,7 @@
                 <outlet property="emailLabel" destination="M1U-JJ-pqN" id="Qlu-Au-2MI"/>
                 <outlet property="nameLabel" destination="0QF-pq-btz" id="uR1-75-qmc"/>
                 <outlet property="profileImage" destination="M8s-8I-ysT" id="8ks-z6-cWe"/>
+                <outlet property="sendButton" destination="44A-Xa-96Y" id="cD6-Sk-XGT"/>
             </connections>
             <point key="canvasLocation" x="-35.507246376811594" y="33.482142857142854"/>
         </tableViewCell>

@@ -30,6 +30,11 @@ class MyFriendViewCell: UITableViewCell {
         profileImageView.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         profileImageView.layer.cornerRadius = profileImageView.layer.bounds.height / 2
         profileImageView.clipsToBounds = true
+        acceptButton.layer.cornerRadius = 5
+        cancelButton.layer.cornerRadius = 5
+        unfriendButton.layer.cornerRadius = 5
+        blockButton.layer.cornerRadius = 5
+        unblockButton.layer.cornerRadius = 5
     }
     
     @IBAction func actionButtonTapped(_ sender: Any) {

@@ -52,7 +52,7 @@ class FriendsViewController: UIViewController {
 extension FriendsViewController: FetchFriendDelegate {
     func actionPerformed(status: Bool) {
         if !status {
-            presentAlert(title: "Alert", msg: "Unable to perform the action right now. Try again later.")
+            presentAlert(title: "Alert", msg: "Please add friends to view.")
         }
     }
     
@@ -70,7 +70,8 @@ extension FriendsViewController: FetchFriendDelegate {
     }
     
     func fetchError(msg: String) {
-        presentAlert(title: "Alert", msg: msg)
+        presentAlert(title: "Alert", msg: "Please add friends to view.")
+        self.myFriends = []
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
