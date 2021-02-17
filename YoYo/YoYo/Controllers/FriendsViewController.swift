@@ -51,7 +51,9 @@ extension FriendsViewController: FetchFriendDelegate {
     
     func fetchSuccess(myFriends: [MyFriend]) {
         self.myFriends = myFriends
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func fetchError(msg: String) {
