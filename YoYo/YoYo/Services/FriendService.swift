@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import Firebase
 
 protocol FetchFriendDelegate {
     func fetchSuccess(myFriends: [MyFriend])
     func fetchError(msg: String)
+    func detectFriendsChange(status: Bool)
 }
 
 class FriendService {
@@ -101,4 +103,16 @@ class FriendService {
         }
     }
     
+    func registerForFriendsList() -> ListenerRegistration {
+        databaseService.registrationFriendsListDelegate = self
+        return databaseService.registerForFriendsList(uid: authenticationService.getUserID()!)
+    }
+    
+}
+
+// MARK:- Register friendslist delegate methods
+extension FriendService: RegistrationForFriendsList {
+    func changeDetected(status: Bool) {
+        fetchFriendDelegate?.detectFriendsChange(status: status)
+    }
 }

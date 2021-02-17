@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import Firebase
 
 class FriendsViewController: UIViewController {
 
@@ -15,11 +16,19 @@ class FriendsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    private var listener: ListenerRegistration?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         friendService.fetchFriendDelegate = self
-        friendService.fetchFriendsList()
+        listener = friendService.registerForFriendsList()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let listener = self.listener {
+            listener.remove()
+        }
     }
     
     private func setupTableView() {
@@ -34,6 +43,12 @@ class FriendsViewController: UIViewController {
 
 // MARK:- FriendService Delegate methods
 extension FriendsViewController: FetchFriendDelegate {
+    func detectFriendsChange(status: Bool) {
+        if status {
+            friendService.fetchFriendsList()
+        }
+    }
+    
     func fetchSuccess(myFriends: [MyFriend]) {
         self.myFriends = myFriends
         tableView.reloadData()

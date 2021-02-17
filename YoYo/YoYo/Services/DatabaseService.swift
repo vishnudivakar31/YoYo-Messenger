@@ -13,11 +13,16 @@ protocol UserModelDelegate {
     func saveUserModelFailed(msg: String)
 }
 
+protocol RegistrationForFriendsList {
+    func changeDetected(status: Bool)
+}
+
 class DatabaseService {
     private let db = Firestore.firestore()
     private let USER_COLLECTION = "users"
     private let FRIENDS_COLLECTION = "friends"
     var userModelDelegate: UserModelDelegate?
+    var registrationFriendsListDelegate: RegistrationForFriendsList?
     
     public func saveUserModel(user: UserModel) {
         do {
@@ -106,6 +111,19 @@ class DatabaseService {
                 }
             }
         }
+    }
+    
+    public func registerForFriendsList(uid: String) -> ListenerRegistration {
+        let listener = db.collection(FRIENDS_COLLECTION).whereField("uid", isEqualTo: uid).addSnapshotListener { (querySnapshot, error) in
+            if error != nil {
+                self.registrationFriendsListDelegate?.changeDetected(status: false)
+            } else if let _ = querySnapshot {
+                self.registrationFriendsListDelegate?.changeDetected(status: true)
+            } else {
+                self.registrationFriendsListDelegate?.changeDetected(status: true)
+            }
+        }
+        return listener
     }
     
     public func fetchUserModels(withUIDs: [String], completionHandler: @escaping (_ userModels: [UserModel]?, _ error: Error?) -> ()) {
