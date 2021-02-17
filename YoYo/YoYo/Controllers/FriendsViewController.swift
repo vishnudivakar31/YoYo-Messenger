@@ -39,6 +39,13 @@ class FriendsViewController: UIViewController {
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.rowHeight = 140
     }
+    
+    private func presentAlert(title: String, msg: String) {
+        let alertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
 }
 
 // MARK:- FriendService Delegate methods
@@ -57,7 +64,10 @@ extension FriendsViewController: FetchFriendDelegate {
     }
     
     func fetchError(msg: String) {
-        print(msg)
+        presentAlert(title: "Alert", msg: msg)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
 
