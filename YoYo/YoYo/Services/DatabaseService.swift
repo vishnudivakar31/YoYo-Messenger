@@ -138,5 +138,25 @@ class DatabaseService {
             }
         }
     }
+    
+    public func changeName(uid: String, name: String, completionHandler: @escaping (_ success: Bool, _ error: Error?) -> ()) {
+        db.collection(USER_COLLECTION).whereField("userID", isEqualTo: uid).limit(to: 1).getDocuments { (snapshot, error) in
+            if let error = error {
+                completionHandler(false, error)
+            } else if let snapshot = snapshot {
+                var userProfiles: [UserModel] = snapshot.documents.compactMap { return try? $0.data(as: UserModel.self) }
+                var myProfile = userProfiles.first!
+                myProfile.name = name
+                do {
+                    try self.db.collection(self.USER_COLLECTION).document(myProfile.id!).setData(from: myProfile)
+                    completionHandler(true, nil)
+                } catch {
+                    completionHandler(false, error)
+                }
+            } else {
+                completionHandler(false, nil)
+            }
+        }
+    }
         
 }

@@ -10,6 +10,7 @@ import Foundation
 protocol SettingsDelegate {
     func fetchUserProfileSuccess(userModel: UserModel)
     func sendPasswordResetStatus(error: Error?)
+    func changeNameStatus(status: Bool, error: Error?)
 }
 
 class SettingsService {
@@ -36,4 +37,12 @@ class SettingsService {
     func logout() -> Bool {
         return authenticationService.logout()
     }
+    
+    func changeName(name: String) {
+        let uid = authenticationService.getUserID()!
+        databaseService.changeName(uid: uid, name: name) { (status, error) in
+            self.delegate?.changeNameStatus(status: status, error: error)
+        }
+    }
+    
 }

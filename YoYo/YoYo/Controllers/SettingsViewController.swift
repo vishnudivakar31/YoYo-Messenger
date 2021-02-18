@@ -28,6 +28,21 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func changeNameTapped(_ sender: Any) {
+        let alertController = UIAlertController(title: "Change name", message: "", preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.placeholder = "enter your new name"
+        }
+        let changeAction = UIAlertAction(title: "Change", style: .default) { (_) in
+            let textField = alertController.textFields?.first
+            let newName = textField!.text!
+            if newName.count > 0 {
+                self.settingsService.changeName(name: newName)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(changeAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func requestPasswordTapped(_ sender: Any) {
@@ -54,11 +69,21 @@ class SettingsViewController: UIViewController {
 
 // MARK:- Service Delegate Methods
 extension SettingsViewController: SettingsDelegate {
+    func changeNameStatus(status: Bool, error: Error?) {
+        if status {
+            self.settingsService.fetchUserProfile()
+        } else if let error = error {
+            presentAlert(title: "Change Name Error", msg: error.localizedDescription)
+        } else {
+            presentAlert(title: "Change Name Error", msg: "Unable to change your name.")
+        }
+    }
+    
     func sendPasswordResetStatus(error: Error?) {
         if let error = error {
             presentAlert(title: "Reset password", msg: error.localizedDescription)
         } else {
-            presentAlert(title: "Reset password", msg: "email send. please follow the instructions")
+            presentAlert(title: "Reset password", msg: "Please follow the instructions specified in the email.")
         }
     }
     
