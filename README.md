@@ -3,8 +3,8 @@
 An iOS messaging application for people to communicate.
 
 ### Technology Stack
-Backend -- Serverless -- Google Firebase
-Mobile -- Native -- Swift with UIKit
+* Backend -- Serverless -- Google Firebase
+* Mobile -- Native -- Swift with UIKit
 
 ### Implemented Features
 1. User can login with a valid email and password (Email has to be verified to login)
