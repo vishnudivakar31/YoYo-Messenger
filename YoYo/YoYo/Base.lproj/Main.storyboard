@@ -591,12 +591,12 @@
                         <segue destination="SvS-AS-Z7h" kind="relationship" relationship="viewControllers" id="Dtj-CG-gfU"/>
                         <segue destination="yWW-uE-dl0" kind="relationship" relationship="viewControllers" id="jXO-cx-0IX"/>
                         <segue destination="jYU-8q-Nsp" kind="relationship" relationship="viewControllers" id="LvQ-BQ-rhj"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="GoToLandingPage" modalPresentationStyle="fullScreen" id="5nU-Fl-2Hn"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="GoBackToLandingPage" modalPresentationStyle="fullScreen" id="wS8-X1-qLu"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AA6-3y-r5m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1456" y="578"/>
+            <point key="canvasLocation" x="1423" y="563"/>
         </scene>
         <!--Create Account Controller-->
         <scene sceneID="1PI-kv-9LH">
@@ -800,7 +800,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="7aI-Sh-C2w"/>
         <segue reference="FKl-Fc-Kp5"/>
-        <segue reference="5nU-Fl-2Hn"/>
+        <segue reference="wS8-X1-qLu"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="account_background" width="1920" height="1080"/>

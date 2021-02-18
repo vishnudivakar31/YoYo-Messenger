@@ -37,6 +37,16 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func logoutTapped(_ sender: Any) {
+        if !settingsService.logout() {
+            presentAlert(title: "Logout", msg: "unable to logout right now. please try again later")
+        }
+    }
+    
+    private func presentAlert(title: String, msg: String) {
+        let uiAlertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        uiAlertController.addAction(okAction)
+        present(uiAlertController, animated: true, completion: nil)
     }
     
 }

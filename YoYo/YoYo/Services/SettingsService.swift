@@ -25,4 +25,8 @@ class SettingsService {
             }
         }
     }
+    
+    func logout() -> Bool {
+        return authenticationService.logout()
+    }
 }

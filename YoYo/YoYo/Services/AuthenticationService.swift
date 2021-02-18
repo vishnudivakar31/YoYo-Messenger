@@ -92,13 +92,26 @@ class AuthenticationService {
     
     public func registerForUserChanges() -> AuthStateDidChangeListenerHandle {
         let listener = Auth.auth().addStateDidChangeListener { (auth, user) in
-            if auth.currentUser != user {
+            if auth.currentUser != user || user == nil {
                 self.userChangeDelegate?.userChangeDetected(status: true)
             } else {
                 self.userChangeDelegate?.userChangeDetected(status: false)
             }
         }
         return listener
+    }
+    
+    public func unregisterUserChanges(_ listner: AuthStateDidChangeListenerHandle) {
+        Auth.auth().removeStateDidChangeListener(listner)
+    }
+    
+    public func logout() -> Bool {
+        do {
+            try Auth.auth().signOut()
+            return true
+        } catch {
+            return false
+        }
     }
     
 }
