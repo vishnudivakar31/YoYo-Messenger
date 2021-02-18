@@ -52,9 +52,6 @@ class SettingsViewController: UIViewController {
         settingsService.sendPasswordResetRequest(email: emailTextLabel.text!)
     }
     
-    @IBAction func deleteAccountTapped(_ sender: Any) {
-    }
-    
     @IBAction func logoutTapped(_ sender: Any) {
         if !settingsService.logout() {
             presentAlert(title: "Logout", msg: "unable to logout right now. please try again later")

@@ -118,6 +118,5 @@ class AuthenticationService {
         Auth.auth().sendPasswordReset(withEmail: email) { (error) in
             completionHandler(error)
         }
-    }
-    
+    }    
 }
