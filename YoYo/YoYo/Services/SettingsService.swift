@@ -9,6 +9,7 @@ import Foundation
 
 protocol SettingsDelegate {
     func fetchUserProfileSuccess(userModel: UserModel)
+    func sendPasswordResetStatus(error: Error?)
 }
 
 class SettingsService {
@@ -23,6 +24,12 @@ class SettingsService {
             if let userModel = userModel {
                 self.delegate?.fetchUserProfileSuccess(userModel: userModel)
             }
+        }
+    }
+    
+    func sendPasswordResetRequest(email: String) {
+        authenticationService.sendPasswordReset(email: email) { (error) in
+            self.delegate?.sendPasswordResetStatus(error: error)
         }
     }
     

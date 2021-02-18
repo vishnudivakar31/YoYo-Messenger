@@ -31,6 +31,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func requestPasswordTapped(_ sender: Any) {
+        settingsService.sendPasswordResetRequest(email: emailTextLabel.text!)
     }
     
     @IBAction func deleteAccountTapped(_ sender: Any) {
@@ -53,6 +54,14 @@ class SettingsViewController: UIViewController {
 
 // MARK:- Service Delegate Methods
 extension SettingsViewController: SettingsDelegate {
+    func sendPasswordResetStatus(error: Error?) {
+        if let error = error {
+            presentAlert(title: "Reset password", msg: error.localizedDescription)
+        } else {
+            presentAlert(title: "Reset password", msg: "email send. please follow the instructions")
+        }
+    }
+    
     func fetchUserProfileSuccess(userModel: UserModel) {
         profileImageView.sd_setImage(with: URL(string: userModel.profilePictureURL), completed: nil)
         nameTextLabel.text = userModel.name

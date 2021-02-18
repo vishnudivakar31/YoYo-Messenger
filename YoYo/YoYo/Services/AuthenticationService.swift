@@ -114,4 +114,10 @@ class AuthenticationService {
         }
     }
     
+    public func sendPasswordReset(email: String, completionHandler: @escaping (_ error: Error?) -> ()) {
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            completionHandler(error)
+        }
+    }
+    
 }
