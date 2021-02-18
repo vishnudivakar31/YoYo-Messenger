@@ -15,6 +15,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var emailTextLabel: UILabel!
     
     private let settingsService = SettingsService()
+    private let imagePicker = UIImagePickerController()
+    private var userModel: UserModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,7 @@ class SettingsViewController: UIViewController {
         profileImageView.layer.cornerRadius = profileImageView.layer.bounds.height / 2
         profileImageView.clipsToBounds = true
         settingsService.delegate = self
+        imagePicker.delegate = self
         settingsService.fetchUserProfile()
     }
     
@@ -58,6 +61,12 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    @IBAction func changeProfilePictureTapped(_ sender: Any) {
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
     private func presentAlert(title: String, msg: String) {
         let uiAlertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -69,6 +78,13 @@ class SettingsViewController: UIViewController {
 
 // MARK:- Service Delegate Methods
 extension SettingsViewController: SettingsDelegate {
+    func uploadImageStatus(status: Bool, msg: String) {
+        presentAlert(title: "Upload Profile picute", msg: msg)
+        if status {
+            self.settingsService.fetchUserProfile()
+        }
+    }
+    
     func changeNameStatus(status: Bool, error: Error?) {
         if status {
             self.settingsService.fetchUserProfile()
@@ -88,9 +104,21 @@ extension SettingsViewController: SettingsDelegate {
     }
     
     func fetchUserProfileSuccess(userModel: UserModel) {
+        self.userModel = userModel
         profileImageView.sd_setImage(with: URL(string: userModel.profilePictureURL), completed: nil)
         nameTextLabel.text = userModel.name
         emailTextLabel.text = userModel.userEmail
     }
-    
+}
+
+// MARK:- UIImagePicker Delegate Methods
+extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage, let userModel = userModel {
+            if let data = pickedImage.jpegData(compressionQuality: 1) {
+                self.settingsService.changeProfilePhoto(imageData: data, imageURL: userModel.profilePictureURL)
+            }
+        }
+        dismiss(animated: true, completion: nil)
+    }
 }

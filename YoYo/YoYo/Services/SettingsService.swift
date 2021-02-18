@@ -11,13 +11,19 @@ protocol SettingsDelegate {
     func fetchUserProfileSuccess(userModel: UserModel)
     func sendPasswordResetStatus(error: Error?)
     func changeNameStatus(status: Bool, error: Error?)
+    func uploadImageStatus(status: Bool, msg: String)
 }
 
 class SettingsService {
     
     let databaseService = DatabaseService()
     let authenticationService = AuthenticationService()
+    let storageService = StorageService()
     var delegate: SettingsDelegate?
+    
+    init() {
+        storageService.delegate = self
+    }
     
     func fetchUserProfile() {
         let uid = authenticationService.getUserID()!
@@ -45,4 +51,32 @@ class SettingsService {
         }
     }
     
+    func changeProfilePhoto(imageData: Data, imageURL: String) {
+        let userID = authenticationService.getUserID()!
+        storageService.removeImageFromStorage(imageURL: imageURL) { (success) in
+            if success {
+                self.storageService.uploadImageToStorage(data: imageData, fileName: "profile_pic", userID: userID)
+            } else {
+                self.delegate?.uploadImageStatus(status: false, msg: "Cannot delete old picture. try again later.")
+            }
+        }
+    }
+}
+
+// MARK:- Storage Service Delegate Methods
+extension SettingsService: StorageDelegate {
+    func uploadSuccessFull(url: String) {
+        let userID = authenticationService.getUserID()!
+        databaseService.updateProfileURL(uid: userID, imageURL: url) { (success, error) in
+            if let error = error {
+                self.delegate?.uploadImageStatus(status: false, msg: error.localizedDescription)
+            } else {
+                self.delegate?.uploadImageStatus(status: true, msg: "uploaded succesfully")
+            }
+        }
+    }
+    
+    func uploadFailure(msg: String) {
+        self.delegate?.uploadImageStatus(status: false, msg: msg)
+    }
 }

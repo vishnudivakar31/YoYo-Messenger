@@ -43,4 +43,15 @@ class StorageService {
             }
         }
     }
+    
+    func removeImageFromStorage(imageURL: String, completionHandler: @escaping (_ status: Bool) -> ()) {
+        storage.reference(forURL: imageURL).delete { (error) in
+            if let _ = error {
+                completionHandler(false)
+            } else {
+                completionHandler(true)
+            }
+        }
+    }
+    
 }
