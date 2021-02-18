@@ -21,6 +21,7 @@
 		8B7A7FA625DC2275005E4DE9 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7FA525DC2275005E4DE9 /* FriendsViewController.swift */; };
 		8B7A7FAA25DC24A0005E4DE9 /* MyFriendViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7FA825DC24A0005E4DE9 /* MyFriendViewCell.swift */; };
 		8B7A7FAB25DC24A0005E4DE9 /* MyFriendViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A7FA925DC24A0005E4DE9 /* MyFriendViewCell.xib */; };
+		8B7A7FAE25DECB86005E4DE9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7FAD25DECB86005E4DE9 /* SettingsViewController.swift */; };
 		8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C325D05801005A7DE7 /* AppDelegate.swift */; };
 		8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C525D05801005A7DE7 /* SceneDelegate.swift */; };
 		8BD608C825D05801005A7DE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C725D05801005A7DE7 /* ViewController.swift */; };
@@ -53,6 +54,7 @@
 		8B7A7FA525DC2275005E4DE9 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		8B7A7FA825DC24A0005E4DE9 /* MyFriendViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendViewCell.swift; sourceTree = "<group>"; };
 		8B7A7FA925DC24A0005E4DE9 /* MyFriendViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFriendViewCell.xib; sourceTree = "<group>"; };
+		8B7A7FAD25DECB86005E4DE9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8BD608C025D05801005A7DE7 /* YoYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD608C325D05801005A7DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD608C525D05801005A7DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				8B7A7F3C25D95F15005E4DE9 /* HomeTabController.swift */,
 				8B7A7F7925DACB51005E4DE9 /* AddFriendViewController.swift */,
 				8B7A7FA525DC2275005E4DE9 /* FriendsViewController.swift */,
+				8B7A7FAD25DECB86005E4DE9 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				8B7A7F7525DAC7F5005E4DE9 /* SearchResult.swift in Sources */,
 				8B7A7F7A25DACB51005E4DE9 /* AddFriendViewController.swift in Sources */,
 				8B7A7F3925D6ED3D005E4DE9 /* GlobalState.swift in Sources */,
+				8B7A7FAE25DECB86005E4DE9 /* SettingsViewController.swift in Sources */,
 				8BD6097B25D2D493005A7DE7 /* UserModel.swift in Sources */,
 				8BD609AC25D42C33005A7DE7 /* LoginViewController.swift in Sources */,
 				8B7A7F9525DAD476005E4DE9 /* SearchService.swift in Sources */,

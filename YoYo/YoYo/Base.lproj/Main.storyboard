@@ -387,16 +387,120 @@
         <!--Settings-->
         <scene sceneID="YCT-5a-4eZ">
             <objects>
-                <viewController id="yWW-uE-dl0" sceneMemberID="viewController">
+                <viewController id="yWW-uE-dl0" customClass="SettingsViewController" customModule="YoYo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PS4-eu-R5y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="127" translatesAutoresizingMaskIntoConstraints="NO" id="rui-8k-PwU" userLabel="Header Stack View">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1s-9x-E2A">
+                                        <rect key="frame" x="8" y="52" width="398" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.4549019608" green="0.72549019609999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="13" right="8"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1jZ-r2-4c5">
+                                <rect key="frame" x="0.0" y="89" width="414" height="310"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="awP-OF-Ki6">
+                                        <rect key="frame" x="107" y="8" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="6KF-fs-Vtv"/>
+                                            <constraint firstAttribute="height" constant="200" id="bn3-8o-iEh"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jX-RI-Myl">
+                                        <rect key="frame" x="160.5" y="218" width="93.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dev@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJR-Xr-J9Z">
+                                        <rect key="frame" x="153" y="252" width="108.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOh-ko-Zyx">
+                                        <rect key="frame" x="139.5" y="280" width="135.5" height="22"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Change Name" image="square.and.pencil" catalog="system"/>
+                                        <connections>
+                                            <action selector="changeNameTapped:" destination="yWW-uE-dl0" eventType="touchUpInside" id="wrG-hz-RRc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.4549019608" green="0.72549019609999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="JKW-l5-1fw">
+                                <rect key="frame" x="0.0" y="409" width="414" height="166"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pe-hd-8gP">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" title="Request for password reset" image="mail" catalog="system">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="requestPasswordTapped:" destination="yWW-uE-dl0" eventType="touchUpInside" id="gRB-M1-NqC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFa-jk-vsz" userLabel="Need a break? Delete the account">
+                                        <rect key="frame" x="0.0" y="62" width="414" height="42"/>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" title="Need a break? Delete the account" image="exclamationmark.triangle" catalog="system">
+                                            <color key="titleColor" systemColor="systemRedColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteAccountTapped:" destination="yWW-uE-dl0" eventType="touchUpInside" id="PmP-oc-G8u"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Oa-Bc-vlx">
+                                        <rect key="frame" x="0.0" y="124" width="414" height="42"/>
+                                        <color key="tintColor" systemColor="systemBlueColor"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                        <state key="normal" title="Logout" image="pip.exit" catalog="system">
+                                            <color key="titleColor" systemColor="systemBlueColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutTapped:" destination="yWW-uE-dl0" eventType="touchUpInside" id="trX-ie-ejj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="O0Z-JY-rNH"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JKW-l5-1fw" firstAttribute="top" secondItem="1jZ-r2-4c5" secondAttribute="bottom" constant="10" id="Brj-Yw-K0L"/>
+                            <constraint firstItem="1jZ-r2-4c5" firstAttribute="leading" secondItem="O0Z-JY-rNH" secondAttribute="leading" id="Ign-93-DDb"/>
+                            <constraint firstItem="rui-8k-PwU" firstAttribute="leading" secondItem="PS4-eu-R5y" secondAttribute="leading" id="Uzs-Ks-WRQ"/>
+                            <constraint firstItem="rui-8k-PwU" firstAttribute="top" secondItem="PS4-eu-R5y" secondAttribute="top" id="aCc-S6-xZY"/>
+                            <constraint firstItem="O0Z-JY-rNH" firstAttribute="trailing" secondItem="rui-8k-PwU" secondAttribute="trailing" id="d2L-FQ-MgQ"/>
+                            <constraint firstAttribute="trailing" secondItem="1jZ-r2-4c5" secondAttribute="trailing" id="rSu-Ax-SpL"/>
+                            <constraint firstItem="1jZ-r2-4c5" firstAttribute="top" secondItem="rui-8k-PwU" secondAttribute="bottom" id="rhi-ak-tRz"/>
+                            <constraint firstItem="O0Z-JY-rNH" firstAttribute="trailing" secondItem="JKW-l5-1fw" secondAttribute="trailing" id="u0O-9X-rBZ"/>
+                            <constraint firstItem="JKW-l5-1fw" firstAttribute="leading" secondItem="O0Z-JY-rNH" secondAttribute="leading" id="wXb-5x-g7L"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="6pw-TR-cf1">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="emailTextLabel" destination="HJR-Xr-J9Z" id="zxX-Hb-gxa"/>
+                        <outlet property="nameTextLabel" destination="2jX-RI-Myl" id="1T4-Pa-5wL"/>
+                        <outlet property="profileImageView" destination="awP-OF-Ki6" id="Lxj-Gl-fgs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zuj-jB-7pL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -698,19 +802,28 @@
         <image name="account_background" width="1920" height="1080"/>
         <image name="avatar" width="512" height="512"/>
         <image name="background" width="1920" height="1080"/>
+        <image name="exclamationmark.triangle" catalog="system" width="128" height="112"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="login_background" width="3840" height="2160"/>
         <image name="logo" width="170.5" height="170.5"/>
+        <image name="mail" catalog="system" width="128" height="93"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="person" catalog="system" width="128" height="117"/>
+        <image name="pip.exit" catalog="system" width="128" height="96"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="tv.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
