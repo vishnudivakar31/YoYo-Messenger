@@ -13,6 +13,7 @@ class FriendsViewController: UIViewController {
 
     private let friendService = FriendService()
     private var myFriends: [MyFriend] = []
+    private var searchBuffer: [MyFriend] = []
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -22,6 +23,7 @@ class FriendsViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         friendService.fetchFriendDelegate = self
+        searchBar.delegate = self
         listener = friendService.registerForFriendsList()
     }
     
@@ -122,5 +124,30 @@ extension FriendsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.unblockButton.isHidden = true
         }
         return cell
+    }
+}
+
+// MARK:- Searchbar delegate methods
+extension FriendsViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        let searchTxt = searchBar.text!
+        if searchBuffer.count == 0 {
+            searchBuffer = self.myFriends
+        }
+        if searchTxt.count > 0 {
+            let searchResults = searchBuffer.filter { $0.userModel.name.lowercased().contains(searchTxt.lowercased()) || $0.userModel.userEmail.lowercased().contains(searchTxt.lowercased()) }
+            self.myFriends = searchResults
+        } else {
+            self.myFriends = searchBuffer
+        }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBuffer = []
+        searchBar.resignFirstResponder()
+        self.friendService.fetchFriendsList()
     }
 }
