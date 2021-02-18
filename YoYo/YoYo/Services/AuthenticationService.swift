@@ -26,10 +26,15 @@ public protocol PasswordResetDelegate {
     func passwordResetFailed(msg: String)
 }
 
+public protocol UserChangeDelegate {
+    func userChangeDetected(status: Bool)
+}
+
 class AuthenticationService {
     var userAccountCreationDelegate: UserAccountCreationDelegate?
     var userLoginDelegate: UserLoginDelegate?
     var passwordResetDelegate: PasswordResetDelegate?
+    var userChangeDelegate: UserChangeDelegate?
     
     public func createUserAccount(email: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
@@ -83,6 +88,17 @@ class AuthenticationService {
     
     public func getUserID() -> String? {
         return Auth.auth().currentUser?.uid
+    }
+    
+    public func registerForUserChanges() -> AuthStateDidChangeListenerHandle {
+        let listener = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if auth.currentUser != user {
+                self.userChangeDelegate?.userChangeDetected(status: true)
+            } else {
+                self.userChangeDelegate?.userChangeDetected(status: false)
+            }
+        }
+        return listener
     }
     
 }

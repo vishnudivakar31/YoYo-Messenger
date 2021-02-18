@@ -591,6 +591,7 @@
                         <segue destination="SvS-AS-Z7h" kind="relationship" relationship="viewControllers" id="Dtj-CG-gfU"/>
                         <segue destination="yWW-uE-dl0" kind="relationship" relationship="viewControllers" id="jXO-cx-0IX"/>
                         <segue destination="jYU-8q-Nsp" kind="relationship" relationship="viewControllers" id="LvQ-BQ-rhj"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="GoToLandingPage" modalPresentationStyle="fullScreen" id="5nU-Fl-2Hn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AA6-3y-r5m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -799,7 +800,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="7aI-Sh-C2w"/>
         <segue reference="FKl-Fc-Kp5"/>
-        <segue reference="rBe-fs-3nV"/>
+        <segue reference="5nU-Fl-2Hn"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="account_background" width="1920" height="1080"/>
