@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SettingsViewController: UIViewController {
 
@@ -13,6 +14,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var nameTextLabel: UILabel!
     @IBOutlet weak var emailTextLabel: UILabel!
     
+    private let settingsService = SettingsService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,8 @@ class SettingsViewController: UIViewController {
         profileImageView.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
         profileImageView.layer.cornerRadius = profileImageView.layer.bounds.height / 2
         profileImageView.clipsToBounds = true
+        settingsService.delegate = self
+        settingsService.fetchUserProfile()
     }
     
     @IBAction func changeNameTapped(_ sender: Any) {
@@ -35,5 +39,14 @@ class SettingsViewController: UIViewController {
     @IBAction func logoutTapped(_ sender: Any) {
     }
     
+}
+
+// MARK:- Service Delegate Methods
+extension SettingsViewController: SettingsDelegate {
+    func fetchUserProfileSuccess(userModel: UserModel) {
+        profileImageView.sd_setImage(with: URL(string: userModel.profilePictureURL), completed: nil)
+        nameTextLabel.text = userModel.name
+        emailTextLabel.text = userModel.userEmail
+    }
     
 }
