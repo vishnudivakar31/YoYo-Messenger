@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -515,16 +516,100 @@
         <!--Stories-->
         <scene sceneID="sRi-NM-da6">
             <objects>
-                <viewController id="SvS-AS-Z7h" sceneMemberID="viewController">
+                <viewController id="SvS-AS-Z7h" customClass="StoriesViewController" customModule="YoYo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nUf-GV-4Ql">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="127" translatesAutoresizingMaskIntoConstraints="NO" id="3uv-9T-jeK">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BrY-d2-wCd">
+                                        <rect key="frame" x="8" y="52" width="65" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMp-N1-Ate">
+                                        <rect key="frame" x="200" y="52" width="206" height="24"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Add Stories" image="plus" catalog="system">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addStoriesTapped:" destination="SvS-AS-Z7h" eventType="touchUpInside" id="DEb-M2-BXd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.4549019608" green="0.72549019609999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="13" right="8"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="irE-24-4Zd" userLabel="My Story Stack View">
+                                <rect key="frame" x="0.0" y="99" width="414" height="96"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="aE7-vZ-g8y">
+                                        <rect key="frame" x="8" y="8" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="kCj-5B-4cE"/>
+                                            <constraint firstAttribute="width" constant="80" id="xjX-to-uin"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQm-sM-Sg5">
+                                        <rect key="frame" x="96" y="8" width="310" height="80"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <state key="normal" title="Show my stories">
+                                            <color key="titleColor" name="AccentColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showMyStoriesTapped:" destination="SvS-AS-Z7h" eventType="touchUpInside" id="YtS-t2-9ku"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friend's Stories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZtH-Pn-RPR">
+                                <rect key="frame" x="10" y="205" width="119" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Eb-yX-2ng">
+                                <rect key="frame" x="0.0" y="235.5" width="414" height="577.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="eVD-Kw-Mtk"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eVD-Kw-Mtk" firstAttribute="trailing" secondItem="3uv-9T-jeK" secondAttribute="trailing" id="1KW-sH-Agp"/>
+                            <constraint firstItem="ZtH-Pn-RPR" firstAttribute="leading" secondItem="eVD-Kw-Mtk" secondAttribute="leading" constant="10" id="7BP-07-fEk"/>
+                            <constraint firstItem="irE-24-4Zd" firstAttribute="leading" secondItem="eVD-Kw-Mtk" secondAttribute="leading" id="Gsc-DD-Fcg"/>
+                            <constraint firstItem="3uv-9T-jeK" firstAttribute="leading" secondItem="eVD-Kw-Mtk" secondAttribute="leading" id="V2C-AA-nzW"/>
+                            <constraint firstItem="9Eb-yX-2ng" firstAttribute="leading" secondItem="eVD-Kw-Mtk" secondAttribute="leading" id="YJI-jQ-aGu"/>
+                            <constraint firstItem="3uv-9T-jeK" firstAttribute="top" secondItem="nUf-GV-4Ql" secondAttribute="top" id="dQF-In-wwp"/>
+                            <constraint firstItem="eVD-Kw-Mtk" firstAttribute="trailing" secondItem="9Eb-yX-2ng" secondAttribute="trailing" id="eZl-h0-REK"/>
+                            <constraint firstItem="eVD-Kw-Mtk" firstAttribute="trailing" secondItem="irE-24-4Zd" secondAttribute="trailing" id="kbU-nJ-WGg"/>
+                            <constraint firstItem="eVD-Kw-Mtk" firstAttribute="bottom" secondItem="9Eb-yX-2ng" secondAttribute="bottom" id="l1D-Aa-oVN"/>
+                            <constraint firstItem="ZtH-Pn-RPR" firstAttribute="top" secondItem="irE-24-4Zd" secondAttribute="bottom" constant="10" id="l66-PG-CCZ"/>
+                            <constraint firstItem="9Eb-yX-2ng" firstAttribute="top" secondItem="ZtH-Pn-RPR" secondAttribute="bottom" constant="10" id="pHY-ba-LBC"/>
+                            <constraint firstItem="irE-24-4Zd" firstAttribute="top" secondItem="3uv-9T-jeK" secondAttribute="bottom" constant="10" id="udF-Ru-tls"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Stories" image="tv.circle" catalog="system" id="TSO-h6-x4X">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="myStoryImageView" destination="aE7-vZ-g8y" id="6sq-d4-jF8"/>
+                        <outlet property="myStoryStackView" destination="irE-24-4Zd" id="a2d-uM-2qJ"/>
+                        <outlet property="tableView" destination="9Eb-yX-2ng" id="gQ3-WL-RKG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hec-0b-ZR9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -820,6 +905,9 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="tv.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

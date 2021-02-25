@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B8C0532B66C6495FB06B0E8 /* Pods_YoYo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EB0D5BC66A91EF62CB200F2 /* Pods_YoYo.framework */; };
+		8B04236925E81BCE00B4362D /* StoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B04236825E81BCE00B4362D /* StoriesViewController.swift */; };
 		8B7A7F3925D6ED3D005E4DE9 /* GlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7F3825D6ED3D005E4DE9 /* GlobalState.swift */; };
 		8B7A7F3D25D95F15005E4DE9 /* HomeTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7F3C25D95F15005E4DE9 /* HomeTabController.swift */; };
 		8B7A7F7525DAC7F5005E4DE9 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7F7325DAC7F5005E4DE9 /* SearchResult.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		5D9FED268F3563A3B03B734A /* Pods-YoYo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YoYo.release.xcconfig"; path = "Target Support Files/Pods-YoYo/Pods-YoYo.release.xcconfig"; sourceTree = "<group>"; };
 		6EB0D5BC66A91EF62CB200F2 /* Pods_YoYo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YoYo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B04236825E81BCE00B4362D /* StoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesViewController.swift; sourceTree = "<group>"; };
 		8B7A7F3825D6ED3D005E4DE9 /* GlobalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalState.swift; sourceTree = "<group>"; };
 		8B7A7F3C25D95F15005E4DE9 /* HomeTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabController.swift; sourceTree = "<group>"; };
 		8B7A7F7325DAC7F5005E4DE9 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				8B7A7F7925DACB51005E4DE9 /* AddFriendViewController.swift */,
 				8B7A7FA525DC2275005E4DE9 /* FriendsViewController.swift */,
 				8B7A7FAD25DECB86005E4DE9 /* SettingsViewController.swift */,
+				8B04236825E81BCE00B4362D /* StoriesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */,
 				8BD6090F25D1FBA7005A7DE7 /* AuthenticationService.swift in Sources */,
 				8B7A7F9E25DB3524005E4DE9 /* FriendService.swift in Sources */,
+				8B04236925E81BCE00B4362D /* StoriesViewController.swift in Sources */,
 				8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */,
 				8B7A7FAA25DC24A0005E4DE9 /* MyFriendViewCell.swift in Sources */,
 				8BD608DE25D07174005A7DE7 /* CreateAccountController.swift in Sources */,
