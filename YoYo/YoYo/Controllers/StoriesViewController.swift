@@ -13,6 +13,8 @@ class StoriesViewController: UIViewController {
     @IBOutlet weak var myStoryImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
+    private var tableStories: [Story] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
