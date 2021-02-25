@@ -8,6 +8,11 @@
 import Foundation
 import FirebaseFirestoreSwift
 
+enum MEDIA_TYPE: String, Codable {
+    case IMAGE = "IMAGE"
+    case VIDEO = "VIDEO"
+}
+
 struct Story: Codable, Identifiable {
     @DocumentID var id: String?
     var uid: String
@@ -15,4 +20,5 @@ struct Story: Codable, Identifiable {
     var expiryDate: Date
     var assetURL: String
     var viewedBy: [String]
+    var mediaType: MEDIA_TYPE
 }

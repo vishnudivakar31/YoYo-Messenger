@@ -14,11 +14,13 @@ class StoriesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var tableStories: [Story] = []
+    private let imagePicker = UIImagePickerController()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        imagePicker.delegate = self
     }
     
     private func setupView() {
@@ -38,6 +40,17 @@ class StoriesViewController: UIViewController {
     }
     
     @IBAction func addStoriesTapped(_ sender: Any) {
+        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.mediaTypes = ["public.image", "public.movie"]
+        present(imagePicker, animated: true, completion: nil)
     }
     
+}
+
+// MARK:- Image Picker Delegate Methods
+extension StoriesViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // TODO:- Handle media
+        
+    }
 }
