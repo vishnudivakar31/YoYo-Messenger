@@ -681,6 +681,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="gJF-U3-pGX"/>
                     <connections>
+                        <outlet property="baseView" destination="0c5-Eo-NSw" id="lJW-DD-g4b"/>
                         <outlet property="inputStackView" destination="cPH-v7-Wgp" id="rnt-uw-gCT"/>
                         <outlet property="storyImageView" destination="mix-bY-wp3" id="KLD-13-eKM"/>
                         <outlet property="titleTextField" destination="6dp-SG-yHj" id="Lyc-h3-vgu"/>
@@ -962,9 +963,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7aI-Sh-C2w"/>
+        <segue reference="out-ir-GFZ"/>
         <segue reference="FKl-Fc-Kp5"/>
-        <segue reference="wS8-X1-qLu"/>
+        <segue reference="rBe-fs-3nV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="account_background" width="1920" height="1080"/>

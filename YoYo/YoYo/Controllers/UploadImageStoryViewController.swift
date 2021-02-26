@@ -13,6 +13,7 @@ class UploadImageStoryViewController: UIViewController {
     @IBOutlet weak var inputStackView: UIStackView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var uploadButton: UIButton!
+    @IBOutlet var baseView: UIView!
     
     var assetData: Data?
     
@@ -20,6 +21,7 @@ class UploadImageStoryViewController: UIViewController {
         super.viewDidLoad()
         inputStackView.layer.cornerRadius = 5.0
         setupView()
+        addKeyboardObserverMethods()
         
         if let assetData = assetData {
             storyImageView.image = UIImage(data: assetData)
@@ -40,6 +42,23 @@ class UploadImageStoryViewController: UIViewController {
     }
     
     @IBAction func uploadTapped(_ sender: Any) {
+    }
+    
+    private func addKeyboardObserverMethods() {
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+               return
+            }
+        baseView.frame.origin.y = 0 - keyboardSize.height
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        baseView.frame.origin.y = 0
+        inputStackView.layoutMargins.bottom = 8
     }
     
 }
