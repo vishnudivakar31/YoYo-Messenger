@@ -58,27 +58,44 @@ class StoriesViewController: UIViewController {
 // MARK:- Image Picker Delegate Methods
 extension StoriesViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        // TODO:- Handle media
+        var assetData: Data?
         var videoLengthConstraintMet = true
+        var errorMsg = ""
+        
         let mediaType = info[.mediaType]
+        
         if mediaType != nil && mediaType as! String == "public.image" {
-            print("image")
+            if let pickedImage = info[.originalImage] as? UIImage {
+                assetData = pickedImage.jpegData(compressionQuality: 1)
+            } else {
+                videoLengthConstraintMet = false
+                errorMsg = "Unable to load image. Try again later"
+            }
         } else if mediaType != nil && mediaType as! String == "public.movie" {
-            print("movie")
             let videoURL = info[.mediaURL] as? URL
             if let videoURL = videoURL {
                 let asset = AVURLAsset(url: videoURL)
                 let duration = asset.duration.seconds
                 if duration > 60 {
                     videoLengthConstraintMet = false
+                    errorMsg = "Story should be less than 60 seconds."
                 } else {
-                    // TODO:- Save video to firestore
+                    do {
+                        assetData =  try Data(contentsOf: videoURL, options: .mappedIfSafe)
+                    } catch {
+                        videoLengthConstraintMet = false
+                        errorMsg = error.localizedDescription
+                    }
                 }
             }
         }
+        if let assetData = assetData {
+            // TODO:- Save asset
+            print(assetData)
+        }
         imagePicker.dismiss(animated: true, completion: nil)
         if !videoLengthConstraintMet {
-            presentAlert(title: "Story uploading failed", msg: "Story should be less than 60 seconds.")
+            presentAlert(title: "Story uploading failed", msg: errorMsg)
         }
     }
 }
