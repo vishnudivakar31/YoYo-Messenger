@@ -21,7 +21,6 @@ class StoriesViewController: UIViewController {
     
     private var tableStories: [Story] = []
     private let imagePicker = UIImagePickerController()
-    private var uploadAsset: UploadAsset?
     
     
     override func viewDidLoad() {
@@ -53,7 +52,7 @@ class StoriesViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is UploadImageStoryViewController {
             let viewController = segue.destination as! UploadImageStoryViewController
-            if let uploadAsset = self.uploadAsset {
+            if let uploadAsset = sender as? UploadAsset {
                 viewController.assetData = uploadAsset.data
             }
         }
@@ -77,12 +76,11 @@ extension StoriesViewController: UIImagePickerControllerDelegate, UINavigationCo
         var errorMsg = ""
         var assetData: Data?
         let mediaType = info[.mediaType]
-        
+        var uploadAsset: UploadAsset?
         if mediaType != nil && mediaType as! String == "public.image" {
             if let pickedImage = info[.originalImage] as? UIImage {
                 assetData = pickedImage.jpegData(compressionQuality: 1)
-                let uploadAsset = UploadAsset(data: assetData!, mediaType: .IMAGE)
-                self.uploadAsset = uploadAsset
+                uploadAsset = UploadAsset(data: assetData!, mediaType: .IMAGE)
             } else {
                 videoLengthConstraintMet = false
                 errorMsg = "Unable to load image. Try again later"
@@ -98,8 +96,7 @@ extension StoriesViewController: UIImagePickerControllerDelegate, UINavigationCo
                 } else {
                     do {
                         assetData =  try Data(contentsOf: videoURL, options: .mappedIfSafe)
-                        let uploadAsset = UploadAsset(data: assetData!, mediaType: .VIDEO)
-                        self.uploadAsset = uploadAsset
+                        uploadAsset = UploadAsset(data: assetData!, mediaType: .VIDEO)
                     } catch {
                         videoLengthConstraintMet = false
                         errorMsg = error.localizedDescription
@@ -108,9 +105,9 @@ extension StoriesViewController: UIImagePickerControllerDelegate, UINavigationCo
             }
         }
         imagePicker.dismiss(animated: true) {
-            if let uploadAsset = self.uploadAsset {
+            if let uploadAsset = uploadAsset {
                 if uploadAsset.mediaType == .IMAGE {
-                    self.performSegue(withIdentifier: "GoToStoryUploadImage", sender: nil)
+                    self.performSegue(withIdentifier: "GoToStoryUploadImage", sender: uploadAsset)
                 }
             }
         }

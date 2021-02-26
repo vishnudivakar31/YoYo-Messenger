@@ -629,25 +629,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cPH-v7-Wgp">
-                                <rect key="frame" x="10" y="663.5" width="394" height="134.5"/>
+                                <rect key="frame" x="10" y="645.5" width="394" height="152.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIe-G3-ls1">
-                                        <rect key="frame" x="8" y="10" width="75.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="8" y="15" width="79.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6dp-SG-yHj">
-                                        <rect key="frame" x="8" y="45.5" width="378" height="34"/>
+                                        <rect key="frame" x="8" y="50.5" width="378" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="name"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F43-Tm-zqw">
-                                        <rect key="frame" x="8" y="94.5" width="378" height="30"/>
+                                        <rect key="frame" x="8" y="99.5" width="378" height="38"/>
                                         <color key="backgroundColor" name="AccentColor"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" title="Upload">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -663,7 +664,7 @@
                                     <constraint firstAttribute="trailing" secondItem="6dp-SG-yHj" secondAttribute="trailing" constant="8" id="hKS-9G-j2n"/>
                                     <constraint firstItem="6dp-SG-yHj" firstAttribute="leading" secondItem="cPH-v7-Wgp" secondAttribute="leading" constant="8" id="hM5-bG-j7z"/>
                                 </constraints>
-                                <edgeInsets key="layoutMargins" top="10" left="8" bottom="10" right="8"/>
+                                <edgeInsets key="layoutMargins" top="15" left="8" bottom="15" right="8"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jRu-D1-hVo"/>
@@ -683,6 +684,7 @@
                         <outlet property="inputStackView" destination="cPH-v7-Wgp" id="rnt-uw-gCT"/>
                         <outlet property="storyImageView" destination="mix-bY-wp3" id="KLD-13-eKM"/>
                         <outlet property="titleTextField" destination="6dp-SG-yHj" id="Lyc-h3-vgu"/>
+                        <outlet property="uploadButton" destination="F43-Tm-zqw" id="eJB-y3-Udi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SEO-kI-9eQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
