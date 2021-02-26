@@ -8,6 +8,11 @@
 import UIKit
 import AVKit
 
+struct UploadAsset {
+    var data:Data
+    var mediaType:MEDIA_TYPE
+}
+
 class StoriesViewController: UIViewController {
 
     @IBOutlet weak var myStoryStackView: UIStackView!
@@ -16,6 +21,7 @@ class StoriesViewController: UIViewController {
     
     private var tableStories: [Story] = []
     private let imagePicker = UIImagePickerController()
+    private var uploadAsset: UploadAsset?
     
     
     override func viewDidLoad() {
@@ -44,6 +50,15 @@ class StoriesViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is UploadImageStoryViewController {
+            let viewController = segue.destination as! UploadImageStoryViewController
+            if let uploadAsset = self.uploadAsset {
+                viewController.assetData = uploadAsset.data
+            }
+        }
+    }
+    
     @IBAction func showMyStoriesTapped(_ sender: Any) {
     }
     
@@ -58,15 +73,16 @@ class StoriesViewController: UIViewController {
 // MARK:- Image Picker Delegate Methods
 extension StoriesViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        var assetData: Data?
         var videoLengthConstraintMet = true
         var errorMsg = ""
-        
+        var assetData: Data?
         let mediaType = info[.mediaType]
         
         if mediaType != nil && mediaType as! String == "public.image" {
             if let pickedImage = info[.originalImage] as? UIImage {
                 assetData = pickedImage.jpegData(compressionQuality: 1)
+                let uploadAsset = UploadAsset(data: assetData!, mediaType: .IMAGE)
+                self.uploadAsset = uploadAsset
             } else {
                 videoLengthConstraintMet = false
                 errorMsg = "Unable to load image. Try again later"
@@ -82,6 +98,8 @@ extension StoriesViewController: UIImagePickerControllerDelegate, UINavigationCo
                 } else {
                     do {
                         assetData =  try Data(contentsOf: videoURL, options: .mappedIfSafe)
+                        let uploadAsset = UploadAsset(data: assetData!, mediaType: .VIDEO)
+                        self.uploadAsset = uploadAsset
                     } catch {
                         videoLengthConstraintMet = false
                         errorMsg = error.localizedDescription
@@ -89,11 +107,13 @@ extension StoriesViewController: UIImagePickerControllerDelegate, UINavigationCo
                 }
             }
         }
-        if let assetData = assetData {
-            // TODO:- Save asset
-            print(assetData)
+        imagePicker.dismiss(animated: true) {
+            if let uploadAsset = self.uploadAsset {
+                if uploadAsset.mediaType == .IMAGE {
+                    self.performSegue(withIdentifier: "GoToStoryUploadImage", sender: nil)
+                }
+            }
         }
-        imagePicker.dismiss(animated: true, completion: nil)
         if !videoLengthConstraintMet {
             presentAlert(title: "Story uploading failed", msg: errorMsg)
         }

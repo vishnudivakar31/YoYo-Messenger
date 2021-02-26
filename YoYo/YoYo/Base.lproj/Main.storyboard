@@ -598,6 +598,7 @@
                             <constraint firstItem="eVD-Kw-Mtk" firstAttribute="trailing" secondItem="irE-24-4Zd" secondAttribute="trailing" id="kbU-nJ-WGg"/>
                             <constraint firstItem="eVD-Kw-Mtk" firstAttribute="bottom" secondItem="9Eb-yX-2ng" secondAttribute="bottom" id="l1D-Aa-oVN"/>
                             <constraint firstItem="ZtH-Pn-RPR" firstAttribute="top" secondItem="irE-24-4Zd" secondAttribute="bottom" constant="10" id="l66-PG-CCZ"/>
+                            <constraint firstItem="eVD-Kw-Mtk" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZtH-Pn-RPR" secondAttribute="trailing" symbolic="YES" id="lOy-iG-dGJ"/>
                             <constraint firstItem="9Eb-yX-2ng" firstAttribute="top" secondItem="ZtH-Pn-RPR" secondAttribute="bottom" constant="10" id="pHY-ba-LBC"/>
                             <constraint firstItem="irE-24-4Zd" firstAttribute="top" secondItem="3uv-9T-jeK" secondAttribute="bottom" constant="10" id="udF-Ru-tls"/>
                         </constraints>
@@ -609,11 +610,84 @@
                         <outlet property="myStoryImageView" destination="aE7-vZ-g8y" id="6sq-d4-jF8"/>
                         <outlet property="myStoryStackView" destination="irE-24-4Zd" id="a2d-uM-2qJ"/>
                         <outlet property="tableView" destination="9Eb-yX-2ng" id="gQ3-WL-RKG"/>
+                        <segue destination="ijF-x7-on1" kind="show" identifier="GoToStoryUploadImage" id="fca-O1-BzP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hec-0b-ZR9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2346" y="881"/>
+        </scene>
+        <!--Upload Image Story View Controller-->
+        <scene sceneID="vY6-98-ru3">
+            <objects>
+                <viewController id="ijF-x7-on1" customClass="UploadImageStoryViewController" customModule="YoYo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0c5-Eo-NSw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="mix-bY-wp3">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cPH-v7-Wgp">
+                                <rect key="frame" x="10" y="663.5" width="394" height="134.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pIe-G3-ls1">
+                                        <rect key="frame" x="8" y="10" width="75.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6dp-SG-yHj">
+                                        <rect key="frame" x="8" y="45.5" width="378" height="34"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F43-Tm-zqw">
+                                        <rect key="frame" x="8" y="94.5" width="378" height="30"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                        <state key="normal" title="Upload">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="uploadTapped:" destination="ijF-x7-on1" eventType="touchUpInside" id="Wnq-3Y-U8T"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="F43-Tm-zqw" firstAttribute="leading" secondItem="cPH-v7-Wgp" secondAttribute="leading" constant="8" id="6VD-Kj-S1V"/>
+                                    <constraint firstAttribute="trailing" secondItem="F43-Tm-zqw" secondAttribute="trailing" constant="8" id="PYU-Kb-5GX"/>
+                                    <constraint firstAttribute="trailing" secondItem="6dp-SG-yHj" secondAttribute="trailing" constant="8" id="hKS-9G-j2n"/>
+                                    <constraint firstItem="6dp-SG-yHj" firstAttribute="leading" secondItem="cPH-v7-Wgp" secondAttribute="leading" constant="8" id="hM5-bG-j7z"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="10" left="8" bottom="10" right="8"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jRu-D1-hVo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mix-bY-wp3" firstAttribute="top" secondItem="jRu-D1-hVo" secondAttribute="top" id="3Ys-lD-dhf"/>
+                            <constraint firstItem="jRu-D1-hVo" firstAttribute="bottom" secondItem="cPH-v7-Wgp" secondAttribute="bottom" constant="10" id="AWK-jO-USQ"/>
+                            <constraint firstItem="jRu-D1-hVo" firstAttribute="bottom" secondItem="mix-bY-wp3" secondAttribute="bottom" id="FOk-5F-2V7"/>
+                            <constraint firstItem="cPH-v7-Wgp" firstAttribute="leading" secondItem="jRu-D1-hVo" secondAttribute="leading" constant="10" id="Zju-4f-Coc"/>
+                            <constraint firstItem="jRu-D1-hVo" firstAttribute="trailing" secondItem="mix-bY-wp3" secondAttribute="trailing" id="p21-M4-BLy"/>
+                            <constraint firstItem="mix-bY-wp3" firstAttribute="leading" secondItem="jRu-D1-hVo" secondAttribute="leading" id="qod-pE-xsP"/>
+                            <constraint firstItem="jRu-D1-hVo" firstAttribute="trailing" secondItem="cPH-v7-Wgp" secondAttribute="trailing" constant="10" id="xZ2-k7-4Wq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gJF-U3-pGX"/>
+                    <connections>
+                        <outlet property="inputStackView" destination="cPH-v7-Wgp" id="rnt-uw-gCT"/>
+                        <outlet property="storyImageView" destination="mix-bY-wp3" id="KLD-13-eKM"/>
+                        <outlet property="titleTextField" destination="6dp-SG-yHj" id="Lyc-h3-vgu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SEO-kI-9eQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3265" y="1420"/>
         </scene>
         <!--Chats-->
         <scene sceneID="WJ7-wL-ydk">
