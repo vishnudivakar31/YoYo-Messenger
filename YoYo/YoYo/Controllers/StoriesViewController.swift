@@ -31,6 +31,7 @@ class StoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupTableView()
         imagePicker.delegate = self
         storyService.delegate = self
         storyService.fetchMyStories()
@@ -56,6 +57,16 @@ class StoriesViewController: UIViewController {
                 self.myStoryImageView.sd_setImage(with: URL(string: userModel.profilePictureURL), completed: nil)
             }
         }
+    }
+    
+    private func setupTableView() {
+        let nib = UINib(nibName: "StoryTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "StoryTableViewCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.backgroundColor = .white
+        tableView.rowHeight = 100
     }
     
     private func presentAlert(title: String, msg: String) {
@@ -146,5 +157,17 @@ extension StoriesViewController: StoryDelegate {
         } else if let error = error {
             self.presentAlert(title: "My Stories", msg: error.localizedDescription)
         }
+    }
+}
+
+// MARK:- TableView Delegates
+extension StoriesViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tableStories.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StoryTableViewCell", for: indexPath) as! StoryTableViewCell
+        return cell
     }
 }

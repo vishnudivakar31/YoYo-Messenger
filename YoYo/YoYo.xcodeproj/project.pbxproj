@@ -27,6 +27,8 @@
 		8B7A7FAE25DECB86005E4DE9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7FAD25DECB86005E4DE9 /* SettingsViewController.swift */; };
 		8B7A7FB125DECD6E005E4DE9 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7FB025DECD6E005E4DE9 /* SettingsService.swift */; };
 		8B8955D125EAB27500619E96 /* StoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955D025EAB27500619E96 /* StoryService.swift */; };
+		8B8955D525EAF9AB00619E96 /* StoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955D325EAF9AB00619E96 /* StoryTableViewCell.swift */; };
+		8B8955D625EAF9AB00619E96 /* StoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8955D425EAF9AB00619E96 /* StoryTableViewCell.xib */; };
 		8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C325D05801005A7DE7 /* AppDelegate.swift */; };
 		8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C525D05801005A7DE7 /* SceneDelegate.swift */; };
 		8BD608C825D05801005A7DE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C725D05801005A7DE7 /* ViewController.swift */; };
@@ -65,6 +67,8 @@
 		8B7A7FAD25DECB86005E4DE9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8B7A7FB025DECD6E005E4DE9 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		8B8955D025EAB27500619E96 /* StoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryService.swift; sourceTree = "<group>"; };
+		8B8955D325EAF9AB00619E96 /* StoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTableViewCell.swift; sourceTree = "<group>"; };
+		8B8955D425EAF9AB00619E96 /* StoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryTableViewCell.xib; sourceTree = "<group>"; };
 		8BD608C025D05801005A7DE7 /* YoYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD608C325D05801005A7DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD608C525D05801005A7DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 				8B7A7F7425DAC7F5005E4DE9 /* SearchResult.xib */,
 				8B7A7FA825DC24A0005E4DE9 /* MyFriendViewCell.swift */,
 				8B7A7FA925DC24A0005E4DE9 /* MyFriendViewCell.xib */,
+				8B8955D325EAF9AB00619E96 /* StoryTableViewCell.swift */,
+				8B8955D425EAF9AB00619E96 /* StoryTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -272,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BD608D325D05803005A7DE7 /* LaunchScreen.storyboard in Resources */,
+				8B8955D625EAF9AB00619E96 /* StoryTableViewCell.xib in Resources */,
 				8BD608E225D1F96A005A7DE7 /* GoogleService-Info.plist in Resources */,
 				8BD608D025D05803005A7DE7 /* Assets.xcassets in Resources */,
 				8B7A7F7625DAC7F5005E4DE9 /* SearchResult.xib in Resources */,
@@ -356,6 +363,7 @@
 				8B7A7FB125DECD6E005E4DE9 /* SettingsService.swift in Sources */,
 				8B7A7FA125DC1ED3005E4DE9 /* MyFriend.swift in Sources */,
 				8B7A7F9825DB32B5005E4DE9 /* Friend.swift in Sources */,
+				8B8955D525EAF9AB00619E96 /* StoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
