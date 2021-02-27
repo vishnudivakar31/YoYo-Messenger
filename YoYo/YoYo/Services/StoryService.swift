@@ -9,6 +9,7 @@ import Foundation
 
 protocol StoryDelegate {
     func fetchMyStory(stories: [Story]?, error: Error?)
+    func fetchFriendsStory(stories: [FriendStory]?, error: Error?)
 }
 
 class StoryService {
@@ -54,7 +55,37 @@ class StoryService {
                 completionHandler(userModel)
             }
         }
-        
+    }
+    
+    func fetchMyFriendsStories() {
+        let uid = authenticationService.getUserID()!
+        databaseService.fetchFriendsList(uid: uid) { (friendsList, error) in
+            if let error = error {
+                self.delegate?.fetchFriendsStory(stories: [], error: error)
+            } else if let friendsList = friendsList {
+                let friends = friendsList.friends.filter { $0.status == .ACCPETED }
+                let uids: [String] = friends.compactMap { return $0.uid }
+                self.databaseService.fetchUserModels(withUIDs: uids) { (userModels, error) in
+                    if let error = error {
+                        self.delegate?.fetchFriendsStory(stories: [], error: error)
+                    } else if let userModels = userModels {
+                        self.databaseService.getStoriesWithUID(uids) { (stories, error) in
+                            if let error = error {
+                                self.delegate?.fetchFriendsStory(stories: [], error: error)
+                            } else if let stories = stories {
+                                var friendsStory: [FriendStory] = []
+                                for uid in uids {
+                                    let userModel = userModels.filter { $0.userID == uid}.first!
+                                    let userStories = stories.filter { $0.uid == uid }
+                                    friendsStory.append(FriendStory(userModel: userModel, stories: userStories))
+                                }
+                                self.delegate?.fetchFriendsStory(stories: friendsStory, error: nil)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
 }

@@ -29,6 +29,7 @@
 		8B8955D125EAB27500619E96 /* StoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955D025EAB27500619E96 /* StoryService.swift */; };
 		8B8955D525EAF9AB00619E96 /* StoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955D325EAF9AB00619E96 /* StoryTableViewCell.swift */; };
 		8B8955D625EAF9AB00619E96 /* StoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8955D425EAF9AB00619E96 /* StoryTableViewCell.xib */; };
+		8B8955D925EB0A5500619E96 /* FriendStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955D825EB0A5500619E96 /* FriendStory.swift */; };
 		8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C325D05801005A7DE7 /* AppDelegate.swift */; };
 		8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C525D05801005A7DE7 /* SceneDelegate.swift */; };
 		8BD608C825D05801005A7DE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C725D05801005A7DE7 /* ViewController.swift */; };
@@ -69,6 +70,7 @@
 		8B8955D025EAB27500619E96 /* StoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryService.swift; sourceTree = "<group>"; };
 		8B8955D325EAF9AB00619E96 /* StoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTableViewCell.swift; sourceTree = "<group>"; };
 		8B8955D425EAF9AB00619E96 /* StoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryTableViewCell.xib; sourceTree = "<group>"; };
+		8B8955D825EB0A5500619E96 /* FriendStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendStory.swift; sourceTree = "<group>"; };
 		8BD608C025D05801005A7DE7 /* YoYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD608C325D05801005A7DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD608C525D05801005A7DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				8B7A7F9A25DB3323005E4DE9 /* FriendsList.swift */,
 				8B7A7FA025DC1ED3005E4DE9 /* MyFriend.swift */,
 				8B04236B25E8234600B4362D /* Story.swift */,
+				8B8955D825EB0A5500619E96 /* FriendStory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				8B8955D125EAB27500619E96 /* StoryService.swift in Sources */,
 				8BD608CE25D05801005A7DE7 /* YoYo.xcdatamodeld in Sources */,
 				8B7A7F9B25DB3323005E4DE9 /* FriendsList.swift in Sources */,
+				8B8955D925EB0A5500619E96 /* FriendStory.swift in Sources */,
 				8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */,
 				8BD6090F25D1FBA7005A7DE7 /* AuthenticationService.swift in Sources */,
 				8B7A7F9E25DB3524005E4DE9 /* FriendService.swift in Sources */,

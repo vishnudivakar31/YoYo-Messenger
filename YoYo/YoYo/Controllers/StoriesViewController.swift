@@ -22,7 +22,7 @@ class StoriesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var showMyStoryButton: UIButton!
     
-    private var tableStories: [Story] = []
+    private var tableStories: [FriendStory] = []
     private var myStories: [Story] = []
     private let imagePicker = UIImagePickerController()
     private let storyService = StoryService()
@@ -35,6 +35,7 @@ class StoriesViewController: UIViewController {
         imagePicker.delegate = self
         storyService.delegate = self
         storyService.fetchMyStories()
+        storyService.fetchMyFriendsStories()
         toggleMyStory(status: myStories.count > 0)
     }
     
@@ -150,6 +151,15 @@ extension StoriesViewController: UIImagePickerControllerDelegate, UINavigationCo
 
 // MARK:- StoryDelegate Methods
 extension StoriesViewController: StoryDelegate {
+    func fetchFriendsStory(stories: [FriendStory]?, error: Error?) {
+        if let error = error {
+            self.presentAlert(title: "Stories", msg: error.localizedDescription)
+        } else if let stories = stories {
+            self.tableStories = stories
+            self.tableView.reloadData()
+        }
+    }
+    
     func fetchMyStory(stories: [Story]?, error: Error?) {
         if let stories = stories {
             self.toggleMyStory(status: stories.count > 0)

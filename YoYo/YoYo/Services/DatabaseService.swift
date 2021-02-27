@@ -192,14 +192,29 @@ class DatabaseService {
     public func getStoryWithUID(_ uid: String, completionHandler: @escaping (_ stories: [Story]?, _ error: Error?) -> ()) {
         db.collection(STORY_COLLECTION).whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
             if let error = error {
-                completionHandler(nil, error)
+                completionHandler([], error)
             } else if let snapshot = snapshot {
                 let today = Date()
                 var stories: [Story] = snapshot.documents.compactMap { return try? $0.data(as: Story.self) }
                 stories = stories.filter { today <= $0.expiryDate }
                 completionHandler(stories, nil)
             } else {
-                completionHandler(nil, nil)
+                completionHandler([], nil)
+            }
+        }
+    }
+    
+    public func getStoriesWithUID(_ uid: [String], completionHandler: @escaping (_ stories: [Story]?, _ error: Error?) -> ()) {
+        db.collection(STORY_COLLECTION).whereField("uid", in: uid).getDocuments { (snapshot, error) in
+            if let error = error {
+                completionHandler([], error)
+            } else if let snapshot = snapshot {
+                let today = Date()
+                var stories: [Story] = snapshot.documents.compactMap { return try? $0.data(as: Story.self) }
+                stories = stories.filter { today <= $0.expiryDate }
+                completionHandler(stories, nil)
+            } else {
+                completionHandler([], nil)
             }
         }
     }
