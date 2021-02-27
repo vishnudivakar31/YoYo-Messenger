@@ -33,6 +33,7 @@ class UploadImageStoryViewController: UIViewController {
                 let player = AVPlayer(url: assetData.videoURL!)
                 let playerLayer = AVPlayerLayer(player: player)
                 playerLayer.frame = self.view.bounds
+                playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
                 view.layer.insertSublayer(playerLayer, at: 0)
                 player.play()
             }
