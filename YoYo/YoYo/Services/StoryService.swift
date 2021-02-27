@@ -7,11 +7,17 @@
 
 import Foundation
 
+protocol StoryDelegate {
+    func fetchMyStory(stories: [Story]?, error: Error?)
+}
+
 class StoryService {
     
     private let authenticationService = AuthenticationService()
     private let storageService = StorageService()
     private let databaseService = DatabaseService()
+    
+    var delegate: StoryDelegate?
     
     func uploadStory(uploadAsset: UploadAsset, title: String, completionHandler: @escaping (_ success: Bool, _ msg: String) -> ()) {
         let uid = authenticationService.getUserID()!
@@ -29,4 +35,12 @@ class StoryService {
             }
         }
     }
+    
+    func fetchMyStories() {
+        let uid = authenticationService.getUserID()!
+        databaseService.getStoryWithUID(uid) { (stories, error) in
+            self.delegate?.fetchMyStory(stories: stories, error: error)
+        }
+    }
+    
 }

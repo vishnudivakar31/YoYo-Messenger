@@ -24,12 +24,16 @@ class StoriesViewController: UIViewController {
     private var tableStories: [Story] = []
     private var myStories: [Story] = []
     private let imagePicker = UIImagePickerController()
+    private let storyService = StoryService()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         imagePicker.delegate = self
+        storyService.delegate = self
+        storyService.fetchMyStories()
+        toggleMyStory(status: myStories.count > 0)
     }
     
     private func setupView() {
@@ -39,14 +43,13 @@ class StoriesViewController: UIViewController {
         myStoryImageView.layer.cornerRadius = myStoryImageView.layer.bounds.height / 2
         myStoryImageView.clipsToBounds = true
         
+        showMyStoryButton.setTitleColor(UIColor(cgColor: CGColor(red: 9/255, green: 132/255, blue: 227/255, alpha: 1)), for: .normal)
+        showMyStoryButton.setTitleColor(.darkGray, for: .disabled)
+        
         let bottomBorder = CALayer()
         bottomBorder.frame = CGRect(x:0, y: self.myStoryStackView.frame.size.height - 1, width: self.myStoryStackView.frame.size.width, height:1)
         bottomBorder.backgroundColor = UIColor.darkGray.cgColor
         myStoryStackView.layer.addSublayer(bottomBorder)
-        if myStories.count == 0 {
-            showMyStoryButton.isEnabled = false
-            showMyStoryButton.tintColor = .darkGray
-        }
     }
     
     private func presentAlert(title: String, msg: String) {
@@ -54,6 +57,12 @@ class StoriesViewController: UIViewController {
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    private func toggleMyStory(status: Bool) {
+        showMyStoryButton.isEnabled = status
+        myStoryImageView.layer.borderColor = status ? CGColor(red: 9/255, green: 132/255, blue: 227/255, alpha: 1) : CGColor(red: 0, green: 0, blue: 0, alpha: 0.2)
+        myStoryImageView.clipsToBounds = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -118,6 +127,18 @@ extension StoriesViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
         if !videoLengthConstraintMet {
             presentAlert(title: "Story uploading failed", msg: errorMsg)
+        }
+    }
+}
+
+// MARK:- StoryDelegate Methods
+extension StoriesViewController: StoryDelegate {
+    func fetchMyStory(stories: [Story]?, error: Error?) {
+        if let stories = stories {
+            self.toggleMyStory(status: stories.count > 0)
+            self.myStories = stories
+        } else if let error = error {
+            self.presentAlert(title: "My Stories", msg: error.localizedDescription)
         }
     }
 }
