@@ -609,6 +609,7 @@
                     <connections>
                         <outlet property="myStoryImageView" destination="aE7-vZ-g8y" id="6sq-d4-jF8"/>
                         <outlet property="myStoryStackView" destination="irE-24-4Zd" id="a2d-uM-2qJ"/>
+                        <outlet property="showMyStoryButton" destination="zQm-sM-Sg5" id="aHE-lB-3iX"/>
                         <outlet property="tableView" destination="9Eb-yX-2ng" id="gQ3-WL-RKG"/>
                         <segue destination="ijF-x7-on1" kind="show" identifier="GoToStoryUploadImage" id="fca-O1-BzP"/>
                     </connections>
