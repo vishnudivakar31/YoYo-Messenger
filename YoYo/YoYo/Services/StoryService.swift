@@ -43,4 +43,18 @@ class StoryService {
         }
     }
     
+    func fetchUserModel(uid: String?, completionHandler: @escaping (_ userModel: UserModel?) -> ()) {
+        if let uid = uid {
+            databaseService.fetchUserModel(userID: uid) { (userModel) in
+                completionHandler(userModel)
+            }
+        } else {
+            let myUID = authenticationService.getUserID()!
+            databaseService.fetchUserModel(userID: myUID) { (userModel) in
+                completionHandler(userModel)
+            }
+        }
+        
+    }
+    
 }

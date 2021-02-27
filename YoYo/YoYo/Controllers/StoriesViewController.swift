@@ -7,6 +7,7 @@
 
 import UIKit
 import AVKit
+import SDWebImage
 
 struct UploadAsset {
     var data:Data
@@ -50,6 +51,11 @@ class StoriesViewController: UIViewController {
         bottomBorder.frame = CGRect(x:0, y: self.myStoryStackView.frame.size.height - 1, width: self.myStoryStackView.frame.size.width, height:1)
         bottomBorder.backgroundColor = UIColor.darkGray.cgColor
         myStoryStackView.layer.addSublayer(bottomBorder)
+        storyService.fetchUserModel(uid: nil) { (userModel) in
+            if let userModel = userModel {
+                self.myStoryImageView.sd_setImage(with: URL(string: userModel.profilePictureURL), completed: nil)
+            }
+        }
     }
     
     private func presentAlert(title: String, msg: String) {
