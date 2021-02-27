@@ -10,6 +10,7 @@ import AVKit
 
 struct UploadAsset {
     var data:Data
+    var videoURL: URL?
     var mediaType:MEDIA_TYPE
 }
 
@@ -53,7 +54,7 @@ class StoriesViewController: UIViewController {
         if segue.destination is UploadImageStoryViewController {
             let viewController = segue.destination as! UploadImageStoryViewController
             if let uploadAsset = sender as? UploadAsset {
-                viewController.assetData = uploadAsset.data
+                viewController.assetData = uploadAsset
             }
         }
     }
@@ -96,7 +97,7 @@ extension StoriesViewController: UIImagePickerControllerDelegate, UINavigationCo
                 } else {
                     do {
                         assetData =  try Data(contentsOf: videoURL, options: .mappedIfSafe)
-                        uploadAsset = UploadAsset(data: assetData!, mediaType: .VIDEO)
+                        uploadAsset = UploadAsset(data: assetData!, videoURL: videoURL, mediaType: .VIDEO)
                     } catch {
                         videoLengthConstraintMet = false
                         errorMsg = error.localizedDescription
@@ -106,9 +107,7 @@ extension StoriesViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
         imagePicker.dismiss(animated: true) {
             if let uploadAsset = uploadAsset {
-                if uploadAsset.mediaType == .IMAGE {
-                    self.performSegue(withIdentifier: "GoToStoryUploadImage", sender: uploadAsset)
-                }
+                self.performSegue(withIdentifier: "GoToStoryUploadImage", sender: uploadAsset)
             }
         }
         if !videoLengthConstraintMet {

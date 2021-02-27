@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 class UploadImageStoryViewController: UIViewController {
 
@@ -15,7 +16,7 @@ class UploadImageStoryViewController: UIViewController {
     @IBOutlet weak var uploadButton: UIButton!
     @IBOutlet var baseView: UIView!
     
-    var assetData: Data?
+    var assetData: UploadAsset?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,17 @@ class UploadImageStoryViewController: UIViewController {
         addKeyboardObserverMethods()
         
         if let assetData = assetData {
-            storyImageView.image = UIImage(data: assetData)
+            if assetData.mediaType == .IMAGE {
+                storyImageView.isHidden = false
+                storyImageView.image = UIImage(data: assetData.data)
+            } else {
+                storyImageView.isHidden = true
+                let player = AVPlayer(url: assetData.videoURL!)
+                let playerLayer = AVPlayerLayer(player: player)
+                playerLayer.frame = self.view.bounds
+                view.layer.insertSublayer(playerLayer, at: 0)
+                player.play()
+            }
         }
     }
     
