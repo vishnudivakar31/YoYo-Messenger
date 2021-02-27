@@ -15,8 +15,11 @@ class UploadImageStoryViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var uploadButton: UIButton!
     @IBOutlet var baseView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var assetData: UploadAsset?
+    
+    private let storyService = StoryService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +54,39 @@ class UploadImageStoryViewController: UIViewController {
         
         uploadButton.layer.cornerRadius = 5.0
         uploadButton.clipsToBounds = true
+        
+        activityIndicator.isHidden = true
     }
     
     @IBAction func uploadTapped(_ sender: Any) {
+        let title = titleTextField.text
+        if let uploadAsset = assetData, let title = title {
+            if title.count > 0 {
+                activityIndicator.isHidden = false
+                storyService.uploadStory(uploadAsset: uploadAsset, title: title) { (success, msg) in
+                    self.activityIndicator.isHidden = true
+                    self.presentAlert(success: success, msg: msg)
+                }
+            }
+        }
+    }
+    
+    private func presentAlert(success: Bool, msg: String) {
+        let alertController = UIAlertController(title: "Story upload", message: msg, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
+            if success {
+                self.resignFirstResponder()
+                self.dismiss(animated: true) {
+                    if let nav = self.navigationController {
+                        nav.popViewController(animated: true)
+                    } else {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     private func addKeyboardObserverMethods() {
