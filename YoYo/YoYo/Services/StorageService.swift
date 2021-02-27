@@ -15,6 +15,9 @@ public protocol StorageDelegate {
 
 class StorageService {
     
+    private let IMAGES_REF = "images"
+    private let STORY_REF = "stories"
+    
     var delegate: StorageDelegate?
     private let storage = Storage.storage()
     private var storageRef: StorageReference {
@@ -24,7 +27,7 @@ class StorageService {
     }
     
     func uploadImageToStorage(data: Data, fileName: String, userID: String) {
-        let imageRef = storageRef.child("images")
+        let imageRef = storageRef.child(IMAGES_REF)
         let pictureName = "\(userID)_\(NSTimeIntervalSince1970)_\(fileName).jpg"
         let pictureRef = imageRef.child(pictureName)
         pictureRef.putData(data, metadata: nil) {(_, error) in
@@ -38,6 +41,25 @@ class StorageService {
                     }
                     if downloadError == nil {
                         self.delegate?.uploadSuccessFull(url: url.absoluteString)
+                    }
+                }
+            }
+        }
+    }
+    
+    func uploadStory(data: Data, mediaType: MEDIA_TYPE,fileName: String, userID: String, completionHandler: @escaping (_ url: String?, _ error: Error?) -> ()) {
+        let storyRef = storageRef.child(STORY_REF)
+        let storyName = "\(userID)_\(NSTimeIntervalSince1970)_\(fileName).\(mediaType == .IMAGE ? "jpg" : "mp4")"
+        let ref = storyRef.child(storyName)
+        ref.putData(data, metadata: nil) { (_, error) in
+            if let error = error {
+                completionHandler(nil, error)
+            } else {
+                ref.downloadURL { (url, error) in
+                    if let error = error {
+                        completionHandler(nil, error)
+                    } else {
+                        completionHandler(url?.absoluteString, nil)
                     }
                 }
             }

@@ -26,6 +26,7 @@
 		8B7A7FAB25DC24A0005E4DE9 /* MyFriendViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B7A7FA925DC24A0005E4DE9 /* MyFriendViewCell.xib */; };
 		8B7A7FAE25DECB86005E4DE9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7FAD25DECB86005E4DE9 /* SettingsViewController.swift */; };
 		8B7A7FB125DECD6E005E4DE9 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7A7FB025DECD6E005E4DE9 /* SettingsService.swift */; };
+		8B8955D125EAB27500619E96 /* StoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955D025EAB27500619E96 /* StoryService.swift */; };
 		8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C325D05801005A7DE7 /* AppDelegate.swift */; };
 		8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C525D05801005A7DE7 /* SceneDelegate.swift */; };
 		8BD608C825D05801005A7DE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C725D05801005A7DE7 /* ViewController.swift */; };
@@ -63,6 +64,7 @@
 		8B7A7FA925DC24A0005E4DE9 /* MyFriendViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFriendViewCell.xib; sourceTree = "<group>"; };
 		8B7A7FAD25DECB86005E4DE9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8B7A7FB025DECD6E005E4DE9 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		8B8955D025EAB27500619E96 /* StoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryService.swift; sourceTree = "<group>"; };
 		8BD608C025D05801005A7DE7 /* YoYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD608C325D05801005A7DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD608C525D05801005A7DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				8B7A7F9425DAD476005E4DE9 /* SearchService.swift */,
 				8B7A7F9D25DB3524005E4DE9 /* FriendService.swift */,
 				8B7A7FB025DECD6E005E4DE9 /* SettingsService.swift */,
+				8B8955D025EAB27500619E96 /* StoryService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BD608C825D05801005A7DE7 /* ViewController.swift in Sources */,
+				8B8955D125EAB27500619E96 /* StoryService.swift in Sources */,
 				8BD608CE25D05801005A7DE7 /* YoYo.xcdatamodeld in Sources */,
 				8B7A7F9B25DB3323005E4DE9 /* FriendsList.swift in Sources */,
 				8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */,

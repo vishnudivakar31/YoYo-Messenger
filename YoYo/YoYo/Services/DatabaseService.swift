@@ -21,6 +21,7 @@ class DatabaseService {
     private let db = Firestore.firestore()
     private let USER_COLLECTION = "users"
     private let FRIENDS_COLLECTION = "friends"
+    private let STORY_COLLECTION = "stories"
     var userModelDelegate: UserModelDelegate?
     var registrationFriendsListDelegate: RegistrationForFriendsList?
     
@@ -176,6 +177,15 @@ class DatabaseService {
             } else {
                 completionHandler(false, nil)
             }
+        }
+    }
+    
+    public func saveStory(_ story: Story, completionHandler: @escaping (_ success: Bool, _ msg: String?) -> ()) {
+        do {
+            let _ = try db.collection(STORY_COLLECTION).addDocument(from: story)
+            completionHandler(true, "Successfully uploaded.")
+        } catch {
+            completionHandler(false, error.localizedDescription)
         }
     }
         
