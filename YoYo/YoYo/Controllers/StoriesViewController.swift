@@ -38,13 +38,13 @@ class StoriesViewController: UIViewController {
     }
     
     private func setupView() {
-        myStoryImageView.layer.borderWidth = 2.0
+        myStoryImageView.layer.borderWidth = 2.5
         myStoryImageView.layer.masksToBounds = false
         myStoryImageView.layer.borderColor = myStories.count == 0 ? CGColor(red: 0, green: 0, blue: 0, alpha: 0.2) : CGColor(red: 108, green: 92, blue: 231, alpha: 1)
         myStoryImageView.layer.cornerRadius = myStoryImageView.layer.bounds.height / 2
         myStoryImageView.clipsToBounds = true
         
-        showMyStoryButton.setTitleColor(UIColor(cgColor: CGColor(red: 9/255, green: 132/255, blue: 227/255, alpha: 1)), for: .normal)
+        showMyStoryButton.setTitleColor(UIColor(cgColor: CGColor(red: 39/255, green: 60/255, blue: 117/255, alpha: 1)), for: .normal)
         showMyStoryButton.setTitleColor(.darkGray, for: .disabled)
         
         let bottomBorder = CALayer()
@@ -67,7 +67,7 @@ class StoriesViewController: UIViewController {
     
     private func toggleMyStory(status: Bool) {
         showMyStoryButton.isEnabled = status
-        myStoryImageView.layer.borderColor = status ? CGColor(red: 9/255, green: 132/255, blue: 227/255, alpha: 1) : CGColor(red: 0, green: 0, blue: 0, alpha: 0.2)
+        myStoryImageView.layer.borderColor = status ? CGColor(red: 39/255, green: 60/255, blue: 117/255, alpha: 1) : CGColor(red: 0, green: 0, blue: 0, alpha: 0.2)
         myStoryImageView.clipsToBounds = true
     }
     
