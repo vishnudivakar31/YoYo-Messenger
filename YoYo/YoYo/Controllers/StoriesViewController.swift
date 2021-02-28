@@ -67,7 +67,7 @@ class StoriesViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.backgroundColor = .white
-        tableView.rowHeight = 100
+        tableView.rowHeight = 80
     }
     
     private func presentAlert(title: String, msg: String) {
@@ -177,7 +177,11 @@ extension StoriesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let friendStory = self.tableStories[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "StoryTableViewCell", for: indexPath) as! StoryTableViewCell
+        cell.friendStory = friendStory
+        cell.friendName.text = friendStory.userModel.name
+        cell.friendImageView.sd_setImage(with: URL(string: friendStory.userModel.profilePictureURL), completed: nil)
         return cell
     }
 }

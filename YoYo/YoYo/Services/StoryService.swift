@@ -79,6 +79,7 @@ class StoryService {
                                     let userStories = stories.filter { $0.uid == uid }
                                     friendsStory.append(FriendStory(userModel: userModel, stories: userStories))
                                 }
+                                friendsStory = friendsStory.filter { $0.stories?.count ?? 0 > 0 }
                                 self.delegate?.fetchFriendsStory(stories: friendsStory, error: nil)
                             }
                         }
