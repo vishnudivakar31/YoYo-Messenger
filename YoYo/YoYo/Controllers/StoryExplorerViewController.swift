@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import AVKit
 
 class StoryExplorerViewController: UIViewController {
 
@@ -20,7 +21,6 @@ class StoryExplorerViewController: UIViewController {
     @IBOutlet weak var titleAndViewsView: UIView!
     
     var friendStory: FriendStory?
-    private var index = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,18 +42,18 @@ class StoryExplorerViewController: UIViewController {
         if let friendStory = friendStory {
             profileImageView.sd_setImage(with: URL(string: friendStory.userModel.profilePictureURL), completed: nil)
             profileName.text = friendStory.userModel.name
-            storyIndexNumber.text = "\(index + 1)"
             let noOfStories = friendStory.stories?.count ?? 0
             for _ in 0..<noOfStories {
                 let progressView = UIProgressView()
                 progressView.backgroundColor = .lightGray
                 progressView.trackTintColor = .lightGray
-                progressView.progressTintColor = .darkGray
+                progressView.progressTintColor = .black
                 progressView.progress = 0.0
                 progressView.layer.cornerRadius = 2.0
                 progressStackView.addArrangedSubview(progressView)
             }
         }
     }
+    
     
 }
