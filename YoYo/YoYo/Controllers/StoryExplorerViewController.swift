@@ -22,6 +22,9 @@ class StoryExplorerViewController: UIViewController {
     
     var friendStory: FriendStory?
     
+    private var index = 0
+    private var totalStories = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -42,8 +45,8 @@ class StoryExplorerViewController: UIViewController {
         if let friendStory = friendStory {
             profileImageView.sd_setImage(with: URL(string: friendStory.userModel.profilePictureURL), completed: nil)
             profileName.text = friendStory.userModel.name
-            let noOfStories = friendStory.stories?.count ?? 0
-            for _ in 0..<noOfStories {
+            totalStories = friendStory.stories?.count ?? 0
+            for _ in 0..<totalStories {
                 let progressView = UIProgressView()
                 progressView.backgroundColor = .lightGray
                 progressView.trackTintColor = .lightGray
