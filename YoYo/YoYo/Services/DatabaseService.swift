@@ -17,6 +17,10 @@ protocol RegistrationForFriendsList {
     func changeDetected(status: Bool)
 }
 
+protocol RegistrationForStories {
+    func changeDetected(status: Bool)
+}
+
 class DatabaseService {
     private let db = Firestore.firestore()
     private let USER_COLLECTION = "users"
@@ -24,6 +28,7 @@ class DatabaseService {
     private let STORY_COLLECTION = "stories"
     var userModelDelegate: UserModelDelegate?
     var registrationFriendsListDelegate: RegistrationForFriendsList?
+    var registrationForStoriesDelegate: RegistrationForStories?
     
     public func saveUserModel(user: UserModel) {
         do {
@@ -122,6 +127,17 @@ class DatabaseService {
                 self.registrationFriendsListDelegate?.changeDetected(status: true)
             } else {
                 self.registrationFriendsListDelegate?.changeDetected(status: true)
+            }
+        }
+        return listener
+    }
+    
+    public func registerForStories(uids: [String]) -> ListenerRegistration {
+        let listener = db.collection(STORY_COLLECTION).whereField("uid", in: uids).addSnapshotListener { (querySnapshot, error) in
+            if let _ = error {
+                self.registrationForStoriesDelegate?.changeDetected(status: false)
+            } else {
+                self.registrationForStoriesDelegate?.changeDetected(status: true)
             }
         }
         return listener

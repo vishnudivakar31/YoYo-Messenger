@@ -8,6 +8,7 @@
 import UIKit
 import AVKit
 import SDWebImage
+import Firebase
 
 struct UploadAsset {
     var data:Data
@@ -27,6 +28,8 @@ class StoriesViewController: UIViewController {
     private let imagePicker = UIImagePickerController()
     private let storyService = StoryService()
     
+    private var listnerForStory: ListenerRegistration?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,13 @@ class StoriesViewController: UIViewController {
         storyService.fetchMyStories()
         storyService.fetchMyFriendsStories()
         toggleMyStory(status: myStories.count > 0)
+        storyService.registerForStories()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let listnerForStory = listnerForStory {
+            listnerForStory.remove()
+        }
     }
     
     private func setupView() {
@@ -151,6 +161,17 @@ extension StoriesViewController: UIImagePickerControllerDelegate, UINavigationCo
 
 // MARK:- StoryDelegate Methods
 extension StoriesViewController: StoryDelegate {
+    func registerForStories(listener: ListenerRegistration) {
+        self.listnerForStory = listener
+    }
+    
+    func changeDetected(status: Bool) {
+        if status {
+            self.storyService.fetchMyStories()
+            self.storyService.fetchMyFriendsStories()
+        }
+    }
+    
     func fetchFriendsStory(stories: [FriendStory]?, error: Error?) {
         if let error = error {
             self.presentAlert(title: "Stories", msg: error.localizedDescription)

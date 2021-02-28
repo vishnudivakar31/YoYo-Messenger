@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import Firebase
 
 protocol StoryDelegate {
     func fetchMyStory(stories: [Story]?, error: Error?)
     func fetchFriendsStory(stories: [FriendStory]?, error: Error?)
+    func registerForStories(listener: ListenerRegistration)
+    func changeDetected(status: Bool)
 }
 
 class StoryService {
@@ -89,4 +92,24 @@ class StoryService {
         }
     }
     
+    func registerForStories() {
+        let uid = authenticationService.getUserID()!
+        databaseService.registrationForStoriesDelegate = self
+        databaseService.fetchFriendsList(uid: uid) { (friendsList, error) in
+            if let friendsList = friendsList {
+                var uids: [String] = friendsList.friends.compactMap { return $0.uid }
+                uids.append(uid)
+                let listener = self.databaseService.registerForStories(uids: uids)
+                self.delegate?.registerForStories(listener: listener)
+            }
+        }
+    }
+
+}
+
+// MARK:- Registration for stories delegate
+extension StoryService: RegistrationForStories {
+    func changeDetected(status: Bool) {
+        self.delegate?.changeDetected(status: status)
+    }
 }
