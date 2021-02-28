@@ -99,6 +99,11 @@ class StoriesViewController: UIViewController {
             if let uploadAsset = sender as? UploadAsset {
                 viewController.assetData = uploadAsset
             }
+        } else if segue.destination is StoryExplorerViewController {
+            let viewController = segue.destination as! StoryExplorerViewController
+            if let friendStory = sender as? FriendStory {
+                viewController.friendStory = friendStory
+            }
         }
     }
     
@@ -204,5 +209,10 @@ extension StoriesViewController: UITableViewDelegate, UITableViewDataSource {
         cell.friendName.text = friendStory.userModel.name
         cell.friendImageView.sd_setImage(with: URL(string: friendStory.userModel.profilePictureURL), completed: nil)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let friendStory = self.tableStories[indexPath.row]
+        performSegue(withIdentifier: "GoToStory", sender: friendStory)
     }
 }
