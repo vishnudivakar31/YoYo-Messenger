@@ -111,7 +111,7 @@ class StoryExplorerViewController: UIViewController {
         let asset = AVURLAsset(url: URL(string: story.assetURL)!)
         let delay = asset.duration.seconds
         let progressView = progressStackView.subviews[index] as! UIProgressView
-        storyIndexNumber.text = "\(delay) seconds"
+        storyIndexNumber.text = "\(round(delay)) seconds"
         
         storyImageView.isHidden = true
         if let playerLayer = playerLayer {
