@@ -24,11 +24,15 @@ class StoryExplorerViewController: UIViewController {
     
     private var index = 0
     private var totalStories = 0
+    private var timer: Timer?
+    private let player = AVPlayer()
+    private var playerLayer: AVPlayerLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         loadDataToView()
+        playStoryAt(index: index)
     }
     
     private func setupView() {
@@ -39,6 +43,11 @@ class StoryExplorerViewController: UIViewController {
         profileImageView.clipsToBounds = true
         titleAndViewsView.layer.cornerRadius = 5.0
         progressStackView.layer.cornerRadius = 2.0
+        
+        playerLayer = AVPlayerLayer(player: player)
+        playerLayer!.frame = self.view.bounds
+        playerLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        view.layer.insertSublayer(playerLayer!, at: 0)
     }
     
     private func loadDataToView() {
@@ -58,5 +67,74 @@ class StoryExplorerViewController: UIViewController {
         }
     }
     
+    private func playStoryAt(index: Int) {
+        if index == totalStories {
+            if let nav = self.navigationController {
+                nav.popViewController(animated: true)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+            return
+        }
+        
+        if let friendStory = friendStory, let stories = friendStory.stories {
+            let story = stories[index]
+            storyTitle.text = story.title
+            viewsCountLabel.text = "\(story.viewedBy.count) views"
+            if story.mediaType == .IMAGE {
+                showStoryImage(story: story, index: index)
+            } else {
+                showStoryVideo(story: story, index: index)
+            }
+        }
+    }
+    
+    private func showStoryImage(story: Story, index: Int) {
+        let delay = 5.0
+        let progressView = progressStackView.subviews[index] as! UIProgressView
+        storyIndexNumber.text = "\(delay) seconds"
+        
+        storyImageView.isHidden = false
+        
+        if let playerLayer = playerLayer {
+            playerLayer.isHidden = true
+        }
+        
+        storyImageView.sd_setImage(with: URL(string: story.assetURL)) { (_, error, _, _) in
+            if error == nil {
+                self.generateProgess(progressView: progressView, delay: delay)
+            }
+        }
+    }
+    
+    private func showStoryVideo(story: Story, index: Int) {
+        let asset = AVURLAsset(url: URL(string: story.assetURL)!)
+        let delay = asset.duration.seconds
+        let progressView = progressStackView.subviews[index] as! UIProgressView
+        storyIndexNumber.text = "\(delay) seconds"
+        
+        storyImageView.isHidden = true
+        if let playerLayer = playerLayer {
+            playerLayer.isHidden = false
+        }
+        
+        player.replaceCurrentItem(with: AVPlayerItem(asset: asset))
+        player.play()
+        
+        generateProgess(progressView: progressView, delay: delay)
+    }
+    
+    private func generateProgess(progressView: UIProgressView, delay: Double) {
+        var count = 0.0
+        self.timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { timer in
+            count += 0.001
+            progressView.progress = Float(count / delay)
+            if count >= delay {
+                timer.invalidate()
+                self.index += 1
+                self.playStoryAt(index: self.index)
+            }
+        }
+    }
     
 }
