@@ -60,6 +60,13 @@ class StoryService {
         }
     }
     
+    func fetchMyUserModel(completionHandler: @escaping (_ userModel: UserModel?) -> ()) {
+        let uid = authenticationService.getUserID()!
+        self.fetchUserModel(uid: uid) { (userModel) in
+            completionHandler(userModel)
+        }
+    }
+    
     func fetchMyFriendsStories() {
         let uid = authenticationService.getUserID()!
         databaseService.fetchFriendsList(uid: uid) { (friendsList, error) in

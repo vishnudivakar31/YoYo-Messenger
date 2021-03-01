@@ -108,6 +108,12 @@ class StoriesViewController: UIViewController {
     }
     
     @IBAction func showMyStoriesTapped(_ sender: Any) {
+        storyService.fetchMyUserModel { (userModel) in
+            if let userModel = userModel {
+                let friendStory = FriendStory(userModel: userModel, stories: self.myStories)
+                self.performSegue(withIdentifier: "GoToStory", sender: friendStory)
+            }
+        }
     }
     
     @IBAction func addStoriesTapped(_ sender: Any) {
