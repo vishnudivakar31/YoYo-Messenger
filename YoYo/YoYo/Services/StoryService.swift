@@ -111,6 +111,17 @@ class StoryService {
             }
         }
     }
+    
+    func addViews(story: Story, completionHandler: @escaping (_ error: Error?) -> ()) {
+        let uid = authenticationService.getUserID()!
+        if uid != story.uid && !story.viewedBy.contains(uid) {
+            var updatedStory = story
+            updatedStory.viewedBy.append(uid)
+            databaseService.updateStory(story: updatedStory) { (error) in
+                completionHandler(error)
+            }
+        }
+    }
 
 }
 

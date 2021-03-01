@@ -183,9 +183,12 @@ class FriendService {
         }
     }
     
-    func registerForFriendsList() -> ListenerRegistration {
+    func registerForFriendsList() -> ListenerRegistration? {
         databaseService.registrationFriendsListDelegate = self
-        return databaseService.registerForFriendsList(uid: authenticationService.getUserID()!)
+        if let uid = authenticationService.getUserID() {
+            return databaseService.registerForFriendsList(uid: uid)
+        }
+        return nil
     }
     
 }

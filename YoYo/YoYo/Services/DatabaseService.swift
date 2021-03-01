@@ -234,5 +234,14 @@ class DatabaseService {
             }
         }
     }
+    
+    public func updateStory(story: Story, completionHandler: @escaping (_ error: Error?) -> ()) {
+        do {
+            try db.collection(STORY_COLLECTION).document(story.id!).setData(from: story)
+            completionHandler(nil)
+        } catch {
+            completionHandler(error)
+        }
+    }
         
 }

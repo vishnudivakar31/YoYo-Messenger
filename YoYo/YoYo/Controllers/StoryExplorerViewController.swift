@@ -27,6 +27,7 @@ class StoryExplorerViewController: UIViewController {
     private var timer: Timer?
     private let player = AVPlayer()
     private var playerLayer: AVPlayerLayer?
+    private let storyService = StoryService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,6 +124,11 @@ class StoryExplorerViewController: UIViewController {
             let story = stories[index]
             storyTitle.text = story.title
             viewsCountLabel.text = "\(story.viewedBy.count) views"
+            self.storyService.addViews(story: story) { (error) in
+                if let error = error {
+                    self.presentAlert(title: "Updating views", msg: error.localizedDescription)
+                }
+            }
             if story.mediaType == .IMAGE {
                 showStoryImage(story: story, index: index)
             } else {
@@ -177,6 +183,13 @@ class StoryExplorerViewController: UIViewController {
                 self.playStoryAt(index: self.index)
             }
         }
+    }
+    
+    private func presentAlert(title: String, msg: String) {
+        let alertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
     
 }
