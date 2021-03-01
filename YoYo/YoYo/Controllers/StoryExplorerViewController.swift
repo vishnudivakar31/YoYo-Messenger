@@ -48,6 +48,18 @@ class StoryExplorerViewController: UIViewController {
         playerLayer!.frame = self.view.bounds
         playerLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
         view.layer.insertSublayer(playerLayer!, at: 0)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(quitThisView))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
+    }
+    
+    @objc private func quitThisView() {
+        if let nav = self.navigationController {
+            nav.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     private func loadDataToView() {
@@ -69,11 +81,7 @@ class StoryExplorerViewController: UIViewController {
     
     private func playStoryAt(index: Int) {
         if index == totalStories {
-            if let nav = self.navigationController {
-                nav.popViewController(animated: true)
-            } else {
-                self.dismiss(animated: true, completion: nil)
-            }
+            quitThisView()
             return
         }
         
