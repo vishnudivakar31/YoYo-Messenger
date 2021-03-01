@@ -833,11 +833,63 @@
                         <outlet property="storyTitle" destination="PW3-tw-v5w" id="LAT-RJ-OB5"/>
                         <outlet property="titleAndViewsView" destination="QJf-2t-aXz" id="HYl-Qm-sZ1"/>
                         <outlet property="viewsCountLabel" destination="HlV-ha-I2K" id="wVG-uH-g3V"/>
+                        <segue destination="jpc-eb-ug1" kind="presentation" identifier="GoToViews" id="YzI-Zw-jsb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btP-3i-fGu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3263.7681159420295" y="762.72321428571422"/>
+        </scene>
+        <!--Story View By View Controller-->
+        <scene sceneID="cTO-5V-hOL">
+            <objects>
+                <viewController id="jpc-eb-ug1" customClass="StoryViewByViewController" customModule="YoYo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q33-eR-z2w">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="127" translatesAutoresizingMaskIntoConstraints="NO" id="1QD-ZU-3AC">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viewed by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4z9-1E-FVk">
+                                        <rect key="frame" x="8" y="10" width="398" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.4549019608" green="0.72549019609999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <edgeInsets key="layoutMargins" top="10" left="8" bottom="10" right="8"/>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H6F-tG-AZL">
+                                <rect key="frame" x="0.0" y="44" width="414" height="764"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexTrackingBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OIf-jp-8ZN"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OIf-jp-8ZN" firstAttribute="trailing" secondItem="H6F-tG-AZL" secondAttribute="trailing" id="B94-qs-Zv0"/>
+                            <constraint firstItem="H6F-tG-AZL" firstAttribute="top" secondItem="1QD-ZU-3AC" secondAttribute="bottom" id="EFh-vT-tAV"/>
+                            <constraint firstItem="OIf-jp-8ZN" firstAttribute="bottom" secondItem="H6F-tG-AZL" secondAttribute="bottom" id="HF1-GE-4JM"/>
+                            <constraint firstItem="H6F-tG-AZL" firstAttribute="leading" secondItem="OIf-jp-8ZN" secondAttribute="leading" id="Zth-d2-aYo"/>
+                            <constraint firstItem="1QD-ZU-3AC" firstAttribute="top" secondItem="Q33-eR-z2w" secondAttribute="top" id="eDg-mg-9v8"/>
+                            <constraint firstItem="1QD-ZU-3AC" firstAttribute="leading" secondItem="Q33-eR-z2w" secondAttribute="leading" id="gEJ-1V-iQB"/>
+                            <constraint firstAttribute="trailing" secondItem="1QD-ZU-3AC" secondAttribute="trailing" id="geg-G6-5E3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="H6F-tG-AZL" id="WEY-gz-bGk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8w2-3B-aTj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4125" y="762"/>
         </scene>
         <!--Chats-->
         <scene sceneID="WJ7-wL-ydk">
