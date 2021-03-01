@@ -52,13 +52,47 @@ class StoryExplorerViewController: UIViewController {
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(quitThisView))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureHandler(_:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func tapGestureHandler(_ sender: UITapGestureRecognizer) {
+        player.pause()
+        if let timer = timer {
+            timer.invalidate()
+        }
+        let touchPoint = sender.location(in: self.view)
+        let originalIndex = self.index
+        if touchPoint.x <= self.view.center.x {
+            self.index -= 1
+        } else {
+            self.index += 1
+        }
+        let progressView = progressStackView.subviews[originalIndex] as! UIProgressView
+        if originalIndex > self.index {
+            progressView.progress = 0
+        } else {
+            progressView.progress = 1
+        }
+        
+        self.playStoryAt(index: self.index)
     }
     
     @objc private func quitThisView() {
         if let nav = self.navigationController {
+            invalidateAllResources()
             nav.popViewController(animated: true)
         } else {
+            invalidateAllResources()
             self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    private func invalidateAllResources() {
+        player.pause()
+        if let timer = timer {
+            timer.invalidate()
         }
     }
     
@@ -80,7 +114,7 @@ class StoryExplorerViewController: UIViewController {
     }
     
     private func playStoryAt(index: Int) {
-        if index == totalStories {
+        if index == totalStories || index < 0 {
             quitThisView()
             return
         }
