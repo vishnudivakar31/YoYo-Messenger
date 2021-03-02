@@ -73,6 +73,9 @@ class StoryExplorerViewController: UIViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureHandler(_:)))
         self.view.addGestureRecognizer(tapGesture)
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressHandler))
+        self.view.addGestureRecognizer(longPress)
     }
     
     @objc private func showMyViews() {
@@ -105,6 +108,15 @@ class StoryExplorerViewController: UIViewController {
         }
         
         self.playStoryAt(index: self.index)
+    }
+    
+    @objc private func longPressHandler(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .ended {
+            self.invalidateAllResources()
+            self.playStoryAt(index: self.index)
+        } else if sender.state == .began {
+            self.invalidateAllResources()
+        }
     }
     
     @objc private func quitThisView() {
