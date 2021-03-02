@@ -9,6 +9,10 @@ import UIKit
 import SDWebImage
 import AVKit
 
+protocol StoryExplorerDelegate {
+    func resume()
+}
+
 class StoryExplorerViewController: UIViewController {
 
     @IBOutlet weak var storyImageView: UIImageView!
@@ -41,6 +45,7 @@ class StoryExplorerViewController: UIViewController {
             let viewController = segue.destination as! StoryViewByViewController
             let viewedByUIDS = sender as! [String]
             viewController.viewedByUIDS = viewedByUIDS
+            viewController.storyExplorerDelegate = self
         }
     }
     
@@ -74,6 +79,7 @@ class StoryExplorerViewController: UIViewController {
         if let uid = storyService.getMyUID(), let friendStory = friendStory, let stories = friendStory.stories {
             let viewedBy = stories[self.index].viewedBy
             if uid == friendStory.userModel.userID && viewedBy.count > 0 {
+                self.invalidateAllResources()
                 self.performSegue(withIdentifier: "GoToViews", sender: viewedBy)
             }
         }
@@ -213,4 +219,12 @@ class StoryExplorerViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+}
+
+// MARK:- StoryExplorer Delegate Methods
+extension StoryExplorerViewController: StoryExplorerDelegate {
+    func resume() {
+        self.invalidateAllResources()
+        self.playStoryAt(index: self.index)
+    }
 }

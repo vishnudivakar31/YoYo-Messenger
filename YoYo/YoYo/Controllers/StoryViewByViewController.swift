@@ -16,11 +16,18 @@ class StoryViewByViewController: UIViewController {
     
     private var users: [UserModel] = []
     private let storyService = StoryService()
+    var storyExplorerDelegate: StoryExplorerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         fetchUserModels()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let delegate = storyExplorerDelegate {
+            delegate.resume()
+        }
     }
     
     private func setupTableView() {
