@@ -11,8 +11,9 @@
 An iOS messaging application for people to communicate. Phase 1 of the development is to get all basic features of a messaging application. Users can add friends and chat with them real time. It should be equipped with a basic story system when user can post a story and friends can view them in 24 hrs of posting the story. It is equipped with basic user settings like changing profile picture, reseting password and logout from the application.
 </p>
 
-### Technology Stack
-* Backend -- Serverless -- Google Firebase
+<h2>Technology Stack</h2>
+* Backend
+<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cleanpng.com%2Ffree%2Ffirebase.html&psig=AOvVaw2Av99OE-9sTBCxEeVpO3SH&ust=1614734863946000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjsqqS6kO8CFQAAAAAdAAAAABAD" />
 * Mobile -- Native -- Swift with UIKit
 
 ### Screenshots
