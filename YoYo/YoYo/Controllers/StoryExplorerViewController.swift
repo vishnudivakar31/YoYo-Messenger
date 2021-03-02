@@ -36,6 +36,14 @@ class StoryExplorerViewController: UIViewController {
         playStoryAt(index: index)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is StoryViewByViewController {
+            let viewController = segue.destination as! StoryViewByViewController
+            let viewedByUIDS = sender as! [String]
+            viewController.viewedByUIDS = viewedByUIDS
+        }
+    }
+    
     private func setupView() {
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.masksToBounds = false
@@ -54,8 +62,21 @@ class StoryExplorerViewController: UIViewController {
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
         
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(showMyViews))
+        swipeUp.direction = .up
+        self.view.addGestureRecognizer(swipeUp)
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureHandler(_:)))
         self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func showMyViews() {
+        if let uid = storyService.getMyUID(), let friendStory = friendStory, let stories = friendStory.stories {
+            let viewedBy = stories[self.index].viewedBy
+            if uid == friendStory.userModel.userID && viewedBy.count > 0 {
+                self.performSegue(withIdentifier: "GoToViews", sender: viewedBy)
+            }
+        }
     }
     
     @objc private func tapGestureHandler(_ sender: UITapGestureRecognizer) {

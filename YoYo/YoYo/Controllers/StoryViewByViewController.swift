@@ -20,6 +20,7 @@ class StoryViewByViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        fetchUserModels()
     }
     
     private func setupTableView() {

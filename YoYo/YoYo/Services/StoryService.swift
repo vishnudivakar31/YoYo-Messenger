@@ -128,6 +128,10 @@ class StoryService {
             }
         }
     }
+    
+    func getMyUID() -> String? {
+        return authenticationService.getUserID()
+    }
 
 }
 
