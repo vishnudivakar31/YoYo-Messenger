@@ -1,5 +1,10 @@
 <h1 align="center"> YoYo Messenger </h1>
-![dev-badge](https://img.shields.io/badge/Developer-Vishnu-orange) | ![dev-badge](https://img.shields.io/badge/OpenSource-U+2665-green)
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Developer-Vishnu-orange" /> |
+  <img src="https://img.shields.io/badge/OpenSource-U+2665-green" />
+</p>
+
 
 An iOS messaging application for people to communicate.
 
