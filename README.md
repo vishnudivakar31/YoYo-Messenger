@@ -42,12 +42,13 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
 </div>
 
 <h3>Story Page</h3>
-<p align="center">
-  <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/story.gif" />
-</p>
 <div>
   <p align="justify">
     Users can post stories either an image or a video of less than 60 seconds. All stories expire after 24 hours. Users can skip to previous or next story by tapping left or right side of the screen. User can pause the story by holding the screen and can dismiss the view by swiping down. User can view the viewers of story when user is viewing own stories. All story showcases a minimum details like title of the story, duration of the story and total views of the story.
+  </p>
+  <p align="center">Story Demo</p>
+  <p align="center">
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/story.gif" />
   </p>
   <p align="center">
     <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/story_view.png" />
