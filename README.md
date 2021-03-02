@@ -41,6 +41,16 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
   </p>
 </div>
 
+<h3>Settings Page</h3>
+<div>
+  <p align="justify">
+    User can change profile picture, name, request for a password reset and logout from the application from the settings page.
+  </p>
+  <p align="center">
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/settings_page.PNG" />
+  </p>
+</div>
+
 <h3>Friends Page</h3>
 <div>
   <p align="justify">
@@ -49,14 +59,7 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
   <p align="center">
     <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/cancel_friend_request.PNG" />
     <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/normal_friend_view.PNG" />
-    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/search_friends.PNG" />
     <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/unblock_view.PNG" />
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/search_friends.PNG" />
   </p>
 </div>
-
-### Screenshots
-
-
-| Unblock Blocked friends  | Setting View |
-| ------------- | ------------- |
-| ![Image of Unblock Friend View]()  | ![Image of settings view](https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/settings_page.PNG)  |
