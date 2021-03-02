@@ -11,17 +11,16 @@
 An iOS messaging application for people to communicate. Phase 1 of the development is to get all basic features of a messaging application. Users can add friends and chat with them real time. It should be equipped with a basic story system when user can post a story and friends can view them in 24 hrs of posting the story. It is equipped with basic user settings like changing profile picture, reseting password and logout from the application.
 </p>
 
-<h2>Technology Stack</h2>
-<p>
-Server: <img src="https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png" />
-Mobile: iOS, Swift
+<h3>Landing Page</h3>
+<p align="justify">
+  Application when launched the user will be presented with the below landing page. User can login or create an account. It is intended as a brand page with application name and motto.
+  <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/landing_page.PNG" />
 </p>
-* Mobile -- Native -- Swift with UIKit
 
 ### Screenshots
 | Landing Page  | Create Account Page | Sign-in Page  |
 | ------------- | ------------- | ------------- |
-| ![Image of landing page](https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/landing_page.PNG)  | ![Image of create account](https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/create_account.PNG)  |  ![Image of sign-in page](https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/signin_page.PNG)  |
+| ![Image of landing page]()  | ![Image of create account](https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/create_account.PNG)  |  ![Image of sign-in page](https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/signin_page.PNG)  |
 
 | Search for Friends | Cancel friend request  | Normal friends actions |
 | ------------- | ------------- | ------------- |
