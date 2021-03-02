@@ -42,9 +42,11 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
 </div>
 
 <h3>Story Page</h3>
+<p align="center">
 
 ![Demo](https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/story.gif)
 
+</p>
 <div>
   <p align="justify">
     User need to use registered email and password to login to the application. If login is successful, application will store credentials in core data and later use it to automatically login the user if the user biometric security is successful. User can generate a reset password email by providing the registered email account.
