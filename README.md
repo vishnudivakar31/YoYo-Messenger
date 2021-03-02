@@ -12,10 +12,12 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
 </p>
 
 <h3>Landing Page</h3>
-<p align="justify">
-  Application when launched the user will be presented with the below landing page. User can login or create an account. It is intended as a brand page with application name and motto.
+<div>
+  <p align="justify">
+    Application when launched the user will be presented with the below landing page. User can login or create an account. It is intended as a brand page with application name and motto.
+  </p>
   <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/landing_page.PNG" />
-</p>
+</div>
 
 ### Screenshots
 | Landing Page  | Create Account Page | Sign-in Page  |
