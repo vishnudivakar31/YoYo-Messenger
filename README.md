@@ -7,8 +7,9 @@
   <img src="https://img.shields.io/badge/DevState-Phase_1-blue" />
 </p>
 
-
+<p align="justify">
 An iOS messaging application for people to communicate. Phase 1 of the development is to get all basic features of a messaging application. Users can add friends and chat with them real time. It should be equipped with a basic story system when user can post a story and friends can view them in 24 hrs of posting the story. It is equipped with basic user settings like changing profile picture, reseting password and logout from the application.
+</p>
 
 ### Technology Stack
 * Backend -- Serverless -- Google Firebase
