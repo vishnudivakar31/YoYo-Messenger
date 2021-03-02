@@ -849,20 +849,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="127" translatesAutoresizingMaskIntoConstraints="NO" id="1QD-ZU-3AC">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viewed by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4z9-1E-FVk">
-                                        <rect key="frame" x="8" y="10" width="398" height="24"/>
+                                        <rect key="frame" x="8" y="15" width="398" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.4549019608" green="0.72549019609999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <edgeInsets key="layoutMargins" top="10" left="8" bottom="10" right="8"/>
+                                <edgeInsets key="layoutMargins" top="15" left="8" bottom="15" right="8"/>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H6F-tG-AZL">
-                                <rect key="frame" x="0.0" y="44" width="414" height="764"/>
+                                <rect key="frame" x="0.0" y="54" width="414" height="754"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
