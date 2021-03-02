@@ -1,25 +1,18 @@
 <h1 align="center"> YoYo Messenger </h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Developer-Vishnu-orange" />
+  <img src="https://img.shields.io/badge/Developer-Vishnu_Divakar-orange" />
   <img src="https://img.shields.io/badge/OpenSource-Love_it-green" />
   <img src="https://img.shields.io/badge/Users-3-yellow" />
   <img src="https://img.shields.io/badge/DevState-Phase_1-blue" />
 </p>
 
 
-An iOS messaging application for people to communicate.
+An iOS messaging application for people to communicate. Phase 1 of the development is to get all basic features of a messaging application. Users can add friends and chat with them real time. It should be equipped with a basic story system when user can post a story and friends can view them in 24 hrs of posting the story. It is equipped with basic user settings like changing profile picture, reseting password and logout from the application.
 
 ### Technology Stack
 * Backend -- Serverless -- Google Firebase
 * Mobile -- Native -- Swift with UIKit
-
-### Implemented Features
-1. User can login with a valid email and password (Email has to be verified to login)
-2. User can upload profile picture, fill in name and DOB. (User should be minimum of 14 yrs old.)
-3. User can add other valid users as Friends
-4. User can cancel request, unfriend, block and unblock other users.
-5. User can edit name, request for password reset and change profile picture from settings page.
 
 ### Screenshots
 | Landing Page  | Create Account Page | Sign-in Page  |
