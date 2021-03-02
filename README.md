@@ -12,8 +12,10 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
 </p>
 
 <h2>Technology Stack</h2>
-* Backend
-<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cleanpng.com%2Ffree%2Ffirebase.html&psig=AOvVaw2Av99OE-9sTBCxEeVpO3SH&ust=1614734863946000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjsqqS6kO8CFQAAAAAdAAAAABAD" />
+<p>
+Server: <img src="https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png" />
+Mobile: iOS, Swift
+</p>
 * Mobile -- Native -- Swift with UIKit
 
 ### Screenshots
