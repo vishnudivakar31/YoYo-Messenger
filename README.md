@@ -65,6 +65,4 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
 </div>
 
 <h4>Phase 1 - Pending Features</h4>
-<ul>
-  <li style="color:orange;">Messaging Services</li>
-</ul>
+<span style="color: orange;">Messaging Services</span>
