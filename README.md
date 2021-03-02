@@ -63,3 +63,8 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
     <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/search_friends.PNG" />
   </p>
 </div>
+
+<h3>Phase 1 - Pending Features</h3>
+<ul>
+  <li>Messaging Services</li>
+</ul>
