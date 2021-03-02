@@ -1,8 +1,8 @@
 <h1 align="center"> YoYo Messenger </h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Developer-Vishnu-orange" /> |
-  <img src="https://img.shields.io/badge/OpenSource-U+2665-green" />
+  <img src="https://img.shields.io/badge/Developer-Vishnu-orange" />
+  <img src="https://img.shields.io/badge/OpenSource-❤️-green" />
 </p>
 
 
