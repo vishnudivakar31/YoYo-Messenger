@@ -47,9 +47,10 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
     The friends tab of application present user with default view of a list of friends. User can add friends by searching for other users by partially providing their name or email and send friend request to them. User have couple of actions they can perform on his/her friends like cancel the friend request, unfriend, block and unblock.  
   </p>
   <div style="display:flex; justifyContent:space-around;">
-    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/search_friends.PNG" width="30%" />
-    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/cancel_friend_request.PNG" width="30%" />
-    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/normal_friend_view.PNG" width="30%" />
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/cancel_friend_request.PNG" />
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/normal_friend_view.PNG" />
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/search_friends.PNG" />
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/unblock_view.PNG" />
   </div>
 </div>
 
@@ -58,4 +59,4 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
 
 | Unblock Blocked friends  | Setting View |
 | ------------- | ------------- |
-| ![Image of Unblock Friend View](https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/unblock_view.PNG)  | ![Image of settings view](https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/settings_page.PNG)  |
+| ![Image of Unblock Friend View]()  | ![Image of settings view](https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/settings_page.PNG)  |
