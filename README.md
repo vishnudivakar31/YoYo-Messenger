@@ -67,5 +67,5 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
 <h4>Phase 1 - Pending Features</h4>
 
 ```diff
-@@ Messaging Services
++ Messaging Services
 ```
