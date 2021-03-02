@@ -3,6 +3,8 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Developer-Vishnu-orange" />
   <img src="https://img.shields.io/badge/OpenSource-Love_it-green" />
+  <img src="https://img.shields.io/badge/Users-3-yellow" />
+  <img src="https://img.shields.io/badge/DevState-Phase_1-blue" />
 </p>
 
 
