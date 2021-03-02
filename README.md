@@ -48,8 +48,8 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
   </p>
   <div style="display:flex; justifyContent:space-between;">
     <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/search_friends.PNG" width="30%" />
-    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/cancel_friend_request.PNG" />
-    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/normal_friend_view.PNG" />
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/cancel_friend_request.PNG" width="30%" />
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/normal_friend_view.PNG" width="30%" />
   </div>
 </div>
 
