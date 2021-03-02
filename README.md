@@ -41,6 +41,19 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
   </p>
 </div>
 
+<h3>Story Page</h3>
+
+![Demo](https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/story.gif)
+
+<div>
+  <p align="justify">
+    User need to use registered email and password to login to the application. If login is successful, application will store credentials in core data and later use it to automatically login the user if the user biometric security is successful. User can generate a reset password email by providing the registered email account.
+  </p>
+  <p align="center">
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/signin_page.PNG" />
+  </p>
+</div>
+
 <h3>Settings Page</h3>
 <div>
   <p align="justify">
