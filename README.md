@@ -43,16 +43,17 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
 
 <h3>Story Page</h3>
 <p align="center">
-
-![Demo](https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/story.gif)
-
+  <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/story.gif" />
 </p>
 <div>
   <p align="justify">
-    User need to use registered email and password to login to the application. If login is successful, application will store credentials in core data and later use it to automatically login the user if the user biometric security is successful. User can generate a reset password email by providing the registered email account.
+    Users can post stories either an image or a video of less than 60 seconds. All stories expire after 24 hours. Users can skip to previous or next story by tapping left or right side of the screen. User can pause the story by holding the screen and can dismiss the view by swiping down. User can view the viewers of story when user is viewing own stories. All story showcases a minimum details like title of the story, duration of the story and total views of the story.
   </p>
   <p align="center">
-    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/signin_page.PNG" />
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/story_view.png" />
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/friends_story.png" />
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/own_story.png" />
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/viewed_by.png" />
   </p>
 </div>
 
