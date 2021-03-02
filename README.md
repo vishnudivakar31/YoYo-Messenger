@@ -65,4 +65,4 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
 </div>
 
 <h4>Phase 1 - Pending Features</h4>
-<span style="color: orange;">Messaging Services</span>
+- ![#ff7675](https://via.placeholder.com/15/ff7675/000000?text=+) `Messaging Services`
