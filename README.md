@@ -21,10 +21,27 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
   </p>
 </div>
 
+<h3>Create Account Page</h3>
+<div>
+  <p align="justify">
+    Users should register with the platform to be a valid user. We collect information like name, email, password, date of birth and a profile picture. User need to be at least 14 years old to register. Once user register successfully, an automated verification email will be send to your registered email, user should be verified before logging in.
+  </p>
+  <p align="center">
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/create_account.PNG" />
+  </p>
+</div>
+
+<h3>Login Page</h3>
+<div>
+  <p align="justify">
+    User need to use registered email and password to login to the application. If login is successful, application will store credentials in core data and later use it to automatically login the user if the user biometric security is successful. User can generate a reset password email by providing the registered email account. 
+  </p>
+  <p align="center">
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/signin_page.PNG" />
+  </p>
+</div>
+
 ### Screenshots
-| Landing Page  | Create Account Page | Sign-in Page  |
-| ------------- | ------------- | ------------- |
-| ![Image of landing page]()  | ![Image of create account](https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/create_account.PNG)  |  ![Image of sign-in page](https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/signin_page.PNG)  |
 
 | Search for Friends | Cancel friend request  | Normal friends actions |
 | ------------- | ------------- | ------------- |
