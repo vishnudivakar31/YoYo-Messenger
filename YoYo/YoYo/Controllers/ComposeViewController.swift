@@ -47,7 +47,7 @@ extension ComposeViewController: MessageServiceDelegate {
             self.userModels = []
             presentAlert(title: "Friends", msg: error.localizedDescription)
         } else if let userModels = friends {
-            self.userModels = userModels
+            self.userModels = userModels.sorted(by: { $0.name < $1.name })
         }
         self.tableView.reloadData()
     }
@@ -66,4 +66,10 @@ extension ComposeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.friendImageView.sd_setImage(with: URL(string: user.profilePictureURL), completed: nil)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = userModels[indexPath.row]
+        print(user.name)
+    }
+    
 }
