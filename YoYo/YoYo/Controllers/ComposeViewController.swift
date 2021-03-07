@@ -10,13 +10,19 @@ import UIKit
 class ComposeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     private let messagingService = MessagingService()
     private var userModels:[UserModel] = []
+    private var searchResultBuffer:[UserModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         messagingService.delegate = self
+        searchBar.delegate = self
+        if let textField = searchBar.value(forKey: "searchField") as? UITextField {
+            textField.textColor = .black
+        }
         setupTableView()
         messagingService.getMyFriends()
     }
@@ -71,5 +77,29 @@ extension ComposeViewController: UITableViewDelegate, UITableViewDataSource {
         let user = userModels[indexPath.row]
         print(user.name)
     }
+
+}
+
+// MARK:- UISearchBar Delegate Methods
+extension ComposeViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.resignFirstResponder()
+        if self.searchResultBuffer.count == 0 {
+            self.searchResultBuffer = self.userModels
+        }
+        let searchText = searchBar.text ?? ""
+        if searchText.count > 0 {
+            self.userModels = self.searchResultBuffer.filter { $0.name.contains(searchText.lowercased()) || $0.userEmail.contains(searchText.lowercased()) }
+            self.tableView.reloadData()
+        }
+    }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count == 0 {
+            self.resignFirstResponder()
+            self.userModels = self.searchResultBuffer
+            self.searchResultBuffer = []
+            self.tableView.reloadData()
+        }
+    }
 }
