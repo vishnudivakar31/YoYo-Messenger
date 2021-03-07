@@ -11,6 +11,7 @@ class MessageViewController: UIViewController {
 
     @IBOutlet weak var bottomStackView: UIStackView!
     @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,20 +28,29 @@ class MessageViewController: UIViewController {
         let uiToolBar = UIToolbar()
         uiToolBar.sizeToFit()
         
+        let uiFlexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
         let uiDoneBarItem = UIBarButtonItem(title: "Done", style: .done, target: nil, action: #selector(dismissKeyBoard))
-        uiToolBar.items = [uiDoneBarItem]
+        uiToolBar.items = [uiFlexibleSpace, uiDoneBarItem]
         
         messageTextView.inputAccessoryView = uiToolBar
         messageTextView.backgroundColor = .white
         messageTextView.textColor = .black
         messageTextView.layer.borderWidth = 1.0
         messageTextView.layer.borderColor = .init(red: 1, green: 1, blue: 1, alpha: 0.8)
-        messageTextView.layer.cornerRadius = 5.0
+        messageTextView.layer.cornerRadius = 10.0
     }
 
     private func addKeyboardObserverMethods() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func animateBottomView(constant: CGFloat) {
+        UIView.animate(withDuration: 1) {
+            self.bottomConstraint.constant = constant
+            self.view.layoutIfNeeded()
+        }
     }
     
     @objc func dismissKeyBoard() {
@@ -50,12 +60,16 @@ class MessageViewController: UIViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
                return
-            }
-        self.view.frame.origin.y = 0 - keyboardSize.height
+        }
+        if self.bottomConstraint.constant != 0 {
+            self.animateBottomView(constant: self.bottomConstraint.constant + keyboardSize.height)
+        }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y = 0
+        if self.bottomConstraint.constant != 0 {
+            self.animateBottomView(constant: 0)
+        }
     }
 
 }

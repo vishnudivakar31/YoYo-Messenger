@@ -1138,6 +1138,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomConstraint" destination="0eg-pH-2eU" id="nQL-XR-Ua0"/>
                         <outlet property="bottomStackView" destination="rHB-Ue-9cf" id="oFg-eM-CLg"/>
                         <outlet property="messageTextView" destination="rmr-sH-jfZ" id="w9B-rg-6Z3"/>
                     </connections>
