@@ -67,7 +67,7 @@ class MessageViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-        tableView.backgroundColor = .lightGray
+        tableView.backgroundColor = UIColor(cgColor: CGColor(red: 223/255, green: 230/255, blue: 233/255, alpha: 1.0))
         tableView.rowHeight = 80
     }
 
@@ -112,7 +112,7 @@ class MessageViewController: UIViewController {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
                return
         }
-        if self.bottomConstraint.constant != 0 {
+        if self.bottomConstraint.constant == 0 {
             self.animateBottomView(constant: self.bottomConstraint.constant + keyboardSize.height)
         }
     }
