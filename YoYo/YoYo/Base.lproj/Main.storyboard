@@ -1057,6 +1057,9 @@
                                                     <imageReference key="image" image="phone.circle.fill" catalog="system" symbolScale="large"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="callButtonTapped:" destination="h29-WC-T4u" eventType="touchUpInside" id="ZIC-rF-ec7"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTe-Ix-T7W" userLabel="Video Call Button">
                                                 <rect key="frame" x="49.5" y="0.0" width="39.5" height="60"/>
@@ -1065,6 +1068,9 @@
                                                     <imageReference key="image" image="video.circle.fill" catalog="system" symbolScale="large"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="videoCallTapped:" destination="h29-WC-T4u" eventType="touchUpInside" id="n0k-1c-8kt"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcm-gW-hcT" userLabel="Video Call Button">
                                                 <rect key="frame" x="99" y="0.0" width="39.5" height="60"/>
@@ -1073,6 +1079,9 @@
                                                     <imageReference key="image" image="multiply.circle.fill" catalog="system" symbolScale="large"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="closeChatTapped:" destination="h29-WC-T4u" eventType="touchUpInside" id="wPx-qb-Ayk"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1105,6 +1114,9 @@
                                                     <imageReference key="image" image="paperclip.circle.fill" catalog="system" symbolScale="large"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="addMediaTapped:" destination="h29-WC-T4u" eventType="touchUpInside" id="cyp-a1-MKq"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cV8-gc-HpG">
                                                 <rect key="frame" x="36" y="0.0" width="26" height="50"/>
@@ -1114,6 +1126,9 @@
                                                     <imageReference key="image" image="arrowtriangle.forward.fill" catalog="system" symbolScale="large"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="sendButtonTapped:" destination="h29-WC-T4u" eventType="touchUpInside" id="K5S-WS-Kjd"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1140,7 +1155,10 @@
                     <connections>
                         <outlet property="bottomConstraint" destination="0eg-pH-2eU" id="nQL-XR-Ua0"/>
                         <outlet property="bottomStackView" destination="rHB-Ue-9cf" id="oFg-eM-CLg"/>
+                        <outlet property="friendName" destination="HBk-uH-ZMn" id="LDX-ct-jEs"/>
                         <outlet property="messageTextView" destination="rmr-sH-jfZ" id="w9B-rg-6Z3"/>
+                        <outlet property="profileImageView" destination="Cma-h8-s5o" id="R7J-O8-B01"/>
+                        <outlet property="tableView" destination="RQg-zP-qnH" id="UJv-N7-3Uq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QB9-VT-qf8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

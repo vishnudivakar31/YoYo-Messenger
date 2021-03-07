@@ -44,6 +44,13 @@ class ComposeViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is MessageViewController {
+            let viewController = segue.destination as! MessageViewController
+            viewController.userModel = (sender as! UserModel)
+        }
+    }
+    
 }
 
 // MARK:- Messaging Service Delegate Methods
@@ -75,7 +82,7 @@ extension ComposeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = userModels[indexPath.row]
-        performSegue(withIdentifier: "GoToMessageFromCompose", sender: nil)
+        performSegue(withIdentifier: "GoToMessageFromCompose", sender: user)
     }
 
 }
