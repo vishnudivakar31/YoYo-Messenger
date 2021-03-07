@@ -915,6 +915,9 @@
                                         <state key="normal" title="Compose" image="square.and.pencil" catalog="system">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Zud-cD-Qei" kind="show" identifier="GoToContactList" id="V3f-QU-GSg"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.45490196078431372" green="0.72549019607843135" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -935,7 +938,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLh-Jw-n4q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2346" y="273"/>
+            <point key="canvasLocation" x="2345" y="87"/>
+        </scene>
+        <!--Compose View Controller-->
+        <scene sceneID="pWi-TA-ONj">
+            <objects>
+                <viewController id="Zud-cD-Qei" customClass="ComposeViewController" customModule="YoYo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uea-SG-h9D">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="127" translatesAutoresizingMaskIntoConstraints="NO" id="KpO-vG-SJG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="54"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c18-hf-NkT">
+                                        <rect key="frame" x="8" y="15" width="398" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.4549019608" green="0.72549019609999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <edgeInsets key="layoutMargins" top="15" left="8" bottom="15" right="8"/>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l6W-44-VuE">
+                                <rect key="frame" x="0.0" y="54" width="414" height="788"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fJB-PI-lTw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fJB-PI-lTw" firstAttribute="trailing" secondItem="KpO-vG-SJG" secondAttribute="trailing" id="EZr-cp-bJz"/>
+                            <constraint firstItem="l6W-44-VuE" firstAttribute="top" secondItem="KpO-vG-SJG" secondAttribute="bottom" id="Ecr-9Y-fGw"/>
+                            <constraint firstItem="l6W-44-VuE" firstAttribute="leading" secondItem="fJB-PI-lTw" secondAttribute="leading" id="FLq-eF-KKE"/>
+                            <constraint firstItem="fJB-PI-lTw" firstAttribute="trailing" secondItem="l6W-44-VuE" secondAttribute="trailing" id="OAK-Np-QtC"/>
+                            <constraint firstAttribute="bottom" secondItem="l6W-44-VuE" secondAttribute="bottom" id="Yff-eC-e1V"/>
+                            <constraint firstItem="KpO-vG-SJG" firstAttribute="leading" secondItem="uea-SG-h9D" secondAttribute="leading" id="qCu-YQ-KuE"/>
+                            <constraint firstItem="KpO-vG-SJG" firstAttribute="top" secondItem="uea-SG-h9D" secondAttribute="top" id="xom-ed-pNH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Hdw-SW-9O1"/>
+                    <connections>
+                        <outlet property="tableView" destination="l6W-44-VuE" id="Wzj-zV-PDR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UUK-0Z-Y1Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3103" y="-137"/>
         </scene>
         <!--Home Tab Controller-->
         <scene sceneID="kmT-xw-PfN">
