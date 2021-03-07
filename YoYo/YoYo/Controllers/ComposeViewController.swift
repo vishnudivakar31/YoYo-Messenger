@@ -75,7 +75,7 @@ extension ComposeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = userModels[indexPath.row]
-        print(user.name)
+        performSegue(withIdentifier: "GoToMessageFromCompose", sender: nil)
     }
 
 }

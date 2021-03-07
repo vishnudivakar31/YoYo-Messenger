@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -994,11 +995,156 @@
                     <connections>
                         <outlet property="searchBar" destination="z4f-5m-yet" id="UeF-U4-9RD"/>
                         <outlet property="tableView" destination="l6W-44-VuE" id="Wzj-zV-PDR"/>
+                        <segue destination="h29-WC-T4u" kind="presentation" identifier="GoToMessageFromCompose" modalPresentationStyle="fullScreen" id="CCo-zd-eqM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UUK-0Z-Y1Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3103" y="-137"/>
+            <point key="canvasLocation" x="3112" y="-248"/>
+        </scene>
+        <!--Message View Controller-->
+        <scene sceneID="nZR-Gk-lUO">
+            <objects>
+                <viewController id="h29-WC-T4u" customClass="MessageViewController" customModule="YoYo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2L8-xZ-DFC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RQg-zP-qnH">
+                                <rect key="frame" x="0.0" y="125" width="414" height="671"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="C37-Q3-2E4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="125"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="L0G-t4-9Jt">
+                                        <rect key="frame" x="8" y="52" width="249.5" height="60"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6D-Ra-ocx">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="Cma-h8-s5o">
+                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="OuV-i0-z6G"/>
+                                                            <constraint firstAttribute="width" constant="60" id="hqK-OI-b6r"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="2QF-fv-SSU"/>
+                                                    <constraint firstItem="Cma-h8-s5o" firstAttribute="centerY" secondItem="b6D-Ra-ocx" secondAttribute="centerY" id="hpN-H5-HG5"/>
+                                                    <constraint firstItem="Cma-h8-s5o" firstAttribute="centerX" secondItem="b6D-Ra-ocx" secondAttribute="centerX" id="w6b-Na-EUa"/>
+                                                    <constraint firstAttribute="width" constant="60" id="yhs-D1-PmE"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBk-uH-ZMn">
+                                                <rect key="frame" x="70" y="0.0" width="179.5" height="60"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VRQ-Pb-m73">
+                                        <rect key="frame" x="267.5" y="52" width="138.5" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkA-Xn-yaA" userLabel="Call Button">
+                                                <rect key="frame" x="0.0" y="0.0" width="39.5" height="60"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="phone.circle.fill" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTe-Ix-T7W" userLabel="Video Call Button">
+                                                <rect key="frame" x="49.5" y="0.0" width="39.5" height="60"/>
+                                                <color key="tintColor" systemColor="systemBlueColor"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="video.circle.fill" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcm-gW-hcT" userLabel="Video Call Button">
+                                                <rect key="frame" x="99" y="0.0" width="39.5" height="60"/>
+                                                <color key="tintColor" systemColor="systemRedColor"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="multiply.circle.fill" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.4549019608" green="0.72549019609999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="13" right="8"/>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rHB-Ue-9cf">
+                                <rect key="frame" x="0.0" y="796" width="414" height="100"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" indicatorStyle="black" bouncesZoom="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="rmr-sH-jfZ">
+                                        <rect key="frame" x="8" y="8" width="326" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="WkU-fl-TjF"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                    </textView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NUD-fZ-N8n">
+                                        <rect key="frame" x="344" y="8" width="62" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhp-k2-Z4X">
+                                                <rect key="frame" x="0.0" y="0.0" width="26" height="50"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="paperclip.circle.fill" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cV8-gc-HpG">
+                                                <rect key="frame" x="36" y="0.0" width="26" height="50"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <imageReference key="image" image="arrowtriangle.forward.fill" catalog="system" symbolScale="large"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.4549019608" green="0.72549019609999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jyI-fm-GA7"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="rHB-Ue-9cf" secondAttribute="bottom" id="0eg-pH-2eU"/>
+                            <constraint firstItem="RQg-zP-qnH" firstAttribute="leading" secondItem="jyI-fm-GA7" secondAttribute="leading" id="3AI-hs-hyE"/>
+                            <constraint firstItem="C37-Q3-2E4" firstAttribute="top" secondItem="2L8-xZ-DFC" secondAttribute="top" id="8Xi-bC-4cJ"/>
+                            <constraint firstItem="rHB-Ue-9cf" firstAttribute="leading" secondItem="jyI-fm-GA7" secondAttribute="leading" id="BQP-Er-eUZ"/>
+                            <constraint firstItem="rHB-Ue-9cf" firstAttribute="top" secondItem="RQg-zP-qnH" secondAttribute="bottom" id="CDj-cO-axO"/>
+                            <constraint firstItem="jyI-fm-GA7" firstAttribute="trailing" secondItem="RQg-zP-qnH" secondAttribute="trailing" id="DCL-Ue-Efg"/>
+                            <constraint firstItem="C37-Q3-2E4" firstAttribute="leading" secondItem="jyI-fm-GA7" secondAttribute="leading" id="WdT-uz-eb4"/>
+                            <constraint firstItem="RQg-zP-qnH" firstAttribute="top" secondItem="C37-Q3-2E4" secondAttribute="bottom" id="eDK-zq-7Af"/>
+                            <constraint firstItem="jyI-fm-GA7" firstAttribute="trailing" secondItem="C37-Q3-2E4" secondAttribute="trailing" id="uP9-TW-egr"/>
+                            <constraint firstItem="jyI-fm-GA7" firstAttribute="trailing" secondItem="rHB-Ue-9cf" secondAttribute="trailing" id="vFF-cc-5GS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomStackView" destination="rHB-Ue-9cf" id="oFg-eM-CLg"/>
+                        <outlet property="messageTextView" destination="rmr-sH-jfZ" id="w9B-rg-6Z3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QB9-VT-qf8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4117.391304347826" y="82.366071428571431"/>
         </scene>
         <!--Home Tab Controller-->
         <scene sceneID="kmT-xw-PfN">
@@ -1231,6 +1377,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="account_background" width="1920" height="1080"/>
+        <image name="arrowtriangle.forward.fill" catalog="system" width="128" height="113"/>
         <image name="avatar" width="512" height="512"/>
         <image name="background" width="1920" height="1080"/>
         <image name="gear" catalog="system" width="128" height="119"/>
@@ -1238,12 +1385,16 @@
         <image name="logo" width="170.5" height="170.5"/>
         <image name="mail" catalog="system" width="128" height="93"/>
         <image name="message" catalog="system" width="128" height="113"/>
+        <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="paperclip.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="phone.circle.fill" catalog="system" width="128" height="121"/>
         <image name="pip.exit" catalog="system" width="128" height="96"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="tv.circle" catalog="system" width="128" height="121"/>
+        <image name="video.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1255,6 +1406,9 @@
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
