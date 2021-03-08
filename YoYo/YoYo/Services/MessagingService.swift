@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import Firebase
 
 protocol MessageServiceDelegate {
     func getMyFriendsCompleted(friends: [UserModel]?, error: Error?)
+    func newMessageDetected(newMessages: [Message], msg: String)
 }
 
 class MessagingService {
@@ -40,4 +42,17 @@ class MessagingService {
         }
     }
     
+    func registerForMessages(uid: String) -> [ListenerRegistration] {
+        databaseService.messageDelegate = self
+        let myUID = authenticationService.getUserID()!
+        return databaseService.registerForMessageCollection(uids: [myUID, uid])
+    }
+    
+}
+
+// MARK:- REGISTER FOR MESSAGE
+extension MessagingService: MessageDelegate {
+    func newMessagesAdded(messages: [Message], msg: String) {
+        self.delegate?.newMessageDetected(newMessages: messages, msg: msg)
+    }
 }

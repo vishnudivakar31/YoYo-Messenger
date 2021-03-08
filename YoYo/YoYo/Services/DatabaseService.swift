@@ -21,6 +21,10 @@ protocol RegistrationForStories {
     func changeDetected(status: Bool)
 }
 
+protocol MessageDelegate {
+    func newMessagesAdded(messages: [Message], msg: String)
+}
+
 class DatabaseService {
     private let db = Firestore.firestore()
     private let USER_COLLECTION = "users"
@@ -30,6 +34,7 @@ class DatabaseService {
     var userModelDelegate: UserModelDelegate?
     var registrationFriendsListDelegate: RegistrationForFriendsList?
     var registrationForStoriesDelegate: RegistrationForStories?
+    var messageDelegate: MessageDelegate?
     
     public func saveUserModel(user: UserModel) {
         do {
@@ -213,6 +218,53 @@ class DatabaseService {
         } catch {
             completionHandler(false, error.localizedDescription)
         }
+    }
+    
+    public func registerForMessageCollection(uids: [String]) -> [ListenerRegistration] {
+        let listener1 = db.collection(MESSAGE_COLLECTION).whereField("senderID", in: uids).addSnapshotListener { (snapshot, error) in
+            if error != nil {
+                self.messageDelegate?.newMessagesAdded(messages: [], msg: error?.localizedDescription ?? "")
+            } else if let snapshot = snapshot {
+                var newMessages: [Message] = []
+                for documentChange in snapshot.documentChanges {
+                    if documentChange.type == .added {
+                        do {
+                            let message: Message? = try documentChange.document.data(as: Message.self)
+                            if let message = message {
+                                newMessages.append(message)
+                            }
+                        } catch {
+                            self.messageDelegate?.newMessagesAdded(messages: [], msg: error.localizedDescription)
+                        }
+                    }
+                }
+                newMessages = newMessages.sorted { $0.date < $1.date }
+                self.messageDelegate?.newMessagesAdded(messages: newMessages, msg: "fetched successfully")
+            }
+        }
+        
+        let listener2 = db.collection(MESSAGE_COLLECTION).whereField("receiverID", in: uids).addSnapshotListener { (snapshot, error) in
+            if error != nil {
+                self.messageDelegate?.newMessagesAdded(messages: [], msg: error?.localizedDescription ?? "")
+            } else if let snapshot = snapshot {
+                var newMessages: [Message] = []
+                for documentChange in snapshot.documentChanges {
+                    if documentChange.type == .added {
+                        do {
+                            let message: Message? = try documentChange.document.data(as: Message.self)
+                            if let message = message {
+                                newMessages.append(message)
+                            }
+                        } catch {
+                            self.messageDelegate?.newMessagesAdded(messages: [], msg: error.localizedDescription)
+                        }
+                    }
+                }
+                newMessages = newMessages.sorted { $0.date < $1.date }
+                self.messageDelegate?.newMessagesAdded(messages: newMessages, msg: "fetched successfully")
+            }
+        }
+        return [listener1, listener2]
     }
     
     public func getStoryWithUID(_ uid: String, completionHandler: @escaping (_ stories: [Story]?, _ error: Error?) -> ()) {

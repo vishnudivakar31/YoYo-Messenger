@@ -16,7 +16,8 @@ class MessageViewController: UIViewController {
     @IBOutlet weak var friendName: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    private var messages: [String] = []
+    private var messages: [Message] = []
+    private let messagingService = MessagingService()
     
     var userModel:UserModel?
     
@@ -26,6 +27,7 @@ class MessageViewController: UIViewController {
         setupTableView()
         loadDataToView()
         addKeyboardObserverMethods()
+        messagingService.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -138,4 +140,20 @@ extension MessageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
+}
+
+// MARK:- Messaging Service Delegate Methods
+extension MessageViewController: MessageServiceDelegate {
+    func getMyFriendsCompleted(friends: [UserModel]?, error: Error?) {
+        // NOT REQUIRED IN THIS CONTROLLER
+    }
+    
+    func newMessageDetected(newMessages: [Message], msg: String) {
+        if newMessages.count > 0 {
+            self.messages = newMessages
+            self.tableView.reloadData()
+        }
+    }
+    
+    
 }
