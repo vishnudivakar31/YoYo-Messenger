@@ -32,7 +32,7 @@ class MessagingService {
         }
     }
     
-    func sendMessage(msg: String?, receiverID: String, messageType: MESSAGE_TYPE, assetURL: String, completionHandler: (_ success: Bool, _ msg: String?) -> ()) {
+    func sendMessage(msg: String?, receiverID: String, messageType: MESSAGE_TYPE, assetURL: String, completionHandler: @escaping (_ success: Bool, _ msg: String?) -> ()) {
         let uid = authenticationService.getUserID()!
         let message = Message(senderID: uid, receiverID: receiverID, date: Date(), messageType: messageType, messageStatus: MESSAGE_STATUS.SEND, message: msg, assetURL: assetURL)
         databaseService.saveMessage(message) { (success, msg) in
