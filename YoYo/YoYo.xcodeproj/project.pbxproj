@@ -35,6 +35,7 @@
 		8B8955E225F5262400619E96 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955E125F5262400619E96 /* ComposeViewController.swift */; };
 		8B8955E525F526DD00619E96 /* MessagingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955E425F526DD00619E96 /* MessagingService.swift */; };
 		8B8955E825F5459800619E96 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955E725F5459800619E96 /* MessageViewController.swift */; };
+		8B8955EC25F5A14800619E96 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955EB25F5A14800619E96 /* Message.swift */; };
 		8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C325D05801005A7DE7 /* AppDelegate.swift */; };
 		8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C525D05801005A7DE7 /* SceneDelegate.swift */; };
 		8BD608CB25D05801005A7DE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BD608C925D05801005A7DE7 /* Main.storyboard */; };
@@ -80,6 +81,7 @@
 		8B8955E125F5262400619E96 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		8B8955E425F526DD00619E96 /* MessagingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingService.swift; sourceTree = "<group>"; };
 		8B8955E725F5459800619E96 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		8B8955EB25F5A14800619E96 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		8BD608C025D05801005A7DE7 /* YoYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD608C325D05801005A7DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD608C525D05801005A7DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				8B7A7FA025DC1ED3005E4DE9 /* MyFriend.swift */,
 				8B04236B25E8234600B4362D /* Story.swift */,
 				8B8955D825EB0A5500619E96 /* FriendStory.swift */,
+				8B8955EB25F5A14800619E96 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */,
 				8B7A7FAA25DC24A0005E4DE9 /* MyFriendViewCell.swift in Sources */,
 				8B8955E225F5262400619E96 /* ComposeViewController.swift in Sources */,
+				8B8955EC25F5A14800619E96 /* Message.swift in Sources */,
 				8B04236C25E8234600B4362D /* Story.swift in Sources */,
 				8BD608DE25D07174005A7DE7 /* CreateAccountController.swift in Sources */,
 				8BD6096125D222D5005A7DE7 /* DatabaseService.swift in Sources */,

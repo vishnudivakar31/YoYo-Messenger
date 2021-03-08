@@ -26,6 +26,7 @@ class DatabaseService {
     private let USER_COLLECTION = "users"
     private let FRIENDS_COLLECTION = "friends"
     private let STORY_COLLECTION = "stories"
+    private let MESSAGE_COLLECTION = "messages"
     var userModelDelegate: UserModelDelegate?
     var registrationFriendsListDelegate: RegistrationForFriendsList?
     var registrationForStoriesDelegate: RegistrationForStories?
@@ -200,6 +201,15 @@ class DatabaseService {
         do {
             let _ = try db.collection(STORY_COLLECTION).addDocument(from: story)
             completionHandler(true, "Successfully uploaded.")
+        } catch {
+            completionHandler(false, error.localizedDescription)
+        }
+    }
+    
+    public func saveMessage(_ message: Message, completionHandler: @escaping (_ success: Bool, _ msg: String?) -> ()) {
+        do {
+            let _ = try db.collection(MESSAGE_COLLECTION).addDocument(from: message)
+            completionHandler(true, "message saved successfully")
         } catch {
             completionHandler(false, error.localizedDescription)
         }

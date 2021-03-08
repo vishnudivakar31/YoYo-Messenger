@@ -89,6 +89,10 @@ class MessageViewController: UIViewController {
     }
     
     @IBAction func sendButtonTapped(_ sender: Any) {
+        let messageTxt = messageTextView.text ?? ""
+        if messageTxt.count > 0 {
+            
+        }
     }
     
     
