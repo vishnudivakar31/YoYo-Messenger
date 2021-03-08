@@ -10,7 +10,8 @@ import FirebaseFirestoreSwift
 
 enum MESSAGE_TYPE: String, Codable {
     case PLAIN = "PLAIN"
-    case MEDIA = "MEDIA"
+    case IMAGE = "IMAGE"
+    case VIDEO = "VIDEO"
 }
 
 enum MESSAGE_STATUS: String, Codable {

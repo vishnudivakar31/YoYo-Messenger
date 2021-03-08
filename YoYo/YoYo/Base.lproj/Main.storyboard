@@ -1111,7 +1111,7 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
-                                                    <imageReference key="image" image="paperclip.circle.fill" catalog="system" symbolScale="large"/>
+                                                    <imageReference key="image" image="camera.fill" catalog="system" symbolScale="large"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
                                                 </state>
                                                 <connections>
@@ -1399,13 +1399,13 @@
         <image name="arrowtriangle.forward.fill" catalog="system" width="128" height="113"/>
         <image name="avatar" width="512" height="512"/>
         <image name="background" width="1920" height="1080"/>
+        <image name="camera.fill" catalog="system" width="128" height="94"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="login_background" width="3840" height="2160"/>
         <image name="logo" width="170.5" height="170.5"/>
         <image name="mail" catalog="system" width="128" height="93"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="paperclip.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="phone.circle.fill" catalog="system" width="128" height="121"/>
