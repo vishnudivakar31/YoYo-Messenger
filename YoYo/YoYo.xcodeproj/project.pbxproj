@@ -36,6 +36,8 @@
 		8B8955E525F526DD00619E96 /* MessagingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955E425F526DD00619E96 /* MessagingService.swift */; };
 		8B8955E825F5459800619E96 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955E725F5459800619E96 /* MessageViewController.swift */; };
 		8B8955EC25F5A14800619E96 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955EB25F5A14800619E96 /* Message.swift */; };
+		8B8955FB25F6ECA100619E96 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955F925F6ECA100619E96 /* MessageTableViewCell.swift */; };
+		8B8955FC25F6ECA100619E96 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8955FA25F6ECA100619E96 /* MessageTableViewCell.xib */; };
 		8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C325D05801005A7DE7 /* AppDelegate.swift */; };
 		8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C525D05801005A7DE7 /* SceneDelegate.swift */; };
 		8BD608CB25D05801005A7DE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BD608C925D05801005A7DE7 /* Main.storyboard */; };
@@ -82,6 +84,8 @@
 		8B8955E425F526DD00619E96 /* MessagingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingService.swift; sourceTree = "<group>"; };
 		8B8955E725F5459800619E96 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		8B8955EB25F5A14800619E96 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		8B8955F925F6ECA100619E96 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		8B8955FA25F6ECA100619E96 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		8BD608C025D05801005A7DE7 /* YoYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD608C325D05801005A7DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD608C525D05801005A7DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 				8B7A7FA925DC24A0005E4DE9 /* MyFriendViewCell.xib */,
 				8B8955D325EAF9AB00619E96 /* StoryTableViewCell.swift */,
 				8B8955D425EAF9AB00619E96 /* StoryTableViewCell.xib */,
+				8B8955F925F6ECA100619E96 /* MessageTableViewCell.swift */,
+				8B8955FA25F6ECA100619E96 /* MessageTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -296,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BD608D325D05803005A7DE7 /* LaunchScreen.storyboard in Resources */,
+				8B8955FC25F6ECA100619E96 /* MessageTableViewCell.xib in Resources */,
 				8B8955D625EAF9AB00619E96 /* StoryTableViewCell.xib in Resources */,
 				8BD608E225D1F96A005A7DE7 /* GoogleService-Info.plist in Resources */,
 				8BD608D025D05803005A7DE7 /* Assets.xcassets in Resources */,
@@ -382,6 +389,7 @@
 				8B7A7F3D25D95F15005E4DE9 /* HomeTabController.swift in Sources */,
 				8B7A7FA625DC2275005E4DE9 /* FriendsViewController.swift in Sources */,
 				8BD6095E25D2141A005A7DE7 /* StorageService.swift in Sources */,
+				8B8955FB25F6ECA100619E96 /* MessageTableViewCell.swift in Sources */,
 				8B7A7FB125DECD6E005E4DE9 /* SettingsService.swift in Sources */,
 				8B7A7FA125DC1ED3005E4DE9 /* MyFriend.swift in Sources */,
 				8B8955E825F5459800619E96 /* MessageViewController.swift in Sources */,

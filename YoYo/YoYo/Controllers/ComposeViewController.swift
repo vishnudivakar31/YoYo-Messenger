@@ -55,6 +55,10 @@ class ComposeViewController: UIViewController {
 
 // MARK:- Messaging Service Delegate Methods
 extension ComposeViewController: MessageServiceDelegate {
+    func newMessageDetected(newMessages: [Message], msg: String) {
+        // NO REQ IN THIS CONTROLLER
+    }
+    
     func getMyFriendsCompleted(friends: [UserModel]?, error: Error?) {
         if let error = error {
             self.userModels = []

@@ -54,8 +54,8 @@ class MessageViewController: UIViewController {
         messageTextView.inputAccessoryView = uiToolBar
         messageTextView.backgroundColor = .white
         messageTextView.textColor = .black
-        messageTextView.layer.borderWidth = 1.0
-        messageTextView.layer.borderColor = .init(red: 1, green: 1, blue: 1, alpha: 0.8)
+        messageTextView.layer.borderWidth = 0.5
+        messageTextView.layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 0.3)
         messageTextView.layer.cornerRadius = 10.0
         
         profileImageView.layer.borderWidth = 1.0
@@ -63,13 +63,17 @@ class MessageViewController: UIViewController {
         profileImageView.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 0.6)
         profileImageView.layer.cornerRadius = profileImageView.layer.bounds.height / 2
         profileImageView.clipsToBounds = true
+        
+        bottomStackView.layer.borderWidth = 0.5
+        bottomStackView.layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 0.3)
+        
     }
     
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-        tableView.backgroundColor = UIColor(cgColor: CGColor(red: 223/255, green: 230/255, blue: 233/255, alpha: 1.0))
+        tableView.backgroundColor = UIColor(cgColor: CGColor(red: 1, green: 1, blue: 1, alpha: 1.0))
         tableView.rowHeight = 80
     }
 
@@ -91,6 +95,7 @@ class MessageViewController: UIViewController {
     }
     
     @IBAction func sendButtonTapped(_ sender: Any) {
+        self.messageTextView.resignFirstResponder()
         let messageTxt = messageTextView.text ?? ""
         if messageTxt.count > 0 {
             
