@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MessageViewController: UIViewController {
 
@@ -17,6 +18,7 @@ class MessageViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var messages: [Message] = []
+    private var listeners: [ListenerRegistration] = []
     private let messagingService = MessagingService()
     
     var userModel:UserModel?
@@ -28,10 +30,24 @@ class MessageViewController: UIViewController {
         loadDataToView()
         addKeyboardObserverMethods()
         messagingService.delegate = self
+        if let userModel = userModel {
+            messagingService.fetchMessages(receiverID: userModel.userID)
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let userModel = userModel {
+            let listeners = messagingService.registerForMessages(uid: userModel.userID)
+            self.listeners.append(contentsOf: listeners)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
+        for listener in listeners {
+            listener.remove()
+        }
     }
     
     private func loadDataToView() {
@@ -97,9 +113,23 @@ class MessageViewController: UIViewController {
     @IBAction func sendButtonTapped(_ sender: Any) {
         self.messageTextView.resignFirstResponder()
         let messageTxt = messageTextView.text ?? ""
-        if messageTxt.count > 0 {
-            
+        if let userModel = userModel {
+            if messageTxt.count > 0 {
+                messagingService.sendMessage(msg: messageTxt, receiverID: userModel.userID, messageType: .PLAIN, assetURL: nil) { (success, msg) in
+                    self.messageTextView.text = ""
+                    if !success {
+                        self.presentAlert(title: "Message Status", msg: msg ?? "")
+                    }
+                }
+            }
         }
+    }
+    
+    private func presentAlert(title: String, msg: String) {
+        let alertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     
@@ -146,28 +176,31 @@ extension MessageViewController: UITableViewDelegate, UITableViewDataSource {
         let message = messages[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageTableViewCell", for: indexPath) as! MessageTableViewCell
         cell.message = message
-        cell.myUID = "AcRRwbEi8TZsefEotoXXcrYrrUH3"
+        cell.myUID = messagingService.getMyUID()
         cell.drawCell()
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == (messages.count - 1) {
-            tableView.scrollToRow(at: indexPath, at: .none, animated: false)
-        }
     }
     
 }
 
 // MARK:- Messaging Service Delegate Methods
 extension MessageViewController: MessageServiceDelegate {
+    func fetchMessagesCompleted(messages: [Message], error: Error?) {
+        if error != nil {
+            presentAlert(title: "Fetching Messages", msg: error?.localizedDescription ?? "")
+        } else {
+            self.messages = messages
+            self.tableView.reloadData()
+        }
+    }
+    
     func getMyFriendsCompleted(friends: [UserModel]?, error: Error?) {
         // NOT REQUIRED IN THIS CONTROLLER
     }
     
     func newMessageDetected(newMessages: [Message], msg: String) {
         if newMessages.count > 0 {
-            self.messages = newMessages
+            self.messages.append(contentsOf: newMessages)
             self.tableView.reloadData()
         }
     }

@@ -55,6 +55,10 @@ class ComposeViewController: UIViewController {
 
 // MARK:- Messaging Service Delegate Methods
 extension ComposeViewController: MessageServiceDelegate {
+    func fetchMessagesCompleted(messages: [Message], error: Error?) {
+        // NO REQ IN THIS CONTROLLER
+    }
+    
     func newMessageDetected(newMessages: [Message], msg: String) {
         // NO REQ IN THIS CONTROLLER
     }

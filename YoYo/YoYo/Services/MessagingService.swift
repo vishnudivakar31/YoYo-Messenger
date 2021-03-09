@@ -11,6 +11,7 @@ import Firebase
 protocol MessageServiceDelegate {
     func getMyFriendsCompleted(friends: [UserModel]?, error: Error?)
     func newMessageDetected(newMessages: [Message], msg: String)
+    func fetchMessagesCompleted(messages: [Message], error: Error?)
 }
 
 class MessagingService {
@@ -34,7 +35,7 @@ class MessagingService {
         }
     }
     
-    func sendMessage(msg: String?, receiverID: String, messageType: MESSAGE_TYPE, assetURL: String, completionHandler: @escaping (_ success: Bool, _ msg: String?) -> ()) {
+    func sendMessage(msg: String?, receiverID: String, messageType: MESSAGE_TYPE, assetURL: String?, completionHandler: @escaping (_ success: Bool, _ msg: String?) -> ()) {
         let uid = authenticationService.getUserID()!
         let message = Message(senderID: uid, receiverID: receiverID, date: Date(), messageType: messageType, messageStatus: MESSAGE_STATUS.SEND, message: msg, assetURL: assetURL)
         databaseService.saveMessage(message) { (success, msg) in
@@ -42,10 +43,21 @@ class MessagingService {
         }
     }
     
+    func fetchMessages(receiverID: String) {
+        let uid = authenticationService.getUserID()!
+        databaseService.fetchMessages(myUID: uid, receiverUID: receiverID) { (messages, error) in
+            self.delegate?.fetchMessagesCompleted(messages: messages, error: error)
+        }
+    }
+    
     func registerForMessages(uid: String) -> [ListenerRegistration] {
         databaseService.messageDelegate = self
         let myUID = authenticationService.getUserID()!
-        return databaseService.registerForMessageCollection(uids: [myUID, uid])
+        return databaseService.registerForMessageCollection(myUID: myUID, friendUID: uid)
+    }
+    
+    func getMyUID() -> String {
+        return authenticationService.getUserID()!
     }
     
 }

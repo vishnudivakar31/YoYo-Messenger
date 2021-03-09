@@ -220,8 +220,30 @@ class DatabaseService {
         }
     }
     
-    public func registerForMessageCollection(uids: [String]) -> [ListenerRegistration] {
-        let listener1 = db.collection(MESSAGE_COLLECTION).whereField("senderID", in: uids).addSnapshotListener { (snapshot, error) in
+    public func fetchMessages(myUID: String, receiverUID: String, completionHandler: @escaping (_ messages: [Message], _ error: Error?) -> ()) {
+        db.collection(MESSAGE_COLLECTION).whereField("senderID", isEqualTo: myUID).getDocuments { (snapshot, error) in
+            if error != nil {
+                completionHandler([], error)
+            } else if let snapshot = snapshot {
+                var myMessages: [Message] = snapshot.documents.compactMap { return try? $0.data(as: Message.self) }
+                myMessages = myMessages.filter { $0.receiverID == receiverUID }
+                self.db.collection(self.MESSAGE_COLLECTION).whereField("senderID", isEqualTo: receiverUID).getDocuments { (snapshot, error) in
+                    if error != nil {
+                        completionHandler([], error)
+                    } else if let snapshot = snapshot {
+                        var friendMessages: [Message] = snapshot.documents.compactMap { return try? $0.data(as: Message.self) }
+                        friendMessages = friendMessages.filter { $0.receiverID == myUID }
+                        var messages = myMessages + friendMessages
+                        messages = messages.sorted { $0.date < $1.date }
+                        completionHandler(messages, nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    public func registerForMessageCollection(myUID: String, friendUID: String) -> [ListenerRegistration] {
+        let listener1 = db.collection(MESSAGE_COLLECTION).whereField("senderID", isEqualTo: myUID).addSnapshotListener { (snapshot, error) in
             if error != nil {
                 self.messageDelegate?.newMessagesAdded(messages: [], msg: error?.localizedDescription ?? "")
             } else if let snapshot = snapshot {
@@ -231,7 +253,9 @@ class DatabaseService {
                         do {
                             let message: Message? = try documentChange.document.data(as: Message.self)
                             if let message = message {
-                                newMessages.append(message)
+                                if message.receiverID == friendUID {
+                                    newMessages.append(message)
+                                }
                             }
                         } catch {
                             self.messageDelegate?.newMessagesAdded(messages: [], msg: error.localizedDescription)
@@ -243,7 +267,7 @@ class DatabaseService {
             }
         }
         
-        let listener2 = db.collection(MESSAGE_COLLECTION).whereField("receiverID", in: uids).addSnapshotListener { (snapshot, error) in
+        let listener2 = db.collection(MESSAGE_COLLECTION).whereField("senderID", isEqualTo: friendUID).addSnapshotListener { (snapshot, error) in
             if error != nil {
                 self.messageDelegate?.newMessagesAdded(messages: [], msg: error?.localizedDescription ?? "")
             } else if let snapshot = snapshot {
@@ -253,7 +277,9 @@ class DatabaseService {
                         do {
                             let message: Message? = try documentChange.document.data(as: Message.self)
                             if let message = message {
-                                newMessages.append(message)
+                                if message.receiverID == myUID {
+                                    newMessages.append(message)
+                                }
                             }
                         } catch {
                             self.messageDelegate?.newMessagesAdded(messages: [], msg: error.localizedDescription)
