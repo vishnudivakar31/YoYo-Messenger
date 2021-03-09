@@ -74,7 +74,7 @@ class MessageViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.backgroundColor = UIColor(cgColor: CGColor(red: 1, green: 1, blue: 1, alpha: 1.0))
-        tableView.rowHeight = 80
+        // tableView.rowHeight = 80
     }
 
     @IBAction func callButtonTapped(_ sender: Any) {
@@ -143,8 +143,20 @@ extension MessageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let message = messages[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageTableViewCell", for: indexPath) as! MessageTableViewCell
+        cell.message = message
+        cell.myUID = "AcRRwbEi8TZsefEotoXXcrYrrUH3"
+        cell.drawCell()
+        return cell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == (messages.count - 1) {
+            tableView.scrollToRow(at: indexPath, at: .none, animated: false)
+        }
+    }
+    
 }
 
 // MARK:- Messaging Service Delegate Methods

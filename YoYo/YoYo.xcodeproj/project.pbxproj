@@ -37,7 +37,6 @@
 		8B8955E825F5459800619E96 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955E725F5459800619E96 /* MessageViewController.swift */; };
 		8B8955EC25F5A14800619E96 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955EB25F5A14800619E96 /* Message.swift */; };
 		8B8955FB25F6ECA100619E96 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8955F925F6ECA100619E96 /* MessageTableViewCell.swift */; };
-		8B8955FC25F6ECA100619E96 /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B8955FA25F6ECA100619E96 /* MessageTableViewCell.xib */; };
 		8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C325D05801005A7DE7 /* AppDelegate.swift */; };
 		8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C525D05801005A7DE7 /* SceneDelegate.swift */; };
 		8BD608CB25D05801005A7DE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BD608C925D05801005A7DE7 /* Main.storyboard */; };
@@ -85,7 +84,6 @@
 		8B8955E725F5459800619E96 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		8B8955EB25F5A14800619E96 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		8B8955F925F6ECA100619E96 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
-		8B8955FA25F6ECA100619E96 /* MessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
 		8BD608C025D05801005A7DE7 /* YoYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD608C325D05801005A7DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD608C525D05801005A7DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,7 +140,6 @@
 				8B8955D325EAF9AB00619E96 /* StoryTableViewCell.swift */,
 				8B8955D425EAF9AB00619E96 /* StoryTableViewCell.xib */,
 				8B8955F925F6ECA100619E96 /* MessageTableViewCell.swift */,
-				8B8955FA25F6ECA100619E96 /* MessageTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,8 +171,8 @@
 				8BD6090D25D1FB7F005A7DE7 /* Services */,
 				8BD608DB25D0585F005A7DE7 /* Controllers */,
 				8BD608C325D05801005A7DE7 /* AppDelegate.swift */,
-				8BD608C525D05801005A7DE7 /* SceneDelegate.swift */,
 				8BD608C925D05801005A7DE7 /* Main.storyboard */,
+				8BD608C525D05801005A7DE7 /* SceneDelegate.swift */,
 				8BD608CF25D05803005A7DE7 /* Assets.xcassets */,
 				8BD608D125D05803005A7DE7 /* LaunchScreen.storyboard */,
 				8BD608D425D05803005A7DE7 /* Info.plist */,
@@ -302,7 +299,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BD608D325D05803005A7DE7 /* LaunchScreen.storyboard in Resources */,
-				8B8955FC25F6ECA100619E96 /* MessageTableViewCell.xib in Resources */,
 				8B8955D625EAF9AB00619E96 /* StoryTableViewCell.xib in Resources */,
 				8BD608E225D1F96A005A7DE7 /* GoogleService-Info.plist in Resources */,
 				8BD608D025D05803005A7DE7 /* Assets.xcassets in Resources */,
