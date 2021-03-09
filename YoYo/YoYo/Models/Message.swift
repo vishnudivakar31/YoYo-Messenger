@@ -25,7 +25,7 @@ struct Message: Codable, Identifiable {
     let receiverID: String
     let date: Date
     let messageType: MESSAGE_TYPE
-    let messageStatus: MESSAGE_STATUS
+    var messageStatus: MESSAGE_STATUS
     let message: String?
     let assetURL: String?
 }

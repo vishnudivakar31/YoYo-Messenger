@@ -36,7 +36,7 @@ class MessageTableViewCell: UITableViewCell {
             self.hideComponents(message: message)
             setMessageWidth(message: message.message ?? "")
             messageTxt.text = message.message
-            messageStatusTxt.text = message.messageStatus.rawValue
+            messageStatusTxt.text = (message.messageStatus == MESSAGE_STATUS.SEND) ? "✓" : "✓✓"
             setMessageTime(message: message)
             setSenderViewOrReceiverView(myUID: myUID, message: message)
             setAssetImage(message: message)

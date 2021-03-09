@@ -11,6 +11,7 @@ import Firebase
 protocol MessageServiceDelegate {
     func getMyFriendsCompleted(friends: [UserModel]?, error: Error?)
     func newMessageDetected(newMessages: [Message], msg: String)
+    func modifiedMessageDetected(modifiedMessages: [Message], msg: String)
     func fetchMessagesCompleted(messages: [Message], error: Error?)
 }
 
@@ -56,6 +57,16 @@ class MessagingService {
         return databaseService.registerForMessageCollection(myUID: myUID, friendUID: uid)
     }
     
+    func changeMessageStatusToSeen(messages: [Message]) -> [Message] {
+        let uid = getMyUID()
+        var filteredMessages: [Message] = messages.filter { $0.receiverID == uid && $0.messageStatus == .SEND }
+        for i in 0..<filteredMessages.count {
+            filteredMessages[i].messageStatus = .SEEN
+        }
+        databaseService.updateMessageToSeen(messages: filteredMessages)
+        return filteredMessages
+    }
+    
     func getMyUID() -> String {
         return authenticationService.getUserID()!
     }
@@ -64,6 +75,10 @@ class MessagingService {
 
 // MARK:- REGISTER FOR MESSAGE
 extension MessagingService: MessageDelegate {
+    func modifiedMessagesDetected(modifiedMessages: [Message], msg: String) {
+        self.delegate?.modifiedMessageDetected(modifiedMessages: modifiedMessages, msg: msg)
+    }
+    
     func newMessagesAdded(messages: [Message], msg: String) {
         self.delegate?.newMessageDetected(newMessages: messages, msg: msg)
     }

@@ -23,6 +23,7 @@ protocol RegistrationForStories {
 
 protocol MessageDelegate {
     func newMessagesAdded(messages: [Message], msg: String)
+    func modifiedMessagesDetected(modifiedMessages: [Message], msg: String)
 }
 
 class DatabaseService {
@@ -242,12 +243,23 @@ class DatabaseService {
         }
     }
     
+    public func updateMessageToSeen(messages: [Message]) {
+        for message in messages {
+            do {
+                try db.collection(MESSAGE_COLLECTION).document(message.id!).setData(from: message)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     public func registerForMessageCollection(myUID: String, friendUID: String) -> [ListenerRegistration] {
         let listener1 = db.collection(MESSAGE_COLLECTION).whereField("senderID", isEqualTo: myUID).addSnapshotListener { (snapshot, error) in
             if error != nil {
                 self.messageDelegate?.newMessagesAdded(messages: [], msg: error?.localizedDescription ?? "")
             } else if let snapshot = snapshot {
                 var newMessages: [Message] = []
+                var modifiedMessages: [Message] = []
                 for documentChange in snapshot.documentChanges {
                     if documentChange.type == .added {
                         do {
@@ -260,10 +272,22 @@ class DatabaseService {
                         } catch {
                             self.messageDelegate?.newMessagesAdded(messages: [], msg: error.localizedDescription)
                         }
+                    } else if documentChange.type == .modified {
+                        do {
+                            let message: Message? = try documentChange.document.data(as: Message.self)
+                            if let message = message {
+                                if message.receiverID == friendUID && message.messageStatus == .SEEN {
+                                    modifiedMessages.append(message)
+                                }
+                            }
+                        } catch {
+                            self.messageDelegate?.modifiedMessagesDetected(modifiedMessages: [], msg: error.localizedDescription)
+                        }
                     }
                 }
                 newMessages = newMessages.sorted { $0.date < $1.date }
                 self.messageDelegate?.newMessagesAdded(messages: newMessages, msg: "fetched successfully")
+                self.messageDelegate?.modifiedMessagesDetected(modifiedMessages: modifiedMessages, msg: "successful")
             }
         }
         
@@ -272,6 +296,7 @@ class DatabaseService {
                 self.messageDelegate?.newMessagesAdded(messages: [], msg: error?.localizedDescription ?? "")
             } else if let snapshot = snapshot {
                 var newMessages: [Message] = []
+                var modifiedMessages: [Message] = []
                 for documentChange in snapshot.documentChanges {
                     if documentChange.type == .added {
                         do {
@@ -284,10 +309,22 @@ class DatabaseService {
                         } catch {
                             self.messageDelegate?.newMessagesAdded(messages: [], msg: error.localizedDescription)
                         }
+                    } else if documentChange.type == .modified {
+                        do {
+                            let message: Message? = try documentChange.document.data(as: Message.self)
+                            if let message = message {
+                                if message.receiverID == myUID {
+                                    modifiedMessages.append(message)
+                                }
+                            }
+                        } catch {
+                            self.messageDelegate?.modifiedMessagesDetected(modifiedMessages: [], msg: error.localizedDescription)
+                        }
                     }
                 }
                 newMessages = newMessages.sorted { $0.date < $1.date }
                 self.messageDelegate?.newMessagesAdded(messages: newMessages, msg: "fetched successfully")
+                self.messageDelegate?.modifiedMessagesDetected(modifiedMessages: modifiedMessages, msg: "successfull")
             }
         }
         return [listener1, listener2]

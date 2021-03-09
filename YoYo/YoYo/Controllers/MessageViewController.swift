@@ -138,6 +138,11 @@ class MessageViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    private func updateMessagesToSeen() {
+        let _ = messagingService.changeMessageStatusToSeen(messages: self.messages)
+        self.tableView.reloadData()
+    }
+    
     private func animateBottomView(constant: CGFloat) {
         UIView.animate(withDuration: 1) {
             self.bottomConstraint.constant = constant
@@ -163,6 +168,12 @@ class MessageViewController: UIViewController {
             self.animateBottomView(constant: 0)
         }
     }
+    
+    private func scrollToBottom() {
+        if self.messages.count > 0 {
+            tableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .none, animated: false)
+        }
+    }
 
 }
 
@@ -185,13 +196,23 @@ extension MessageViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK:- Messaging Service Delegate Methods
 extension MessageViewController: MessageServiceDelegate {
+    func modifiedMessageDetected(modifiedMessages: [Message], msg: String) {
+        let modifiedMessageIDs = modifiedMessages.compactMap { return $0.id }
+        for i in 0 ..< self.messages.count {
+            if(modifiedMessageIDs.contains(self.messages[i].id!)) {
+                self.messages[i].messageStatus = .SEEN
+            }
+        }
+        self.tableView.reloadData()
+    }
+    
     func fetchMessagesCompleted(messages: [Message], error: Error?) {
         if error != nil {
             presentAlert(title: "Fetching Messages", msg: error?.localizedDescription ?? "")
         } else {
             self.messages = messages
-            self.tableView.reloadData()
-            tableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .none, animated: false)
+            self.updateMessagesToSeen()
+            self.scrollToBottom()
         }
     }
     
@@ -202,8 +223,8 @@ extension MessageViewController: MessageServiceDelegate {
     func newMessageDetected(newMessages: [Message], msg: String) {
         if newMessages.count > 0 {
             self.messages.append(contentsOf: newMessages)
-            self.tableView.reloadData()
-            tableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .none, animated: false)
+            self.updateMessagesToSeen()
+            self.scrollToBottom()
         }
     }
     
