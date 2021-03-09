@@ -17,12 +17,10 @@ class MessageTableViewCell: UITableViewCell {
     @IBOutlet weak var messageStatusTxt: UILabel!
     @IBOutlet weak var messageTimeTxt: UILabel!
     @IBOutlet weak var mediaImageView: UIImageView!
-    
-    var messageTrailingConstraint: NSLayoutConstraint!
-    var messageLeadingConstraint: NSLayoutConstraint!
-    
-    var timeTrailingConstraint: NSLayoutConstraint!
-    var timeLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var bubbleViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet var bubbleViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var messageTimeTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet var messageTimeLeadingConstraint: NSLayoutConstraint!
     
     var message: Message?
     var myUID: String?
@@ -79,17 +77,7 @@ class MessageTableViewCell: UITableViewCell {
         videoButton.layer.cornerRadius = 15
         
         messageBubbleView.layer.cornerRadius = 10.0
-        
-        messageTrailingConstraint = messageBubbleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8)
-        messageLeadingConstraint = messageBubbleView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8)
-        
-        timeTrailingConstraint = messageTimeTxt.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
-        timeLeadingConstraint = messageTimeTxt.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10)
-        
-        messageTrailingConstraint.isActive = false
-        messageLeadingConstraint.isActive = false
-        timeTrailingConstraint.isActive = false
-        timeLeadingConstraint.isActive = false
+
     }
     
     private func setMessageTime(message: Message) {
@@ -107,12 +95,21 @@ class MessageTableViewCell: UITableViewCell {
     
     private func setSenderViewOrReceiverView(myUID: String, message: Message) {
         if myUID == message.senderID {
-            messageTrailingConstraint.isActive = true
-            timeTrailingConstraint.isActive = true
+            bubbleViewLeadingConstraint.isActive = false
+            bubbleViewTrailingConstraint.isActive = true
+            
+            messageTimeLeadingConstraint.isActive = false
+            messageTimeTrailingConstraint.isActive = true
+            messageTimeTxt.textAlignment = .right
+            
             messageBubbleView.backgroundColor = UIColor(cgColor: CGColor(red: 116/255, green: 185/255, blue: 1, alpha: 1))
         } else {
-            messageLeadingConstraint.isActive = true
-            timeLeadingConstraint.isActive = true
+            bubbleViewLeadingConstraint.isActive = true
+            bubbleViewTrailingConstraint.isActive = false
+            
+            messageTimeLeadingConstraint.isActive = true
+            messageTimeTrailingConstraint.isActive = false
+
             messageBubbleView.backgroundColor = .lightGray
             messageStatusTxt.isHidden = true
         }

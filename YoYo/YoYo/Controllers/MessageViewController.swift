@@ -191,6 +191,7 @@ extension MessageViewController: MessageServiceDelegate {
         } else {
             self.messages = messages
             self.tableView.reloadData()
+            tableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .none, animated: false)
         }
     }
     
@@ -202,6 +203,7 @@ extension MessageViewController: MessageServiceDelegate {
         if newMessages.count > 0 {
             self.messages.append(contentsOf: newMessages)
             self.tableView.reloadData()
+            tableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .none, animated: false)
         }
     }
     
