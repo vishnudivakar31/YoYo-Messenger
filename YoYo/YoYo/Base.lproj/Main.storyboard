@@ -1018,7 +1018,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="L0G-t4-9Jt">
-                                        <rect key="frame" x="8" y="52" width="297.5" height="40"/>
+                                        <rect key="frame" x="8" y="52" width="296" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMu-yd-j4N">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="40"/>
@@ -1054,7 +1054,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBk-uH-ZMn">
-                                                <rect key="frame" x="90" y="0.0" width="207.5" height="40"/>
+                                                <rect key="frame" x="90" y="0.0" width="206" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1062,25 +1062,26 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VRQ-Pb-m73">
-                                        <rect key="frame" x="315.5" y="52" width="90.5" height="40"/>
+                                        <rect key="frame" x="314" y="52" width="92" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkA-Xn-yaA" userLabel="Call Button">
-                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="41" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal">
                                                     <imageReference key="image" image="phone.circle.fill" catalog="system" symbolScale="large"/>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="callButtonTapped:" destination="h29-WC-T4u" eventType="touchUpInside" id="ZIC-rF-ec7"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTe-Ix-T7W" userLabel="Video Call Button">
-                                                <rect key="frame" x="50" y="0.0" width="40.5" height="40"/>
+                                                <rect key="frame" x="51" y="0.0" width="41" height="40"/>
                                                 <color key="tintColor" systemColor="systemBlueColor"/>
                                                 <state key="normal">
                                                     <imageReference key="image" image="video.circle.fill" catalog="system" symbolScale="large"/>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="videoCallTapped:" destination="h29-WC-T4u" eventType="touchUpInside" id="n0k-1c-8kt"/>
