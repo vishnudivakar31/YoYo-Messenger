@@ -63,6 +63,7 @@ class SendMediaMessageViewController: UIViewController {
         if let uploadAsset = uploadAsset, let userModel = userModel {
             let title = titleTextField.text ?? ""
             if title.count > 0 {
+                activityIndicator.isHidden = false
                 messagingService.uploadMedia(data: uploadAsset.data, mediaType: uploadAsset.mediaType, fileName: title, userID: userModel.userID) { (url, error) in
                     if error != nil {
                         self.presentAlert(success: false, msg: error?.localizedDescription ?? "")
@@ -71,6 +72,7 @@ class SendMediaMessageViewController: UIViewController {
                         let messageType: MESSAGE_TYPE = uploadAsset.mediaType == MEDIA_TYPE.IMAGE ? .IMAGE : .VIDEO
                         let message = Message(senderID: myUID, receiverID: userModel.userID, date: Date(), messageType: messageType, messageStatus: .SEND, message: title, assetURL: url)
                         self.messagingService.sendMessageUsing(message: message) { (success, msg) in
+                            self.activityIndicator.isHidden = true
                             if success {
                                 self.presentAlert(success: true, msg: "Successful")
                             } else {
