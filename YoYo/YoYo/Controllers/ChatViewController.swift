@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import AudioToolbox
 
 class ChatViewController: UIViewController {
     
@@ -76,6 +77,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath) as! ChatTableViewCell
         cell.profileName.text = chatModel.userModel.name
         if chatModel.unSeenMessages > 0 {
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             cell.numberOfUnreadMessages.isHidden = false
             cell.numberOfUnreadMessages.text = "\(chatModel.unSeenMessages)"
         } else {
