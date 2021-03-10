@@ -196,6 +196,7 @@ extension MessageViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK:- Messaging Service Delegate Methods
 extension MessageViewController: MessageServiceDelegate {
+    
     func modifiedMessageDetected(modifiedMessages: [Message], msg: String) {
         let modifiedMessageIDs = modifiedMessages.compactMap { return $0.id }
         for i in 0 ..< self.messages.count {

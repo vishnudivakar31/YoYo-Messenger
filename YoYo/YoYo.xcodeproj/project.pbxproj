@@ -40,6 +40,7 @@
 		8B89560125F8454600619E96 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B89560025F8454600619E96 /* ChatViewController.swift */; };
 		8B89560525F8465300619E96 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B89560325F8465300619E96 /* ChatTableViewCell.swift */; };
 		8B89560625F8465300619E96 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B89560425F8465300619E96 /* ChatTableViewCell.xib */; };
+		8B89560925F8499200619E96 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B89560825F8499200619E96 /* ChatModel.swift */; };
 		8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C325D05801005A7DE7 /* AppDelegate.swift */; };
 		8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C525D05801005A7DE7 /* SceneDelegate.swift */; };
 		8BD608CB25D05801005A7DE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BD608C925D05801005A7DE7 /* Main.storyboard */; };
@@ -90,6 +91,7 @@
 		8B89560025F8454600619E96 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		8B89560325F8465300619E96 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		8B89560425F8465300619E96 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
+		8B89560825F8499200619E96 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		8BD608C025D05801005A7DE7 /* YoYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD608C325D05801005A7DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD608C525D05801005A7DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				8B04236B25E8234600B4362D /* Story.swift */,
 				8B8955D825EB0A5500619E96 /* FriendStory.swift */,
 				8B8955EB25F5A14800619E96 /* Message.swift */,
+				8B89560825F8499200619E96 /* ChatModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				8B7A7F3925D6ED3D005E4DE9 /* GlobalState.swift in Sources */,
 				8B8955DC25EBEE5700619E96 /* StoryExplorerViewController.swift in Sources */,
 				8B7A7FAE25DECB86005E4DE9 /* SettingsViewController.swift in Sources */,
+				8B89560925F8499200619E96 /* ChatModel.swift in Sources */,
 				8BD6097B25D2D493005A7DE7 /* UserModel.swift in Sources */,
 				8BD609AC25D42C33005A7DE7 /* LoginViewController.swift in Sources */,
 				8B8955DF25EDB05000619E96 /* StoryViewByViewController.swift in Sources */,

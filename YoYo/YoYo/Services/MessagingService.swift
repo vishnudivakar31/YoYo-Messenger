@@ -15,12 +15,18 @@ protocol MessageServiceDelegate {
     func fetchMessagesCompleted(messages: [Message], error: Error?)
 }
 
+protocol ChatServiceDelegate {
+    func fetchChatModels(chatModels: [ChatModel], error: Error?)
+    func chatModelChanged(success: Bool, error: Error?)
+}
+
 class MessagingService {
     
     private let authenticationService = AuthenticationService()
     private let databaseService = DatabaseService()
     
     var delegate:MessageServiceDelegate?
+    var chatDelegate: ChatServiceDelegate?
     
     func getMyFriends() {
         let uid = authenticationService.getUserID()!
@@ -71,10 +77,58 @@ class MessagingService {
         return authenticationService.getUserID()!
     }
     
+    func fetchChatModels() {
+        databaseService.messageDelegate = self
+        let uid = authenticationService.getUserID()!
+        databaseService.fetchMessagesForChatView(myUID: uid)
+    }
+    
+    func registerForChatModelChange() -> [ListenerRegistration] {
+        let uid = authenticationService.getUserID() ?? ""
+        if uid.count > 0 {
+            return databaseService.registerForChatModelChanges(myUID: uid)
+        }
+        return []
+    }
+    
 }
 
 // MARK:- REGISTER FOR MESSAGE
 extension MessagingService: MessageDelegate {
+    func chatModelChangesDetected(success: Bool, error: Error?) {
+        self.chatDelegate?.chatModelChanged(success: success, error: error)
+    }
+    
+    func fetchMessagesForChatView(messages: [Message], error: Error?) {
+        if error == nil {
+            let myUID = authenticationService.getUserID()!
+            var userIDs: Set<String> = []
+            for message in messages {
+                if myUID != message.senderID {
+                    userIDs.insert(message.senderID)
+                } else {
+                    userIDs.insert(message.receiverID)
+                }
+            }
+            var chatModels: [ChatModel] = []
+            databaseService.fetchUserModels(withUIDs: [String](userIDs)) { (userModels, error) in
+                if error != nil {
+                    self.chatDelegate?.fetchChatModels(chatModels: [], error: error)
+                } else if let userModels = userModels {
+                    for userModel in userModels {
+                        let unSeenMessageCount: Int = messages.filter { $0.senderID == userModel.userID && $0.messageStatus == MESSAGE_STATUS.SEND }.count
+                        let lastDate: Date = messages.filter { $0.senderID == userModel.userID || $0.receiverID == userModel.userID }.compactMap { return $0.date }.max()!
+                        chatModels.append(ChatModel(userModel: userModel, unSeenMessages: unSeenMessageCount, lastMessageDate: lastDate))
+                    }
+                    chatModels = chatModels.sorted { $0.lastMessageDate > $1.lastMessageDate }
+                    self.chatDelegate?.fetchChatModels(chatModels: chatModels, error: nil)
+                }
+            }
+        } else {
+            self.chatDelegate?.fetchChatModels(chatModels: [], error: error)
+        }
+    }
+    
     func modifiedMessagesDetected(modifiedMessages: [Message], msg: String) {
         self.delegate?.modifiedMessageDetected(modifiedMessages: modifiedMessages, msg: msg)
     }

@@ -24,6 +24,8 @@ protocol RegistrationForStories {
 protocol MessageDelegate {
     func newMessagesAdded(messages: [Message], msg: String)
     func modifiedMessagesDetected(modifiedMessages: [Message], msg: String)
+    func fetchMessagesForChatView(messages: [Message], error: Error?)
+    func chatModelChangesDetected(success: Bool, error: Error?)
 }
 
 class DatabaseService {
@@ -327,6 +329,57 @@ class DatabaseService {
                 self.messageDelegate?.modifiedMessagesDetected(modifiedMessages: modifiedMessages, msg: "successfull")
             }
         }
+        return [listener1, listener2]
+    }
+    
+    public func fetchMessagesForChatView(myUID: String) {
+        db.collection(MESSAGE_COLLECTION).whereField("senderID", isEqualTo: myUID).getDocuments { (snapshot, error) in
+            if error != nil {
+                self.messageDelegate?.fetchMessagesForChatView(messages: [], error: error)
+            } else if let snapshot = snapshot {
+                do {
+                    let sendMessages: [Message] = try snapshot.documents.compactMap { return try $0.data(as: Message.self)}
+                    self.db.collection(self.MESSAGE_COLLECTION).whereField("receiverID", isEqualTo: myUID).getDocuments { (secondSnapshot, error) in
+                        if error != nil {
+                            self.messageDelegate?.fetchMessagesForChatView(messages: [], error: error)
+                        } else if let snapshot = secondSnapshot {
+                            do {
+                                let receiveMessages: [Message] = try snapshot.documents.compactMap { return try $0.data(as: Message.self)}
+                                let allMessages = sendMessages + receiveMessages
+                                self.messageDelegate?.fetchMessagesForChatView(messages: allMessages, error: nil)
+                            } catch {
+                                self.messageDelegate?.fetchMessagesForChatView(messages: [], error: error)
+                            }
+                        }
+                    }
+                } catch {
+                    self.messageDelegate?.fetchMessagesForChatView(messages: [], error: error)
+                }
+            }
+        }
+    }
+    
+    public func registerForChatModelChanges(myUID: String) -> [ListenerRegistration] {
+        let listener1 = db.collection(MESSAGE_COLLECTION).whereField("senderID", isEqualTo: myUID).addSnapshotListener { (snapshot, error) in
+            if error != nil {
+                self.messageDelegate?.chatModelChangesDetected(success: false, error: error)
+            } else if let snapshot = snapshot {
+                if snapshot.documentChanges.count > 0 {
+                    self.messageDelegate?.chatModelChangesDetected(success: true, error: nil)
+                }
+            }
+        }
+        
+        let listener2 = db.collection(MESSAGE_COLLECTION).whereField("receiverID", isEqualTo: myUID).addSnapshotListener { (snapshot, error) in
+            if error != nil {
+                self.messageDelegate?.chatModelChangesDetected(success: false, error: error)
+            } else if let snapshot = snapshot {
+                if snapshot.documentChanges.count > 0 {
+                    self.messageDelegate?.chatModelChangesDetected(success: true, error: nil)
+                }
+            }
+        }
+        
         return [listener1, listener2]
     }
     
