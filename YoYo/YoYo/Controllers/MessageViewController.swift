@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 import Firebase
 
 class MessageViewController: UIViewController {
@@ -17,6 +18,7 @@ class MessageViewController: UIViewController {
     @IBOutlet weak var friendName: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    private let imagePicker = UIImagePickerController()
     private var messages: [Message] = []
     private var listeners: [ListenerRegistration] = []
     private let messagingService = MessagingService()
@@ -30,6 +32,7 @@ class MessageViewController: UIViewController {
         loadDataToView()
         addKeyboardObserverMethods()
         messagingService.delegate = self
+        imagePicker.delegate = self
         if let userModel = userModel {
             messagingService.fetchMessages(receiverID: userModel.userID)
         }
@@ -108,6 +111,9 @@ class MessageViewController: UIViewController {
     }
     
     @IBAction func addMediaTapped(_ sender: Any) {
+        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.mediaTypes = ["public.image", "public.movie"]
+        present(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func sendButtonTapped(_ sender: Any) {
@@ -121,6 +127,16 @@ class MessageViewController: UIViewController {
                         self.presentAlert(title: "Message Status", msg: msg ?? "")
                     }
                 }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is SendMediaMessageViewController {
+            let viewController = segue.destination as! SendMediaMessageViewController
+            if let uploadAsset = sender as? UploadAsset, let userModel = userModel {
+                viewController.uploadAsset = uploadAsset
+                viewController.userModel = userModel
             }
         }
     }
@@ -228,6 +244,51 @@ extension MessageViewController: MessageServiceDelegate {
             self.scrollToBottom()
         }
     }
-    
-    
+
+}
+
+// MARK:- Image Picker Delegate Methods
+extension MessageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var videoLengthConstraintMet = true
+        var errorMsg = ""
+        var assetData: Data?
+        let mediaType = info[.mediaType]
+        var uploadAsset: UploadAsset?
+        if mediaType != nil && mediaType as! String == "public.image" {
+            if let pickedImage = info[.originalImage] as? UIImage {
+                assetData = pickedImage.jpegData(compressionQuality: 1)
+                uploadAsset = UploadAsset(data: assetData!, mediaType: .IMAGE)
+            } else {
+                videoLengthConstraintMet = false
+                errorMsg = "Unable to load image. Try again later"
+            }
+        } else if mediaType != nil && mediaType as! String == "public.movie" {
+            let videoURL = info[.mediaURL] as? URL
+            if let videoURL = videoURL {
+                let asset = AVURLAsset(url: videoURL)
+                let duration = asset.duration.seconds
+                if duration > 60 {
+                    videoLengthConstraintMet = false
+                    errorMsg = "Story should be less than 60 seconds."
+                } else {
+                    do {
+                        assetData =  try Data(contentsOf: videoURL, options: .mappedIfSafe)
+                        uploadAsset = UploadAsset(data: assetData!, videoURL: videoURL, mediaType: .VIDEO)
+                    } catch {
+                        videoLengthConstraintMet = false
+                        errorMsg = error.localizedDescription
+                    }
+                }
+            }
+        }
+        imagePicker.dismiss(animated: true) {
+            if let uploadAsset = uploadAsset {
+                self.performSegue(withIdentifier: "SendMediaMessage", sender: uploadAsset)
+            }
+        }
+        if !videoLengthConstraintMet {
+            presentAlert(title: "Story uploading failed", msg: errorMsg)
+        }
+    }
 }

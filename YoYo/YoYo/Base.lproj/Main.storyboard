@@ -1323,10 +1323,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EFq-U4-ClH">
-                                <rect key="frame" x="8" y="676" width="398" height="124"/>
+                                <rect key="frame" x="8" y="658" width="398" height="142"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b3K-az-lcQ">
-                                        <rect key="frame" x="10" y="10" width="378" height="20"/>
+                                        <rect key="frame" x="10" y="15" width="378" height="20"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lil-6Z-20m">
                                                 <rect key="frame" x="0.0" y="0.0" width="358" height="20"/>
@@ -1341,7 +1341,7 @@
                                         </subviews>
                                     </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jqd-M9-l2j">
-                                        <rect key="frame" x="10" y="40" width="378" height="34"/>
+                                        <rect key="frame" x="10" y="45" width="378" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1349,9 +1349,10 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZfA-th-KHn">
-                                        <rect key="frame" x="10" y="84" width="378" height="30"/>
+                                        <rect key="frame" x="10" y="89" width="378" height="38"/>
                                         <color key="backgroundColor" red="0.4549019608" green="0.72549019609999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                         <state key="normal" title="SEND">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -1361,7 +1362,7 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <edgeInsets key="layoutMargins" top="10" left="10" bottom="10" right="10"/>
+                                <edgeInsets key="layoutMargins" top="15" left="10" bottom="15" right="10"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pU6-AE-dqH"/>
@@ -1380,7 +1381,10 @@
                     <navigationItem key="navigationItem" id="eFO-0p-jiB"/>
                     <connections>
                         <outlet property="activityIndicator" destination="GOA-sr-bKU" id="2Ma-Qd-HYW"/>
+                        <outlet property="bottomConstraint" destination="6GJ-iB-YGF" id="xou-pA-DAM"/>
+                        <outlet property="inputStackView" destination="EFq-U4-ClH" id="W2q-16-aWW"/>
                         <outlet property="messageImageView" destination="Zxo-Pu-Hz3" id="tjE-Kk-qSc"/>
+                        <outlet property="sendButton" destination="ZfA-th-KHn" id="BAW-Uk-81W"/>
                         <outlet property="titleTextField" destination="Jqd-M9-l2j" id="vCG-lu-eck"/>
                     </connections>
                 </viewController>
