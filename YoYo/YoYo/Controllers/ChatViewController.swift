@@ -16,6 +16,7 @@ class ChatViewController: UIViewController {
     
     private let messagingService = MessagingService()
     private var chatModels: [ChatModel] = []
+    private var searchBuffer: [ChatModel] = []
     private var listeners: [ListenerRegistration] = []
     
     override func viewDidLoad() {
@@ -23,6 +24,7 @@ class ChatViewController: UIViewController {
         setupTableView()
         messagingService.chatDelegate = self
         messagingService.fetchChatModels()
+        searchBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,6 +110,38 @@ extension ChatViewController: ChatServiceDelegate {
             self.tableView.reloadData()
         }
     }
+}
+
+// MARK:- Searchbar Delegate
+extension ChatViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.resignFirstResponder()
+        let searchTxt = searchBar.text ?? ""
+        if searchTxt.count > 0{
+            if searchBuffer.count == 0 {
+                searchBuffer = chatModels
+            }
+            self.chatModels = searchBuffer.filter { $0.userModel.name.contains(searchTxt) || $0.userModel.userEmail.contains(searchTxt) }
+            self.tableView.reloadData()
+        }
+    }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if self.searchBuffer.count > 0 {
+            self.chatModels = self.searchBuffer
+            self.searchBuffer = []
+        }
+        self.searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count == 0 {
+            self.resignFirstResponder()
+            self.chatModels = self.searchBuffer
+            self.searchBuffer = []
+            self.tableView.reloadData()
+            self.searchBar.resignFirstResponder()
+        }
+    }
     
 }
