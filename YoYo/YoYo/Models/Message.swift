@@ -12,6 +12,7 @@ enum MESSAGE_TYPE: String, Codable {
     case PLAIN = "PLAIN"
     case IMAGE = "IMAGE"
     case VIDEO = "VIDEO"
+    case AUDIO = "AUDIO"
 }
 
 enum MESSAGE_STATUS: String, Codable {

@@ -1183,8 +1183,8 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SWO-ZF-0hJ">
                                                     <rect key="frame" x="8" y="8" width="398" height="282"/>
                                                     <subviews>
-                                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZAJ-gd-RKu">
-                                                            <rect key="frame" x="15" y="-185" width="368" height="200"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZAJ-gd-RKu">
+                                                            <rect key="frame" x="15" y="15" width="368" height="200"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_background" translatesAutoresizingMaskIntoConstraints="NO" id="HTa-gv-oqS">
                                                                     <rect key="frame" x="84" y="0.0" width="200" height="200"/>
@@ -1216,7 +1216,7 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample Message" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6us-h0-OW8">
-                                                            <rect key="frame" x="15" y="15" width="368" height="237"/>
+                                                            <rect key="frame" x="15" y="220" width="368" height="32"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="8Jk-xI-KcT"/>
                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="x2q-Sk-rnp"/>
