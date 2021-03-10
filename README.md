@@ -48,7 +48,7 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
   </p>
   <p align="center">
     <p>
-      "Default chat view"
+      <p>Default chat view</p>
       <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/chat_view.png" />
     </p>
     <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/UnSeenMessages.png" />
