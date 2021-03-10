@@ -41,6 +41,7 @@
 		8B89560525F8465300619E96 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B89560325F8465300619E96 /* ChatTableViewCell.swift */; };
 		8B89560625F8465300619E96 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B89560425F8465300619E96 /* ChatTableViewCell.xib */; };
 		8B89560925F8499200619E96 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B89560825F8499200619E96 /* ChatModel.swift */; };
+		8B89560C25F91D2500619E96 /* SendMediaMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B89560B25F91D2500619E96 /* SendMediaMessageViewController.swift */; };
 		8BD608C425D05801005A7DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C325D05801005A7DE7 /* AppDelegate.swift */; };
 		8BD608C625D05801005A7DE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD608C525D05801005A7DE7 /* SceneDelegate.swift */; };
 		8BD608CB25D05801005A7DE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BD608C925D05801005A7DE7 /* Main.storyboard */; };
@@ -92,6 +93,7 @@
 		8B89560325F8465300619E96 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		8B89560425F8465300619E96 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
 		8B89560825F8499200619E96 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		8B89560B25F91D2500619E96 /* SendMediaMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMediaMessageViewController.swift; sourceTree = "<group>"; };
 		8BD608C025D05801005A7DE7 /* YoYo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoYo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD608C325D05801005A7DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BD608C525D05801005A7DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				8B8955E125F5262400619E96 /* ComposeViewController.swift */,
 				8B8955E725F5459800619E96 /* MessageViewController.swift */,
 				8B89560025F8454600619E96 /* ChatViewController.swift */,
+				8B89560B25F91D2500619E96 /* SendMediaMessageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				8B8955E525F526DD00619E96 /* MessagingService.swift in Sources */,
 				8B7A7F9825DB32B5005E4DE9 /* Friend.swift in Sources */,
 				8B89560125F8454600619E96 /* ChatViewController.swift in Sources */,
+				8B89560C25F91D2500619E96 /* SendMediaMessageViewController.swift in Sources */,
 				8B8955D525EAF9AB00619E96 /* StoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
