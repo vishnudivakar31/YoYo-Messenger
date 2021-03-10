@@ -1114,19 +1114,19 @@
                                 <rect key="frame" x="0.0" y="806" width="414" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhp-k2-Z4X" userLabel="CameraButton">
-                                        <rect key="frame" x="8" y="8" width="38" height="40"/>
+                                        <rect key="frame" x="8" y="8" width="43.5" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal">
-                                            <imageReference key="image" image="camera.fill" catalog="system" symbolScale="large"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
+                                            <imageReference key="image" image="camera.fill" catalog="system" symbolScale="medium"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="heavy"/>
                                         </state>
                                         <connections>
                                             <action selector="addMediaTapped:" destination="h29-WC-T4u" eventType="touchUpInside" id="cyp-a1-MKq"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" indicatorStyle="black" bouncesZoom="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="rmr-sH-jfZ">
-                                        <rect key="frame" x="56" y="8" width="284" height="40"/>
+                                        <rect key="frame" x="61.5" y="8" width="248" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1136,6 +1136,18 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZU-CM-yQn" userLabel="CameraButton">
+                                        <rect key="frame" x="319.5" y="8" width="20.5" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="mic.fill" catalog="system" symbolScale="medium"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="heavy"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addMediaTapped:" destination="h29-WC-T4u" eventType="touchUpInside" id="Zqb-tf-Dtw"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cV8-gc-HpG">
                                         <rect key="frame" x="350" y="8" width="56" height="40"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
@@ -1539,6 +1551,7 @@
         <image name="logo" width="170.5" height="170.5"/>
         <image name="mail" catalog="system" width="128" height="93"/>
         <image name="message" catalog="system" width="128" height="113"/>
+        <image name="mic.fill" catalog="system" width="108" height="128"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="phone.circle.fill" catalog="system" width="128" height="121"/>
