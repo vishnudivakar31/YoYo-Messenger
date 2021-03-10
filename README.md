@@ -46,7 +46,7 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
   <p align="justify">
     Chat view shows all chats with your friends sorted by latest message. If the user want to send message to a new friend, user can compose message by selecting friend and send messages. User can send plain text, video, images and audio format. Real time communication with vibration feedback for new messages. User can see whether their friends seen the message or not.
   </p>
-  <p align="center">
+  <div align="center" display="flex">
     <p>
       <h4>Default chat view</h4>
       <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/chat_view.png" />
@@ -67,7 +67,7 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
       <h4>Messages seen by friend</h4>
       <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/message_seen_view.png" />
     </p>
-  </p>
+  </div>
 </div>
 
 <h3>Story Page</h3>
