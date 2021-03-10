@@ -17,6 +17,7 @@ class StorageService {
     
     private let IMAGES_REF = "images"
     private let STORY_REF = "stories"
+    private let MEDIA_REF = "media"
     
     var delegate: StorageDelegate?
     private let storage = Storage.storage()
@@ -72,6 +73,25 @@ class StorageService {
                 completionHandler(false)
             } else {
                 completionHandler(true)
+            }
+        }
+    }
+    
+    func uploadMedia(data: Data, mediaType: MEDIA_TYPE, fileName: String, userID: String, completionHandler: @escaping (_ url: String?, _ error: Error?) -> ()) {
+        let mediaRef = storageRef.child(MEDIA_REF)
+        let mediaName = "\(userID)_\(NSTimeIntervalSince1970)_\(fileName).\(mediaType == .IMAGE ? "jpg" : "mp4")"
+        let ref = mediaRef.child(mediaName)
+        ref.putData(data, metadata: nil) { (_, error) in
+            if let error = error {
+                completionHandler(nil, error)
+            } else {
+                ref.downloadURL { (url, error) in
+                    if let error = error {
+                        completionHandler(nil, error)
+                    } else {
+                        completionHandler(url?.absoluteString, nil)
+                    }
+                }
             }
         }
     }

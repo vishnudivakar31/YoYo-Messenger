@@ -24,6 +24,7 @@ class MessagingService {
     
     private let authenticationService = AuthenticationService()
     private let databaseService = DatabaseService()
+    private let storageService = StorageService()
     
     var delegate:MessageServiceDelegate?
     var chatDelegate: ChatServiceDelegate?
@@ -45,6 +46,12 @@ class MessagingService {
     func sendMessage(msg: String?, receiverID: String, messageType: MESSAGE_TYPE, assetURL: String?, completionHandler: @escaping (_ success: Bool, _ msg: String?) -> ()) {
         let uid = authenticationService.getUserID()!
         let message = Message(senderID: uid, receiverID: receiverID, date: Date(), messageType: messageType, messageStatus: MESSAGE_STATUS.SEND, message: msg, assetURL: assetURL)
+        databaseService.saveMessage(message) { (success, msg) in
+            completionHandler(success, msg)
+        }
+    }
+    
+    func sendMessageUsing(message: Message, completionHandler: @escaping (_ success: Bool, _ msg: String?) -> ()) {
         databaseService.saveMessage(message) { (success, msg) in
             completionHandler(success, msg)
         }
@@ -81,6 +88,12 @@ class MessagingService {
         databaseService.messageDelegate = self
         let uid = authenticationService.getUserID()!
         databaseService.fetchMessagesForChatView(myUID: uid)
+    }
+    
+    func uploadMedia(data: Data, mediaType: MEDIA_TYPE, fileName: String, userID: String, completionHandler: @escaping (_ url: String?, _ error: Error?) -> ()) {
+        storageService.uploadMedia(data: data, mediaType: mediaType, fileName: fileName, userID: userID) { (url, error) in
+            completionHandler(url, error)
+        }
     }
     
     func registerForChatModelChange() -> [ListenerRegistration] {
