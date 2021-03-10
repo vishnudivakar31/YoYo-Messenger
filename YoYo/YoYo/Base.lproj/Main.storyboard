@@ -1286,7 +1286,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.4549019608" green="0.72549019609999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <outlet property="tabBar" destination="FBe-br-ghj" id="xap-QO-GuS"/>
@@ -1503,7 +1503,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="out-ir-GFZ"/>
         <segue reference="FKl-Fc-Kp5"/>
-        <segue reference="rBe-fs-3nV"/>
+        <segue reference="wS8-X1-qLu"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="account_background" width="1920" height="1080"/>
