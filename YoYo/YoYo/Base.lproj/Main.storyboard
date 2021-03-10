@@ -895,7 +895,7 @@
         <!--Chats-->
         <scene sceneID="WJ7-wL-ydk">
             <objects>
-                <viewController id="ulh-fj-Vg7" sceneMemberID="viewController">
+                <viewController id="ulh-fj-Vg7" customClass="ChatViewController" customModule="YoYo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h4D-Yr-pMm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -924,18 +924,39 @@
                                 <color key="backgroundColor" red="0.45490196078431372" green="0.72549019607843135" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="13" right="8"/>
                             </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q9C-e7-dis">
+                                <rect key="frame" x="0.0" y="89" width="414" height="724"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="prominent" id="xPJ-uC-S9n">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                </searchBar>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Z96-xT-LTs"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Q9C-e7-dis" firstAttribute="leading" secondItem="Z96-xT-LTs" secondAttribute="leading" id="GUZ-wp-EgQ"/>
+                            <constraint firstItem="Q9C-e7-dis" firstAttribute="top" secondItem="x6H-P6-a5j" secondAttribute="bottom" id="N4M-AE-b3X"/>
                             <constraint firstItem="x6H-P6-a5j" firstAttribute="top" secondItem="h4D-Yr-pMm" secondAttribute="top" id="SKN-ql-s4D"/>
                             <constraint firstAttribute="trailing" secondItem="x6H-P6-a5j" secondAttribute="trailing" id="di1-wk-mkT"/>
+                            <constraint firstItem="Z96-xT-LTs" firstAttribute="bottom" secondItem="Q9C-e7-dis" secondAttribute="bottom" id="mza-Xk-HgT"/>
+                            <constraint firstItem="Z96-xT-LTs" firstAttribute="trailing" secondItem="Q9C-e7-dis" secondAttribute="trailing" id="pFV-ts-1fC"/>
                             <constraint firstItem="x6H-P6-a5j" firstAttribute="leading" secondItem="h4D-Yr-pMm" secondAttribute="leading" id="wgE-L6-aio"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Chats" image="message" catalog="system" id="tX7-cy-gje">
                         <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="searchBar" destination="xPJ-uC-S9n" id="xKJ-no-H1n"/>
+                        <outlet property="tableView" destination="Q9C-e7-dis" id="oOC-Dk-kq0"/>
+                        <segue destination="h29-WC-T4u" kind="presentation" identifier="GoToMessagesFromChat" modalPresentationStyle="fullScreen" id="jad-Lf-IcP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLh-Jw-n4q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1263,6 +1284,7 @@
                             <constraint firstItem="jyI-fm-GA7" firstAttribute="trailing" secondItem="rHB-Ue-9cf" secondAttribute="trailing" id="vFF-cc-5GS"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="U2c-Hk-bf6"/>
                     <connections>
                         <outlet property="bottomConstraint" destination="0eg-pH-2eU" id="nQL-XR-Ua0"/>
                         <outlet property="bottomStackView" destination="rHB-Ue-9cf" id="oFg-eM-CLg"/>
@@ -1502,6 +1524,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="out-ir-GFZ"/>
+        <segue reference="jad-Lf-IcP"/>
         <segue reference="FKl-Fc-Kp5"/>
         <segue reference="wS8-X1-qLu"/>
     </inferredMetricsTieBreakers>
