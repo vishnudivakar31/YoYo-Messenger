@@ -49,11 +49,11 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
   <p float="left">
     <div>
       <h4>Default chat view</h4>
-      <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/chat_view.png" width="200"/>
+      <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/chat_view.png" />
     </div>
     <div>
       <h4>Send messages but not seen by friend</h4>
-      <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/UnSeenMessages.png" width="200" />
+      <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/UnSeenMessages.png" />
     </div>
     <div>
       <h4>New messages</h4>
