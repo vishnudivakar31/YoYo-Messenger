@@ -51,10 +51,22 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
       <h4>Default chat view</h4>
       <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/chat_view.png" />
     </p>
-    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/UnSeenMessages.png" />
-    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/new_message_view.png" />
-    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/friend_message_view.png" />
-    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/message_seen_view.png" />
+    <p>
+      <h4>Send messages but not seen by friend</h4>
+      <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/UnSeenMessages.png" />
+    </p>
+    <p>
+      <h4>New messages</h4>
+      <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/new_message_view.png" />
+    </p>
+    <p>
+      <h4>Friend's message view</h4>
+      <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/friend_message_view.png" />
+    </p>
+    <p>
+      <h4>Messages seen by friend</h4>
+      <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/message_seen_view.png" />
+    </p>
   </p>
 </div>
 
