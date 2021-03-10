@@ -11,6 +11,20 @@
 An iOS messaging application for people to communicate. Phase 1 of the development is to get all basic features of a messaging application. Users can add friends and chat with them real time. It should be equipped with a basic story system when user can post a story and friends can view them in 24 hrs of posting the story. It is equipped with basic user settings like changing profile picture, reseting password and logout from the application.
 </p>
 
+<h3>Chats Page</h3>
+<div>
+  <p align="justify">
+    Chat view shows all chats with your friends sorted by latest message. If the user want to send message to a new friend, user can compose message by selecting friend and send messages. User can send plain text, video, images and audio format. Real time communication with vibration feedback for new messages. User can see whether their friends seen the message or not.
+  </p>
+  <p align="center">
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/chat_view.png" />
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/UnSeenMessages.png" />
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/new_message_view.png" />
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/friend_message_view.png" />
+    <img src="https://github.com/vishnudivakar31/YoYo-Messenger/blob/main/screenshots/message_seen_view.png" />
+  </p>
+</div>
+
 <h3>Landing Page</h3>
 <div>
   <p align="justify">
@@ -84,5 +98,7 @@ An iOS messaging application for people to communicate. Phase 1 of the developme
 <h4>Phase 1 - Pending Features</h4>
 
 ```diff
-+ Messaging Services
++ Attachment for Chats (Image, Audio and Video)
++ Audio Call
++ Video Call
 ```
