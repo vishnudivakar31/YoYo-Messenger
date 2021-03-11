@@ -29,4 +29,5 @@ struct Message: Codable, Identifiable {
     var messageStatus: MESSAGE_STATUS
     let message: String?
     let assetURL: String?
+    var thumbnailURL: String?
 }

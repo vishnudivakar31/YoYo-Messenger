@@ -50,19 +50,8 @@ class MessageTableViewCell: UITableViewCell {
     
     private func setAssetImage(message: Message) {
         if message.messageType != .PLAIN {
-            let assetURL = URL(string: message.assetURL!)!
-            if message.messageType == .IMAGE {
-                mediaImageView.sd_setImage(with: assetURL, completed: nil)
-            } else {
-                let asset = AVAsset(url: assetURL)
-                let imageGenerator = AVAssetImageGenerator(asset: asset)
-                do {
-                    let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60) , actualTime: nil)
-                    mediaImageView.image = UIImage(cgImage: thumbnailImage)
-                    } catch let error {
-                        print(error)
-                    }
-            }
+            let assetURL = URL(string: message.thumbnailURL!)!
+            mediaImageView.sd_setImage(with: assetURL, completed: nil)
         }
     }
     

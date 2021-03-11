@@ -186,8 +186,10 @@ class MessageViewController: UIViewController {
     }
     
     private func scrollToBottom() {
-        if self.messages.count > 0 {
-            tableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .none, animated: false)
+        DispatchQueue.main.async() {
+            if self.messages.count > 0 {
+                self.tableView.scrollToRow(at: IndexPath(row: self.messages.count - 1, section: 0), at: .bottom, animated: false)
+            }
         }
     }
 

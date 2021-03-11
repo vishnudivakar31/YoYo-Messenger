@@ -153,14 +153,16 @@ class DatabaseService {
     }
     
     public func fetchUserModels(withUIDs: [String], completionHandler: @escaping (_ userModels: [UserModel]?, _ error: Error?) -> ()) {
-        db.collection(USER_COLLECTION).whereField("userID", in: withUIDs).getDocuments { (snapshot, error) in
-            if error != nil {
-                completionHandler(nil, error)
-            } else if let snapshot = snapshot {
-                let userModel: [UserModel] = snapshot.documents.compactMap { return try? $0.data(as: UserModel.self)}
-                completionHandler(userModel, nil)
-            } else {
-                completionHandler(nil, nil)
+        if withUIDs.count > 0 {
+            db.collection(USER_COLLECTION).whereField("userID", in: withUIDs).getDocuments { (snapshot, error) in
+                if error != nil {
+                    completionHandler(nil, error)
+                } else if let snapshot = snapshot {
+                    let userModel: [UserModel] = snapshot.documents.compactMap { return try? $0.data(as: UserModel.self)}
+                    completionHandler(userModel, nil)
+                } else {
+                    completionHandler(nil, nil)
+                }
             }
         }
     }

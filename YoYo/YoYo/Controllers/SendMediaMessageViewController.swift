@@ -70,19 +70,56 @@ class SendMediaMessageViewController: UIViewController {
                     } else if let url = url {
                         let myUID = self.messagingService.getMyUID()
                         let messageType: MESSAGE_TYPE = uploadAsset.mediaType == MEDIA_TYPE.IMAGE ? .IMAGE : .VIDEO
-                        let message = Message(senderID: myUID, receiverID: userModel.userID, date: Date(), messageType: messageType, messageStatus: .SEND, message: title, assetURL: url)
-                        self.messagingService.sendMessageUsing(message: message) { (success, msg) in
-                            self.activityIndicator.isHidden = true
-                            if success {
-                                self.presentAlert(success: true, msg: "Successful")
-                            } else {
-                                self.presentAlert(success: false, msg: "Failed. Try again later.")
+                        var message = Message(senderID: myUID, receiverID: userModel.userID, date: Date(), messageType: messageType, messageStatus: .SEND, message: title, assetURL: url)
+                        if messageType == .IMAGE {
+                            message.thumbnailURL = url
+                            self.messagingService.sendMessageUsing(message: message) { (success, msg) in
+                                self.activityIndicator.isHidden = true
+                                if success {
+                                    self.presentAlert(success: true, msg: "Successful")
+                                } else {
+                                    self.presentAlert(success: false, msg: "Failed. Try again later.")
+                                }
+                            }
+                        } else {
+                            let asset = AVAsset(url: URL(string: url)!)
+                            let imageGenerator = AVAssetImageGenerator(asset: asset)
+                            do {
+                                let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60) , actualTime: nil)
+                                if let thumbnailData = self.convertCGImageToData(cgImage: thumbnailImage) {
+                                    self.messagingService.uploadMedia(data: thumbnailData, mediaType: .IMAGE, fileName: "\(title)_thumbnail", userID: userModel.userID) { (url, error) in
+                                        if error != nil {
+                                            self.presentAlert(success: false, msg: error?.localizedDescription ?? "")
+                                        } else if let url = url {
+                                            message.thumbnailURL = url
+                                            self.messagingService.sendMessageUsing(message: message) { (success, msg) in
+                                                self.activityIndicator.isHidden = true
+                                                if success {
+                                                    self.presentAlert(success: true, msg: "Successful")
+                                                } else {
+                                                    self.presentAlert(success: false, msg: "Failed. Try again later.")
+                                                }
+                                            }
+                                        } else {
+                                            self.presentAlert(success: false, msg: "unable to create thumbnail")
+                                        }
+                                    }
+                                }
+                            } catch let error {
+                                    print(error)
                             }
                         }
                     }
                 }
             }
         }
+    }
+    
+    private func convertCGImageToData(cgImage: CGImage) -> Data? {
+        guard let mutableData = CFDataCreateMutable(nil, 0), let destination = CGImageDestinationCreateWithData(mutableData, "public.png" as CFString, 1, nil) else { return nil }
+        CGImageDestinationAddImage(destination, cgImage, nil)
+        guard CGImageDestinationFinalize(destination) else { return nil }
+        return mutableData as Data
     }
     
     private func presentAlert(success: Bool, msg: String) {
