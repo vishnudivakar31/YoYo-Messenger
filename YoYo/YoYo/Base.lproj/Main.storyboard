@@ -1201,25 +1201,21 @@
                                                                         <constraint firstAttribute="width" constant="200" id="uvx-Ui-Ggx"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMj-Q2-MD8">
-                                                                    <rect key="frame" x="141.5" y="57.5" width="85" height="85"/>
-                                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Chd-MG-TYT">
+                                                                    <rect key="frame" x="159" y="76.5" width="50" height="46.5"/>
+                                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="85" id="EKe-d9-ZIR"/>
-                                                                        <constraint firstAttribute="height" constant="85" id="elb-aD-6SD"/>
+                                                                        <constraint firstAttribute="width" constant="50" id="7Kg-IV-QSN"/>
+                                                                        <constraint firstAttribute="height" constant="50" id="mii-fh-x3b"/>
                                                                     </constraints>
-                                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <state key="normal">
-                                                                        <imageReference key="image" image="play.fill" catalog="system" symbolScale="large"/>
-                                                                    </state>
-                                                                </button>
+                                                                </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
+                                                                <constraint firstItem="Chd-MG-TYT" firstAttribute="centerY" secondItem="ZAJ-gd-RKu" secondAttribute="centerY" id="E3o-oc-goz"/>
                                                                 <constraint firstItem="HTa-gv-oqS" firstAttribute="centerX" secondItem="ZAJ-gd-RKu" secondAttribute="centerX" id="TSv-gd-wUy"/>
-                                                                <constraint firstItem="KMj-Q2-MD8" firstAttribute="centerY" secondItem="ZAJ-gd-RKu" secondAttribute="centerY" id="Wz8-KT-zJb"/>
+                                                                <constraint firstItem="Chd-MG-TYT" firstAttribute="centerX" secondItem="ZAJ-gd-RKu" secondAttribute="centerX" id="VKD-Ez-1or"/>
                                                                 <constraint firstItem="HTa-gv-oqS" firstAttribute="centerY" secondItem="ZAJ-gd-RKu" secondAttribute="centerY" id="bIN-03-pvh"/>
-                                                                <constraint firstItem="KMj-Q2-MD8" firstAttribute="centerX" secondItem="ZAJ-gd-RKu" secondAttribute="centerX" id="caI-lM-2TN"/>
                                                                 <constraint firstAttribute="height" constant="200" id="xnA-hY-vmI"/>
                                                             </constraints>
                                                         </view>
@@ -1283,7 +1279,7 @@
                                             <outlet property="messageTimeTrailingConstraint" destination="rEY-Z9-nnu" id="tnk-c2-OCV"/>
                                             <outlet property="messageTimeTxt" destination="zZS-Qp-19Y" id="6ID-kL-EyW"/>
                                             <outlet property="messageTxt" destination="6us-h0-OW8" id="gkC-tB-K8Q"/>
-                                            <outlet property="videoButton" destination="KMj-Q2-MD8" id="Frv-hp-eKz"/>
+                                            <outlet property="videoButton" destination="Chd-MG-TYT" id="IlZ-Uv-93B"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

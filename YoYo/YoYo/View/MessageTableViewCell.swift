@@ -12,7 +12,6 @@ class MessageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var messageBubbleView: UIStackView!
     @IBOutlet weak var mediaView: UIView!
-    @IBOutlet weak var videoButton: UIButton!
     @IBOutlet weak var messageTxt: UILabel!
     @IBOutlet weak var messageStatusTxt: UILabel!
     @IBOutlet weak var messageTimeTxt: UILabel!
@@ -21,6 +20,7 @@ class MessageTableViewCell: UITableViewCell {
     @IBOutlet var bubbleViewLeadingConstraint: NSLayoutConstraint!
     @IBOutlet var messageTimeTrailingConstraint: NSLayoutConstraint!
     @IBOutlet var messageTimeLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var videoButton: UIImageView!
     
     var message: Message?
     var myUID: String?
