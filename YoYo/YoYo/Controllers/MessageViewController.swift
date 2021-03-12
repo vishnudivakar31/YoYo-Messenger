@@ -138,6 +138,16 @@ class MessageViewController: UIViewController {
                 viewController.uploadAsset = uploadAsset
                 viewController.userModel = userModel
             }
+        } else if segue.destination is PreviewMediaViewController {
+            let viewController = segue.destination as! PreviewMediaViewController
+            if let message = sender as? Message {
+                viewController.message = message
+            }
+        } else if segue.destination is PreviewVideoViewController {
+            let viewController = segue.destination as! PreviewVideoViewController
+            if let message = sender as? Message {
+                viewController.message = message
+            }
         }
     }
     
@@ -208,6 +218,15 @@ extension MessageViewController: UITableViewDelegate, UITableViewDataSource {
         cell.myUID = messagingService.getMyUID()
         cell.drawCell()
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let message = self.messages[indexPath.row]
+        if message.messageType == .IMAGE {
+            performSegue(withIdentifier: "PreviewImage", sender: message)
+        } else if message.messageType == .VIDEO {
+            performSegue(withIdentifier: "PreviewVideo", sender: message)
+        }
     }
     
 }

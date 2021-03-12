@@ -1023,6 +1023,14 @@
             </objects>
             <point key="canvasLocation" x="3112" y="-248"/>
         </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="TBc-jX-xNs">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="L04-AG-j47" customClass="PreviewVideoViewController" customModule="YoYo" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r0n-BB-mij" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5026" y="-786"/>
+        </scene>
         <!--Message View Controller-->
         <scene sceneID="nZR-Gk-lUO">
             <objects>
@@ -1305,11 +1313,50 @@
                         <outlet property="profileImageView" destination="Cma-h8-s5o" id="R7J-O8-B01"/>
                         <outlet property="tableView" destination="RQg-zP-qnH" id="UJv-N7-3Uq"/>
                         <segue destination="0w6-nc-0pn" kind="show" identifier="SendMediaMessage" id="Y4O-l0-3GX"/>
+                        <segue destination="sPY-Rd-2WN" kind="show" identifier="PreviewImage" id="IOG-DV-NNg"/>
+                        <segue destination="L04-AG-j47" kind="presentation" identifier="PreviewVideo" modalPresentationStyle="fullScreen" id="umJ-qO-ciy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QB9-VT-qf8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4115.9420289855079" y="82.366071428571431"/>
+        </scene>
+        <!--Preview Media View Controller-->
+        <scene sceneID="Dns-HC-McP">
+            <objects>
+                <viewController id="sPY-Rd-2WN" customClass="PreviewMediaViewController" customModule="YoYo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ldn-x3-JLd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8wB-C0-G3d">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_background" translatesAutoresizingMaskIntoConstraints="NO" id="wtE-lL-SpH">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NbS-Bb-MdF"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8wB-C0-G3d" firstAttribute="top" secondItem="ldn-x3-JLd" secondAttribute="top" id="2m1-hR-xE3"/>
+                            <constraint firstItem="NbS-Bb-MdF" firstAttribute="trailing" secondItem="8wB-C0-G3d" secondAttribute="trailing" id="6GZ-VP-tYU"/>
+                            <constraint firstItem="NbS-Bb-MdF" firstAttribute="bottom" secondItem="8wB-C0-G3d" secondAttribute="bottom" id="Aa8-1a-bhm"/>
+                            <constraint firstItem="8wB-C0-G3d" firstAttribute="leading" secondItem="NbS-Bb-MdF" secondAttribute="leading" id="NqA-yD-Qu4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="slH-Yg-BiY"/>
+                    <connections>
+                        <outlet property="imageView" destination="wtE-lL-SpH" id="Zsr-Eo-Pe6"/>
+                        <outlet property="stackView" destination="8wB-C0-G3d" id="H3I-CM-Cmq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kcl-Do-mGM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5026.0869565217399" y="-104.46428571428571"/>
         </scene>
         <!--Send Media Message View Controller-->
         <scene sceneID="XWQ-Po-xpl">
@@ -1390,7 +1437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K7A-FP-ZHd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4975" y="78"/>
+            <point key="canvasLocation" x="5033" y="563"/>
         </scene>
         <!--Home Tab Controller-->
         <scene sceneID="kmT-xw-PfN">
